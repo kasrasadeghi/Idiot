@@ -1,12 +1,11 @@
 package kaz.idiot;
 
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.image.ImageObserver;
 import java.util.Arrays;
 import java.util.List;
+import static kaz.idiot.Main.*;
 
 
 /**
@@ -29,6 +28,10 @@ public class GamePanel extends JPanel {
         this.playerNumber = pn;
         this.width = w;
         this.height = h;
+
+        setMinimumSize(new Dimension(width, height));
+
+        //TODO: add a pane for an event log and a chat log
     }
 
     public Dimension getPreferredSize() {
@@ -38,11 +41,10 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, width, height);
+        setBackground(Color.WHITE);
         paintPlayers(g);
-        //TODO: add a pane for an event log and a chat log
 
+//        paintCard(g, CARD.SPADE_A, 50, 50, 1);
     }
 
     private void paintPlayers(Graphics g) {
@@ -53,10 +55,10 @@ public class GamePanel extends JPanel {
 
     private void paintMainPlayer(Graphics g) {
         SIDE side = SIDE.BOTTOM;
-        int tlx = (int) (width * side.tlx);
-        int tly = (int) (height * side.tly);
-        int w = (int) (width * side.dx);
-        int h = (int) (height * side.dy);
+        int tlx = (int) (getWidth() * side.tlx);
+        int tly = (int) (getHeight() * side.tly);
+        int w = (int) (getWidth() * side.dx);
+        int h = (int) (getHeight() * side.dy);
         paintPlayer(g, game.getPlayer(playerNumber), tlx, tly, w, h);
     }
 
@@ -70,10 +72,10 @@ public class GamePanel extends JPanel {
         //TODO: less copypasta please
         //paint right players
         side = SIDE.RIGHT;
-        tlx = (int) (width * side.tlx);
-        tly = (int) (height * side.tly);
-        w = (int) (width * side.dx);
-        h = (int) (height * side.dy);
+        tlx = (int) (getWidth() * side.tlx);
+        tly = (int) (getHeight() * side.tly);
+        w = (int) (getWidth() * side.dx);
+        h = (int) (getHeight() * side.dy);
 
         for (int i = sideCount - 1 ; i >= 0; --i) {
             paintPlayer(g, game.getPlayer(countInc(count)), tlx, tly + h/sideCount * i, w, h/sideCount);
@@ -81,10 +83,10 @@ public class GamePanel extends JPanel {
 
         //paint top players
         side = SIDE.TOP;
-        tlx = (int) (width * side.tlx);
-        tly = (int) (height * side.tly);
-        w = (int) (width * side.dx);
-        h = (int) (height * side.dy);
+        tlx = (int) (getWidth() * side.tlx);
+        tly = (int) (getHeight() * side.tly);
+        w = (int) (getWidth() * side.dx);
+        h = (int) (getHeight() * side.dy);
 
         for (int i = topCount - 1; i >= 0; --i) {
             paintPlayer(g, game.getPlayer(countInc(count)), tlx + w/topCount * i, tly, w/topCount, h);
@@ -92,10 +94,10 @@ public class GamePanel extends JPanel {
 
         //paint left players
         side = SIDE.LEFT;
-        tlx = (int) (width * side.tlx);
-        tly = (int) (height * side.tly);
-        w = (int) (width * side.dx);
-        h = (int) (height * side.dy);
+        tlx = (int) (getWidth() * side.tlx);
+        tly = (int) (getHeight() * side.tly);
+        w = (int) (getWidth() * side.dx);
+        h = (int) (getHeight() * side.dy);
 
         for (int i = 0; i < sideCount; ++i) {
             paintPlayer(g, game.getPlayer(countInc(count)), tlx, tly + h/sideCount * i, w, h/sideCount);
@@ -107,7 +109,8 @@ public class GamePanel extends JPanel {
     }
 
     private void paintPlayer(Graphics g, Player p, int tlx, int tly, int w, int h) {
-
+        int cardOffset = 10;
+        int cardMove = 30;
         //paint name and border
         g.setFont(p.equals(game.getPlayer(playerNumber))? mainNameFont : nameFont);
         g.setColor(p.equals(game.getPlayer(game.getCurrentPlayerNumber()))? Color.BLUE : Color.BLACK);
@@ -115,27 +118,35 @@ public class GamePanel extends JPanel {
         g.drawString(p.getName(), tlx, tly);
 
         //paint hand
+        tlx += cardMove;
+        tly += cardOffset;
         g.setFont(p.equals(game.getPlayer(game.getCurrentPlayerNumber()))? mainCardFont : cardFont);
         List<CARD> hand = p.getHand();
         for (int i = 0; i < hand.size(); ++i) {
-            g.drawString(hand.get(i).toString(), tlx, tly + 30 + 25*i);
+            paintCard(g, hand.get(i), tlx + cardMove*i, tly);
         }
 
         //paint top cards
+        tlx += (hand.size()-1)*CARD_X + cardMove;
         List<CARD> top = p.getTop();
         for (int i = 0; i < hand.size(); ++i) {
-            g.drawString(top.get(i).toString(), tlx + w/2, tly + 30 + 25*i);
+            paintCard(g, top.get(i), tlx + cardMove*i, tly);
         }
 
         //paint bottom cards
+        tly += CARD_Y + cardOffset;
         List<CARD> bot = p.getBot();
         for (int i = 0; i < hand.size(); ++i) {
-            g.drawString(bot.get(i).toString(), tlx + w/2, tly + h/2 + 30 + 25*i);
+            paintCard(g, bot.get(i), tlx + cardMove*i, tly);
         }
     }
 
+    private void paintCard(Graphics g, CARD card, int tlx, int tly) {
+        g.drawImage(card.getImage(), tlx, tly, null);
+    }
+
     enum SIDE {
-        LEFT(0, .4, .3, .5), TOP(0, .03, 1, .3), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .6, .4,.4);
+        LEFT(0, .4, .3, .5), TOP(0, .03, 1, .3), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .7, .4,.3);
 
         public double tlx, tly, dx, dy;
 

@@ -1,69 +1,85 @@
 package kaz.idiot;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import static kaz.idiot.Main.*;
 
 /**
  * Created by kasra on 2/6/2016.
  */
 public enum CARD {
-    SPADE_A,
-    SPADE_2,
-    SPADE_3,
-    SPADE_4,
-    SPADE_5,
-    SPADE_6,
-    SPADE_7,
-    SPADE_8,
-    SPADE_9,
-    SPADE_10,
-    SPADE_J,
-    SPADE_Q,
-    SPADE_K,
+    SPADE_A(0*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_2(1*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_3(2*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_4(3*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_5(4*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_6(5*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_7(6*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_8(7*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_9(8*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_10(9*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_J(10*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_Q(11*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_K(12*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
 
-    CLUB_A,
-    CLUB_2,
-    CLUB_3,
-    CLUB_4,
-    CLUB_5,
-    CLUB_6,
-    CLUB_7,
-    CLUB_8,
-    CLUB_9,
-    CLUB_10,
-    CLUB_J,
-    CLUB_Q,
-    CLUB_K,
+    CLUB_A(0*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_2(1*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_3(2*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_4(3*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_5(4*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_6(5*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_7(6*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_8(7*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_9(8*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_10(9*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_J(10*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_Q(11*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_K(12*CARD_X, 0, CARD_X, CARD_Y),
 
-    DIAMOND_A,
-    DIAMOND_2,
-    DIAMOND_3,
-    DIAMOND_4,
-    DIAMOND_5,
-    DIAMOND_6,
-    DIAMOND_7,
-    DIAMOND_8,
-    DIAMOND_9,
-    DIAMOND_10,
-    DIAMOND_J,
-    DIAMOND_Q,
-    DIAMOND_K,
+    DIAMOND_A(0*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_2(1*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_3(2*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_4(3*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_5(4*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_6(5*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_7(6*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_8(7*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_9(8*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_10(9*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_J(10*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_Q(11*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_K(12*CARD_X, CARD_Y, CARD_X, CARD_Y),
 
-    HEART_A,
-    HEART_2,
-    HEART_3,
-    HEART_4,
-    HEART_5,
-    HEART_6,
-    HEART_7,
-    HEART_8,
-    HEART_9,
-    HEART_10,
-    HEART_J,
-    HEART_Q,
-    HEART_K,
+    HEART_A(0*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_2(1*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_3(2*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_4(3*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_5(4*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_6(5*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_7(6*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_8(7*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_9(8*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_10(9*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_J(10*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_Q(11*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_K(12*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
 
-    NULL_CARD;
+    NULL_CARD(1, 1, 1, 1);
+
+    private Image image = null;
+
+
+    CARD(int tlx, int tly, int w, int h) {
+        try {
+            image = ImageIO.read(new File("cards.png")).getSubimage(tlx, tly, w, h);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return a random card that isn't NULL_CARD;
@@ -79,12 +95,12 @@ public enum CARD {
         return Arrays.asList(values()).subList(0, values().length - 1);
     }
 
-    public static void Shuffle() {
-        //TODO: implement shuffle
-    }
-
     @Override
     public String toString() {
         return name();
+    }
+
+    public Image getImage() {
+        return image;
     }
 }

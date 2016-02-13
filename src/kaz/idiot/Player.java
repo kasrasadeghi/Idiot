@@ -19,14 +19,9 @@ public class Player {
     public Player(List<CARD> stack9, String name){
         isPlaying = true;
 
-        bot = new ArrayList<>();
-        bot.addAll(stack9.subList(0, 3));
-
-        top = new ArrayList<>();
-        top.addAll(stack9.subList(3, 6));
-
-        hand = new LinkedList<>();
-        hand.addAll(stack9.subList(6, 9));
+        bot = new ArrayList<>(stack9.subList(0, 3));
+        top = new ArrayList<>(stack9.subList(3, 6));
+        hand = new ArrayList<>(stack9.subList(6, 9));
 
         this.name = name;
     }
