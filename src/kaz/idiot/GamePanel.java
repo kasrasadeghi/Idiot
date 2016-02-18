@@ -1,8 +1,11 @@
 package kaz.idiot;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import static kaz.idiot.Main.*;
@@ -43,14 +46,14 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         setBackground(Color.WHITE);
         paintPlayers(g);
-
-//        paintCard(g, CARD.SPADE_A, 50, 50, 1);
+        paintDeck(g);
+        paintField(g);
+        paintRotating(g);
     }
 
     private void paintPlayers(Graphics g) {
         paintMainPlayer(g);
         paintSidePlayers(g);
-
     }
 
     private void paintMainPlayer(Graphics g) {
@@ -122,23 +125,54 @@ public class GamePanel extends JPanel {
         tly += cardOffset;
         g.setFont(p.equals(game.getPlayer(game.getCurrentPlayerNumber()))? mainCardFont : cardFont);
         List<CARD> hand = p.getHand();
-        for (int i = 0; i < hand.size(); ++i) {
+        for (int i = 0; i < hand.size(); ++i)
             paintCard(g, hand.get(i), tlx + cardMove*i, tly);
-        }
+
 
         //paint top cards
         tlx += (hand.size()-1)*CARD_X + cardMove;
         List<CARD> top = p.getTop();
-        for (int i = 0; i < hand.size(); ++i) {
+        for (int i = 0; i < top.size(); ++i) {
             paintCard(g, top.get(i), tlx + cardMove*i, tly);
         }
+        if (hand.isEmpty() && top.isEmpty()) {
 
-        //paint bottom cards
-        tly += CARD_Y + cardOffset;
-        List<CARD> bot = p.getBot();
-        for (int i = 0; i < hand.size(); ++i) {
-            paintCard(g, bot.get(i), tlx + cardMove*i, tly);
+
+        } else {
+            //paint bottom cards normally
+            tly += CARD_Y + cardOffset;
+            List<CARD> bot = p.getBot();
+            for (int i = bot.size() - 1; i >= 0; --i)
+                paintCard(g, CARD.NULL_CARD, tlx + cardMove * i, tly);
         }
+
+    }
+
+    private void paintRotating(Graphics g) {
+        Image image;
+        try {
+            File file = new File((game.isRotatingRight())? "right.png" : "left.png");
+            image = ImageIO.read(file);
+            g.drawImage(image, getWidth()/2 - 50, (int)(SIDE.RIGHT.tly * getWidth()), null);
+        } catch(IOException e) {
+            System.err.println("Missing card images.");
+            e.printStackTrace();
+        }
+    }
+
+    private void paintField(Graphics g) {
+        int tlx = (int) (getWidth()/2 - 2*CARD_X);
+        int tly = (int) (SIDE.RIGHT.tly * getHeight());
+        if ((game.getDeck().size() > 0))
+            paintCard(g, game.getDeck().get(game.getDeck().size() - 1), tlx, tly);
+        //TODO: for loop to show size
+    }
+
+    private void paintDeck(Graphics g) {
+        int tlx = (int) (getWidth()/2 + CARD_X);
+        int tly = (int) (SIDE.LEFT.tly * getHeight());
+        paintCard(g, CARD.NULL_CARD, tlx, tly);
+        //TODO: for loop to show size
     }
 
     private void paintCard(Graphics g, CARD card, int tlx, int tly) {
@@ -146,7 +180,7 @@ public class GamePanel extends JPanel {
     }
 
     enum SIDE {
-        LEFT(0, .4, .3, .5), TOP(0, .03, 1, .3), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .7, .4,.3);
+        LEFT(0, .4, .3, .5), TOP(0, .03, 1, .3), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .7, .4, .3);
 
         public double tlx, tly, dx, dy;
 

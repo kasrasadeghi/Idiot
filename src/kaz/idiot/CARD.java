@@ -68,7 +68,7 @@ public enum CARD {
     HEART_Q(11*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
     HEART_K(12*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
 
-    NULL_CARD(1, 1, 1, 1);
+    NULL_CARD(2 * CARD_X, 4 * CARD_Y, CARD_X, CARD_Y);
 
     private Image image = null;
 

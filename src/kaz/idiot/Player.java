@@ -15,10 +15,11 @@ public class Player {
     private List<CARD> top;
     private List<CARD> hand;
     private String name;
+    private boolean epicMode;
 
     public Player(List<CARD> stack9, String name){
         isPlaying = true;
-
+        epicMode = false;
         bot = new ArrayList<>(stack9.subList(0, 3));
         top = new ArrayList<>(stack9.subList(3, 6));
         hand = new ArrayList<>(stack9.subList(6, 9));
@@ -76,7 +77,8 @@ public class Player {
         removeToHand(top);
     }
 
-    public void botToHand() {
-        removeToHand(bot);
+    public void botToHand(int i) {
+        draw(bot.get(i));
+        epicMode = true;
     }
 }

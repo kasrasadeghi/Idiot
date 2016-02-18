@@ -14,9 +14,10 @@ import static kaz.idiot.CARD.*;
 public class Game {
     private int currentPlayerNumber;
 
-    private List<Player> players = new LinkedList<>();
+    private List<Player> players = new ArrayList<>();
     private List<CARD> field = new ArrayList<>();
     private List<CARD> deck = new LinkedList<>();
+    private boolean rotatingRight;
 
     public Game(ArrayList<String> playerNames){
         init(playerNames);
@@ -31,6 +32,7 @@ public class Game {
     }
 
     private void init(List<String> playerNames) {
+        rotatingRight = true;
         if (playerNames.isEmpty()) {
             System.err.println("There are no players to initialize.");
             return;
@@ -75,6 +77,14 @@ public class Game {
 
     public List<CARD> getDeck() {
         return deck;
+    }
+
+    public boolean isRotatingRight() {
+        return rotatingRight;
+    }
+
+    public void switchRotation() {
+        rotatingRight = !rotatingRight;
     }
 
     public void rightPlayer() {
