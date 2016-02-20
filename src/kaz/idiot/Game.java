@@ -39,7 +39,8 @@ public class Game {
     }
 
     private void dealSetupCards(List<String> playerNames) {
-//        TODO: make alternate dealer that completely randomizes cards. works against card counting
+        //TODO: make alternate dealer that completely randomizes cards. works against card counting
+        //  doesn't have decks. uses individual randomized cards. drawing is merely getting a random card.
         for (int i = 0; i < playerNames.size()/5 + 1; ++i)
             deck.addAll(fullDeck());
         for (int i = 0; i < playerNames.size(); ++i) {
@@ -118,7 +119,7 @@ public class Game {
     }
 
     public Player getLeftPlayer() {
-        return getPlayer((currentPlayerNumber - 1)%players.size());
+        return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
     }
 
     public void play(int i) {
