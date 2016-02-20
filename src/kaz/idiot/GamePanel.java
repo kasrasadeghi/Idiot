@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
+import static kaz.idiot.Player.HandCARD;
 import static kaz.idiot.Main.*;
 
 
@@ -76,8 +76,6 @@ public class GamePanel extends JPanel {
         }
     }
 
-
-
     public GamePanel (Game game, int pn, int w, int h) {
         this.game = game;
         this.playerNumber = pn;
@@ -96,6 +94,7 @@ public class GamePanel extends JPanel {
             public void mouseExited(MouseEvent mouseEvent) {}
         });
         //TODO: add a pane for an event log and a chat log
+        //TODO: make (synchronized?) queue for handling input
     }
 
     public Dimension getPreferredSize() {
@@ -132,6 +131,7 @@ public class GamePanel extends JPanel {
         Bounds bounds = SIDE.BOTTOM.getBounds();
         paintPlayer(g, playerNumber, bounding);
         addPlayerToBounds(bounds, playerNumber);
+        //TODO: add stuff for playing selected cards
     }
 
     private void paintSidePlayers(Graphics g) {
@@ -161,7 +161,6 @@ public class GamePanel extends JPanel {
                     (double)dy/getHeight()/sideCount);
             addPlayerToBounds(bounds, count);
             paintPlayer(g, count, bounding);
-            this.temp = bounds;
         }
 
         //paint top players
@@ -230,6 +229,7 @@ public class GamePanel extends JPanel {
         int playerNameXOffset = 10;
         int cardYOffset = 20;
         int cardXOffset = 30;
+        int selectedYOffset = -20;
 
         int otlx = tlx;
         int otly = tly;
@@ -267,17 +267,19 @@ public class GamePanel extends JPanel {
         tlx = otlx;
         tly += playerNameXOffset + 10;
         tlx += playerNameYOffset;
-        List<CARD> hand = p.getHand();
+        List<HandCARD> hand = p.getHand();
         for (int i = 0; i < hand.size(); ++i) {
-            paintCard(g, hand.get(i), tlx + cardXOffset * i, tly);
+            HandCARD hc = hand.get(i);
+            paintCard(g, hc.card, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
             Bounds bounds = new Bounds(
                     (double)(tlx + cardXOffset * i)/getWidth(),
-                    (double)tly/getHeight(),
+                    (double)(tly + (hc.selected? selectedYOffset : 0))/getHeight(),
                     (i == hand.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
                     (double)CARD_Y/getHeight()
             );
 
             bounds2String.put(bounds, "card " + i);
+            bounds2String.put(bounds, "action " + (hc.selected? "deselect":"select"));
         }
     }
 

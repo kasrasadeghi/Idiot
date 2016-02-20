@@ -122,7 +122,7 @@ public class Game {
         return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
     }
 
-    public void play(int i) {
-        players.get(currentPlayerNumber).play(i);
+    public void play() {
+        players.get(currentPlayerNumber).play();
     }
 }
