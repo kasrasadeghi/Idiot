@@ -3,6 +3,7 @@ package kaz.idiot;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +24,6 @@ public class GamePanel extends JPanel {
 
     private Font mainNameFont = new Font("SansSerif", Font.PLAIN, 30);
     private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
-    private Font mainCardFont = new Font("SansSerif", Font.PLAIN, 22);
-    private Font cardFont = new Font("SansSerif", Font.PLAIN, 18);
 
     public GamePanel (Game game, int pn, int w, int h) {
         this.game = game;
@@ -40,6 +39,12 @@ public class GamePanel extends JPanel {
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
     }
+
+    /**
+     * All painting methods, including paintComponent()
+     *
+     */
+    // <editor-fold desc="Painting methods">
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -112,40 +117,45 @@ public class GamePanel extends JPanel {
     }
 
     private void paintPlayer(Graphics g, Player p, int tlx, int tly, int w, int h) {
-        int cardOffset = 10;
-        int cardMove = 30;
-        //paint name and border
-        g.setFont(p.equals(game.getPlayer(playerNumber))? mainNameFont : nameFont);
-        g.setColor(p.equals(game.getPlayer(game.getCurrentPlayerNumber()))? Color.BLUE : Color.BLACK);
+        boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
+        Font playerNameFont = isPlayerMain? mainNameFont : nameFont;
+        Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
+
+        int playerNameYOffset = playerNameFont.getSize();
+        int playerNameXOffset = 10;
+        int cardYOffset = 40;
+        int cardXOffset = 30;
+
+        //paint border
+        g.setColor(playerColor);
         g.drawRect(tlx, tly, w, h);
+
+        //paint name
+        tlx += playerNameXOffset;
+        tly += playerNameYOffset;
+        g.setFont(playerNameFont);
         g.drawString(p.getName(), tlx, tly);
 
         //paint hand
-        tlx += cardMove;
-        tly += cardOffset;
-        g.setFont(p.equals(game.getPlayer(game.getCurrentPlayerNumber()))? mainCardFont : cardFont);
+        tly += cardYOffset;
         List<CARD> hand = p.getHand();
         for (int i = 0; i < hand.size(); ++i)
-            paintCard(g, hand.get(i), tlx + cardMove*i, tly);
+            paintCard(g, hand.get(i), tlx + cardXOffset*i, tly);
 
+        //paint bot cards
+        tly += cardYOffset;
+        tlx += 3* cardXOffset + CARD_X;
+
+        List<CARD> bot = p.getBot();
+        for (int i = 0; i < bot.size(); ++i)
+            paintCard(g, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
 
         //paint top cards
-        tlx += (hand.size()-1)*CARD_X + cardMove;
+        tly -= cardYOffset;
         List<CARD> top = p.getTop();
         for (int i = 0; i < top.size(); ++i) {
-            paintCard(g, top.get(i), tlx + cardMove*i, tly);
+            paintCard(g, top.get(i), tlx + cardXOffset*i, tly);
         }
-        if (hand.isEmpty() && top.isEmpty()) {
-
-
-        } else {
-            //paint bottom cards normally
-            tly += CARD_Y + cardOffset;
-            List<CARD> bot = p.getBot();
-            for (int i = bot.size() - 1; i >= 0; --i)
-                paintCard(g, CARD.NULL_CARD, tlx + cardMove * i, tly);
-        }
-
     }
 
     private void paintRotating(Graphics g) {
@@ -163,15 +173,17 @@ public class GamePanel extends JPanel {
     private void paintField(Graphics g) {
         int tlx = (int) (getWidth()/2 - 2*CARD_X);
         int tly = (int) (SIDE.RIGHT.tly * getHeight());
-        if ((game.getDeck().size() > 0))
-            paintCard(g, game.getDeck().get(game.getDeck().size() - 1), tlx, tly);
-        //TODO: for loop to show size
+        if ((game.getField().size() > 0))
+            for (int i = game.getField().size() - 1; i >=0 ; --i)
+                paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
+
     }
 
     private void paintDeck(Graphics g) {
         int tlx = (int) (getWidth()/2 + CARD_X);
         int tly = (int) (SIDE.LEFT.tly * getHeight());
-        paintCard(g, CARD.NULL_CARD, tlx, tly);
+        for (int i = 0; i <game.getDeck().size() && i < 60 ; ++i)
+            paintCard(g, CARD.NULL_CARD, tlx, tly+4*i);
         //TODO: for loop to show size
     }
 
@@ -179,8 +191,10 @@ public class GamePanel extends JPanel {
         g.drawImage(card.getImage(), tlx, tly, null);
     }
 
+    // </editor-fold>
+
     enum SIDE {
-        LEFT(0, .4, .3, .5), TOP(0, .03, 1, .3), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .7, .4, .3);
+        LEFT(0, .33, .3, .5), TOP(0, .03, 1, .27), RIGHT(.7, .4, .3, .5), BOTTOM(.3, .7, .4, .3);
 
         public double tlx, tly, dx, dy;
 
@@ -195,4 +209,44 @@ public class GamePanel extends JPanel {
             this.dy = dy;
         }
     }
+
+    public Rectangle getRectofSide(SIDE s) {
+        return new Rectangle(
+                (int)(s.tlx * getWidth()),
+                (int)(s.tly * getHeight()),
+                (int)(s.dx * getWidth()),
+                (int)(s.dy * getHeight())
+        );
+    }
+
+    /**
+     * Handles clicking and interaction.
+     */
+    // <editor-fold desc="Interaction methods">
+
+    public void handleMouseEvent(MouseEvent me) {
+
+    }
+
+    public void handleClickRight(MouseEvent me) {
+
+    }
+
+    public void handleClickLeft(MouseEvent me) {
+
+    }
+
+    public void handleClickTop(MouseEvent me) {
+
+    }
+
+    public void handleClickBottom(MouseEvent me) {
+
+    }
+
+    public void handleClickMiddle(MouseEvent me) {
+
+    }
+    // </editor-fold>
+
 }

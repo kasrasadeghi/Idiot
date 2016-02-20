@@ -2,6 +2,7 @@ package kaz.idiot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Arrays;
@@ -27,7 +28,9 @@ public class Main {
 
             //TODO: Add Listeners
             addMouseListener(new MouseListener() {
-                public void mouseClicked(MouseEvent mouseEvent) {}
+                public void mouseClicked(MouseEvent mouseEvent) {
+                    gp.handleMouseEvent(mouseEvent);
+                }
                 public void mousePressed(MouseEvent mouseEvent) {}
                 public void mouseReleased(MouseEvent mouseEvent) {}
                 public void mouseEntered(MouseEvent mouseEvent) {}

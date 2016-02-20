@@ -1,9 +1,6 @@
 package kaz.idiot;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static kaz.idiot.CARD.*;
 /**
@@ -32,16 +29,20 @@ public class Game {
     }
 
     private void init(List<String> playerNames) {
-        rotatingRight = true;
         if (playerNames.isEmpty()) {
             System.err.println("There are no players to initialize.");
             return;
         }
 
-        deck.addAll(fullDeck());
-        if (playerNames.size() > 5) deck.addAll(fullDeck());
+        dealSetupCards(playerNames);
+        initTurnOrder();
+    }
 
-        for (int i = 0; i < playerNames.size(); i++) {
+    private void dealSetupCards(List<String> playerNames) {
+//        TODO: make alternate dealer that completely randomizes cards. works against card counting
+        for (int i = 0; i < playerNames.size()/5 + 1; ++i)
+            deck.addAll(fullDeck());
+        for (int i = 0; i < playerNames.size(); ++i) {
             String name = playerNames.get(i);
             List<CARD> stack9 = new LinkedList<>();
             for (int j = 0; j < 9; j++) {
@@ -50,9 +51,26 @@ public class Game {
 
             players.add(new Player(stack9, name));
         }
-
-        currentPlayerNumber = 0;
         players.get(0).start();
+    }
+
+    private void initTurnOrder() {
+        List<CARD> leastCards = new ArrayList<>();
+        for (Player player : players) {
+            leastCards.add(player.getLeastInHand());
+        }
+        CARD first = leastCards.get(0);
+        for (int i = 0; i < leastCards.size(); i++) {
+            CARD card = leastCards.get(i);
+            if (CARD.getComp().compare(card, first) < 0) {
+                first = card;
+                currentPlayerNumber = i;
+            }
+        }
+        Player left = getLeftPlayer();
+        Player right = getRightPlayer();
+        rotatingRight = CARD.getComp().compare(left.getLeastInHand(), right.getLeastInHand()) > 0;
+
     }
 
     public Player getPlayer(int i) {
@@ -91,8 +109,16 @@ public class Game {
         currentPlayerNumber = (currentPlayerNumber + 1)%players.size();
     }
 
+    public Player getRightPlayer() {
+        return getPlayer((currentPlayerNumber + 1)%players.size());
+    }
+
     public void leftPlayer() {
         currentPlayerNumber = (currentPlayerNumber - 1)%players.size();
+    }
+
+    public Player getLeftPlayer() {
+        return getPlayer((currentPlayerNumber - 1)%players.size());
     }
 
     public void play(int i) {

@@ -15,7 +15,7 @@ public class Player {
     private List<CARD> top;
     private List<CARD> hand;
     private String name;
-    private boolean epicMode;
+    private boolean epicMode; //when you've gotten to your bottom cards
 
     public Player(List<CARD> stack9, String name){
         isPlaying = true;
@@ -53,6 +53,14 @@ public class Player {
 
     public List<CARD> getHand() {
         return hand;
+    }
+
+    public CARD getLeastInHand() {
+        CARD least = hand.get(0);
+        for (CARD card: hand)
+            if (CARD.getComp().compare(least, card) > 0)
+                least = card;
+        return least;
     }
 
     public void draw(CARD c) {

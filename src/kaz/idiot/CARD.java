@@ -5,13 +5,14 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import static kaz.idiot.Main.*;
 
 /**
  * Created by kasra on 2/6/2016.
  */
-public enum CARD {
+public enum CARD{
     SPADE_A(0*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
     SPADE_2(1*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
     SPADE_3(2*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
@@ -102,5 +103,50 @@ public enum CARD {
 
     public Image getImage() {
         return image;
+    }
+
+    public String getSuit() {
+        return name().split("_")[0];
+    }
+
+    public int getSuitValue() {
+        switch(getSuit()) {
+            case "SPADE": return 1;
+            case "CLUB": return 2;
+            case "DIAMOND": return 3;
+            case "HEART": return 4;
+            default: return 0;
+        }
+    }
+
+    public String getRank() {
+        return name().split("_")[1];
+    }
+
+    public int getRankValue() {
+        switch(getRank()) {
+            case "A": return 14;
+            case "2": return 30;
+            case "3": return 3;
+            case "4": return 4;
+            case "5": return 5;
+            case "6": return 6;
+            case "7": return 50;
+            case "8": return 8;
+            case "9": return 9;
+            case "10": return 100;
+            case "J": return 11;
+            case "Q": return 12;
+            case "K": return 13;
+            default: return 0;
+        }
+    }
+
+    public static Comparator<CARD> getComp() {
+        return (card1, card2) -> {
+            int comp = card1.getRankValue() - card2.getRankValue();
+            if (comp == 0) comp = card1.getSuitValue() - card2.getSuitValue();
+            return comp;
+        };
     }
 }
