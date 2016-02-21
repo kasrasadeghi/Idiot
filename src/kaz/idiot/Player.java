@@ -90,7 +90,7 @@ public class Player {
         //TODO: handle selection logic
         // check for same number
         // check for card continuity (is it still your turn after the first card?)
-        // deselt those that don't match selection rules
+        // deselect those that don't match selection rules
     }
 
     public void deselect(int i) {

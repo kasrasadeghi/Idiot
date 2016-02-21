@@ -16,8 +16,9 @@ public class Main {
     public static final int CARD_Y = 123;
 
     public static void main(String[] args) {
-        game = new Game(10);
+        game = new Game(3);
         SwingUtilities.invokeLater(() -> frame = new IdiotFrame());
+        //TODO: make the rubik's square game.
     }
 
     static class IdiotFrame extends JFrame {

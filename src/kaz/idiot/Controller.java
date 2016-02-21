@@ -8,14 +8,30 @@ import java.util.List;
 public class Controller {
     private Game game;
     private GamePanel gamePanel;
+    private boolean isItYourTurn;
+
+
+    //      Kasra's understanding of MVC, 02.20.2016
+    //The model contains the information, presenting the same information to all players.
+    //     ^ updates                /-> other models                                |
+    //     |                        |                                               | information
+    //The controller updates everyone's game depending on the user's input.         |
+    //     ^ interaction (player unique)                                            | interpretation
+    //     |                                                                        v
+    //The view interacts with the player, showing what's in the game, but never directly changing what's in the game.
+
     public Controller(Game game, GamePanel gp) {
         this.game = game;
         this.gamePanel = gp;
+        this.isItYourTurn = false;
     }
+
     public void handleCodes(List<String> codes) {
-        String box = "no box found";
-        String card = "no card found";
-        String action = "no action found";
+        isItYourTurn = game.getCurrentPlayerNumber() == gamePanel.getPlayerNumber();
+
+        String box = "none";
+        String card = "none";
+        String action = "none";
 
         for ( String code : codes ) {
             String[] split = code.split(" ");
@@ -30,17 +46,18 @@ public class Controller {
                     break;
             }
         }
+
+
         //TODO: two options: 1. handle each motion(selecting cards, drawing) or
         //TODO: 2. handle each turn(find out what actually changed and then send an update pkg)
 
 
-        //TODO: make the rubik's square game.
+
     }
 
-    public void option1(String box, String card, String action) {
+    public void action(String box, String card, String action) {
         switch(box) {
             case "":
-                switch
         }
     }
 

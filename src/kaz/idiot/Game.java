@@ -60,11 +60,11 @@ public class Game {
         for (Player player : players) {
             leastCards.add(player.getLeastInHand());
         }
-        CARD first = leastCards.get(0);
+        CARD cardOfFirst = leastCards.get(0);
         for (int i = 0; i < leastCards.size(); i++) {
             CARD card = leastCards.get(i);
-            if (CARD.getComp().compare(card, first) < 0) {
-                first = card;
+            if (CARD.getComp().compare(card, cardOfFirst) < 0) {
+                cardOfFirst = card;
                 currentPlayerNumber = i;
             }
         }
@@ -72,6 +72,13 @@ public class Game {
         Player right = getRightPlayer();
         rotatingRight = CARD.getComp().compare(left.getLeastInHand(), right.getLeastInHand()) > 0;
 
+        //TODO: fix turn order
+        Player firstPlayer = getPlayer(currentPlayerNumber);
+        Player secondPlayer = getNextPlayer();
+        Player lastPlayer = getPlayer((currentPlayerNumber + (rotatingRight? players.size()-1:1))%players.size());
+        System.err.println("first player's lowest:\t" + getPlayer(currentPlayerNumber).getLeastInHand());
+        System.err.println("second player's lowest:\t" + getNextPlayer().getLeastInHand());
+        System.err.println("last player's lowest:\t" + lastPlayer.getLeastInHand());
     }
 
     public Player getPlayer(int i) {
@@ -106,7 +113,7 @@ public class Game {
         rotatingRight = !rotatingRight;
     }
 
-    public void rightPlayer() {
+    public void setRightPlayer() {
         currentPlayerNumber = (currentPlayerNumber + 1)%players.size();
     }
 
@@ -114,12 +121,20 @@ public class Game {
         return getPlayer((currentPlayerNumber + 1)%players.size());
     }
 
-    public void leftPlayer() {
-        currentPlayerNumber = (currentPlayerNumber - 1)%players.size();
+    public void setLeftPlayer() {
+        currentPlayerNumber = (currentPlayerNumber  + players.size() - 1)%players.size();
     }
 
     public Player getLeftPlayer() {
         return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
+    }
+
+    public void setNextPlayer() {
+        currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+    }
+
+    public Player getNextPlayer() {
+        return getPlayer((currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size());
     }
 
     public void play() {

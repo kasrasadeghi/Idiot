@@ -28,9 +28,21 @@ public class GamePanel extends JPanel {
     private Font mainNameFont = new Font("SansSerif", Font.PLAIN, 30);
     private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
 
+    //<editor-fold desc="----Bounds----">
+
     private HashMap<Bounds, String> bounds2String = new HashMap<>();
 
-    private Bounds temp;
+    private void addPlayerToBounds(Bounds b, int count) {
+        bounds2String.put(b, "box " + count);
+    }
+
+    private void addCardToBounds(Bounds b, int num) {
+        bounds2String.put(b, "card " + num);
+    }
+
+    private void addActionToBounds(Bounds b, String code) {
+        bounds2String.put(b, "action " + code);
+    }
 
     static class Bounds {
         double tlx, tly, w, h;
@@ -76,6 +88,8 @@ public class GamePanel extends JPanel {
         }
     }
 
+    //</editor-fold>
+
     public GamePanel (Game game, int pn, int w, int h) {
         this.game = game;
         this.playerNumber = pn;
@@ -101,11 +115,7 @@ public class GamePanel extends JPanel {
         return new Dimension(width, height);
     }
 
-    /**
-     * All painting methods, including paintComponent()
-     *
-     */
-    // <editor-fold desc="Painting methods">
+    // <editor-fold desc="----Painting methods----">
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -220,10 +230,18 @@ public class GamePanel extends JPanel {
         paintPlayer(g, p, tlx, tly, w, h);
     }
 
-    private void paintPlayer(Graphics g, Player p, int tlx, int tly, int w, int h) {
+    private void paintPlayer(Graphics og, Player p, int tlx, int tly, int w, int h) {
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
+        boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
+
+        Graphics2D g = (Graphics2D) og;
+
         Font playerNameFont = isPlayerMain? mainNameFont : nameFont;
         Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
+        if (isCurrentPlayer) {
+            playerColor = Color.RED;
+            g.setStroke(new BasicStroke(2));
+        }
 
         int playerNameYOffset = playerNameFont.getSize();
         int playerNameXOffset = 10;
@@ -237,29 +255,27 @@ public class GamePanel extends JPanel {
         int oh = h;
 
         //paint border
-        g.setColor(playerColor);
-        g.drawRect(tlx, tly, w, h);
+        og.setColor(playerColor);
+        og.drawRect(tlx, tly, w, h);
 
         //paint name
         tlx += playerNameXOffset;
         tly += playerNameYOffset;
-        g.setFont(playerNameFont);
-        g.drawString(p.getName(), tlx, tly);
-
-
+        og.setFont(playerNameFont);
+        og.drawString(p.getName(), tlx, tly);
 
         //paint bot cards
         tly = otly + oh - CARD_Y - cardYOffset;
         tlx = otlx + ow - 2*CARD_X;
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
-            paintCard(g, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
+            paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
         }
         //paint top cards
         tly -= cardYOffset;
         List<CARD> top = p.getTop();
         for (int i = 0; i < top.size(); ++i) {
-            paintCard(g, top.get(i), tlx + cardXOffset*i, tly);
+            paintCard(og, top.get(i), tlx + cardXOffset*i, tly);
         }
 
         //paint hand
@@ -270,7 +286,7 @@ public class GamePanel extends JPanel {
         List<HandCARD> hand = p.getHand();
         for (int i = 0; i < hand.size(); ++i) {
             HandCARD hc = hand.get(i);
-            paintCard(g, hc.card, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
+            paintCard(og, hc.card, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
             Bounds bounds = new Bounds(
                     (double)(tlx + cardXOffset * i)/getWidth(),
                     (double)(tly + (hc.selected? selectedYOffset : 0))/getHeight(),
@@ -278,9 +294,12 @@ public class GamePanel extends JPanel {
                     (double)CARD_Y/getHeight()
             );
 
-            bounds2String.put(bounds, "card " + i);
-            bounds2String.put(bounds, "action " + (hc.selected? "deselect":"select"));
+            addCardToBounds(bounds, i);
+            addActionToBounds(bounds, hc.selected? "deselect":"select");
         }
+
+        if(isCurrentPlayer)
+            g.setStroke(new BasicStroke(1));
     }
 
     private void paintRotating(Graphics g) {
@@ -322,6 +341,8 @@ public class GamePanel extends JPanel {
     }
     // </editor-fold>
 
+    //<editor-fold desc="----SIDE stuff----">
+
     enum SIDE {
         //name   TLX TLY  DX  DY
         LEFT    (  0, .3, .3, .5),
@@ -356,15 +377,9 @@ public class GamePanel extends JPanel {
         );
     }
 
+    //</editor-fold>
 
-    private void addPlayerToBounds(Bounds b, int count) {
-        bounds2String.put(b, "box " + count);
-    }
-
-    /**
-     * Handles clicking and interaction.
-     */
-    // <editor-fold desc="Interaction methods">
+    // <editor-fold desc="----Interaction methods----">
 
     // just in case this is actually useful
     private SIDE findClickRegion(MouseEvent me) {
@@ -375,6 +390,9 @@ public class GamePanel extends JPanel {
     }
 
     public void handleMouseEvent(MouseEvent me) {
+        game.setRightPlayer();
+        repaint();
+
         List<String> codes = new ArrayList<>();
         for(Bounds bounds : bounds2String.keySet()) {
             Rectangle bounding = new Rectangle((int) (bounds.tlx * getWidth()),
@@ -389,6 +407,10 @@ public class GamePanel extends JPanel {
         controller.handleCodes(codes);
 
         //TODO: handle random rounding issue (goes towards the top left)
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 
     // </editor-fold>
