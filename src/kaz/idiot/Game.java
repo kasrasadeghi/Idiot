@@ -14,6 +14,7 @@ public class Game {
     private List<Player> players = new ArrayList<>();
     private List<CARD> field = new ArrayList<>();
     private List<CARD> deck = new LinkedList<>();
+    private List<CARD> discard = new ArrayList<>();
     private boolean rotatingRight;
 
     public Game(ArrayList<String> playerNames){
@@ -71,14 +72,6 @@ public class Game {
         Player left = getLeftPlayer();
         Player right = getRightPlayer();
         rotatingRight = CARD.getComp().compare(left.getLeastInHand(), right.getLeastInHand()) > 0;
-
-        //TODO: fix turn order
-        Player firstPlayer = getPlayer(currentPlayerNumber);
-        Player secondPlayer = getNextPlayer();
-        Player lastPlayer = getPlayer((currentPlayerNumber + (rotatingRight? players.size()-1:1))%players.size());
-        System.err.println("first player's lowest:\t" + getPlayer(currentPlayerNumber).getLeastInHand());
-        System.err.println("second player's lowest:\t" + getNextPlayer().getLeastInHand());
-        System.err.println("last player's lowest:\t" + lastPlayer.getLeastInHand());
     }
 
     public Player getPlayer(int i) {
@@ -95,6 +88,14 @@ public class Game {
 
     private CARD draw() {
         return deck.remove((int) (Math.random() * deck.size()));
+    }
+
+    private boolean isDiscardEmpty() {
+        return discard.isEmpty();
+    }
+
+    private void burn() {
+
     }
 
     public List<CARD> getField() {
@@ -138,6 +139,13 @@ public class Game {
     }
 
     public void play() {
-        players.get(currentPlayerNumber).play();
+        List<CARD> played = players.get(currentPlayerNumber).play();
+
+        //TODO: implement play button
+    }
+
+    public boolean checkPlay() {
+        //TODO: actually write this function
+        return true;
     }
 }

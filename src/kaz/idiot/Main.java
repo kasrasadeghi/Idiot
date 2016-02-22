@@ -16,19 +16,28 @@ public class Main {
     public static final int CARD_Y = 123;
 
     public static void main(String[] args) {
-        game = new Game(3);
+//        SwingUtilities.invokeLater(() -> frame = new StartFrame());
         SwingUtilities.invokeLater(() -> frame = new IdiotFrame());
         //TODO: make the rubik's square game.
     }
 
     static class IdiotFrame extends JFrame {
-        IdiotFrame() {
+        public IdiotFrame() {
+            this(0);
+        }
+
+        public IdiotFrame(int number) {
             super("Idiot");
+
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(new BorderLayout());
 
-            gp = new GamePanel(game, 0, 1920, 1080);
+            //TODO: construct GamePanels irrespective of playerNumber, adding them to a game.
+            //game should prompt to see if everyone has connected, and then the first player initializes the game and sends it to everyone else
+
+            game = new Game(12);
+            gp = new GamePanel(game, number, 1920, 1080);
             controller = new Controller(game, gp);
             add(gp, BorderLayout.CENTER);
             pack();

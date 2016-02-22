@@ -86,15 +86,11 @@ public class Player {
     }
 
     public void select(int i) {
-        hand.get(i).selected = true;
+        hand.get(i).selected = !hand.get(i).selected;
         //TODO: handle selection logic
         // check for same number
         // check for card continuity (is it still your turn after the first card?)
         // deselect those that don't match selection rules
-    }
-
-    public void deselect(int i) {
-        hand.get(i).selected = false;
     }
 
     public void draw(CARD c) {

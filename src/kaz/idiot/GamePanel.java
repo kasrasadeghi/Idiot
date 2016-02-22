@@ -120,15 +120,31 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+//        paintAllSides(g);
+        setBackground(Color.WHITE);
         bounds2String.clear();
         bounds2String.put(SIDE.MIDDLE.getBounds(), "box middle");
         bounds2String.put(SIDE.CHAT.getBounds(), "box chat");
         bounds2String.put(SIDE.EVENT.getBounds(), "box event");
-        setBackground(Color.WHITE);
+
         paintPlayers(g);
         paintDeck(g);
         paintField(g);
         paintRotating(g);
+    }
+
+    private void paintAllSides(Graphics g) {
+        for(SIDE side : SIDE.values()) {
+            g.setColor(Color.RED);
+            Bounds b = side.getBounds();
+            g.drawRect((int)(b.tlx * getWidth()),
+                    (int)(b.tly * getHeight()),
+                    (int)(b.w * getWidth()),
+                    (int)(b.h * getHeight()));
+            g.drawString(side.name(), (int)(b.tlx * getWidth()), (int)(b.tly * getHeight()) + 20);
+//            sideRect(side)
+//            g.drawRect();
+        }
     }
 
     private void paintPlayers(Graphics g) {
@@ -230,6 +246,24 @@ public class GamePanel extends JPanel {
         paintPlayer(g, p, tlx, tly, w, h);
     }
 
+    /**
+     * Paints a player with dimenions.
+     *      draws a box
+     *      paints the name
+     *      paints the hand
+     *      paint the top and bottom cards
+     *
+     * Color is red if it's currently this players turn otherwise
+     * Color is blue if it's the player this GamePanel belongs to otherwise
+     * Color is black.
+     *
+     * @param og
+     * @param p
+     * @param tlx
+     * @param tly
+     * @param w
+     * @param h
+     */
     private void paintPlayer(Graphics og, Player p, int tlx, int tly, int w, int h) {
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
         boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
@@ -265,7 +299,7 @@ public class GamePanel extends JPanel {
         og.drawString(p.getName(), tlx, tly);
 
         //paint bot cards
-        tly = otly + oh - CARD_Y - cardYOffset;
+        tly = otly + oh - CARD_Y - cardYOffset/2;
         tlx = otlx + ow - 2*CARD_X;
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
@@ -295,13 +329,16 @@ public class GamePanel extends JPanel {
             );
 
             addCardToBounds(bounds, i);
-            addActionToBounds(bounds, hc.selected? "deselect":"select");
         }
 
         if(isCurrentPlayer)
             g.setStroke(new BasicStroke(1));
     }
 
+    /**
+     * Paints the rotating symbol in the middle of the game.
+     * @param g
+     */
     private void paintRotating(Graphics g) {
         try {
             File file = new File((game.isRotatingRight())? "right.png" : "left.png");
@@ -313,6 +350,11 @@ public class GamePanel extends JPanel {
         }
     }
 
+
+    /**
+     * Paints the active field of cards
+     * @param g
+     */
     private void paintField(Graphics g) {
         int tlx = (int) (getWidth()/2 - 2*CARD_X);
         int tly = (int) (SIDE.RIGHT.tly * getHeight());
@@ -333,12 +375,6 @@ public class GamePanel extends JPanel {
         g.drawImage(card.getImage(), tlx, tly, null);
     }
 
-    private void paintBounds(Graphics g, Bounds bounds) {
-        g.drawRect((int)bounds.tlx * getWidth(),
-                (int)bounds.tly * getHeight(),
-                (int)bounds.w * getWidth(),
-                (int)bounds.h * getHeight());
-    }
     // </editor-fold>
 
     //<editor-fold desc="----SIDE stuff----">
@@ -349,9 +385,9 @@ public class GamePanel extends JPanel {
         TOP     (  0,  0,  1, .3),
         RIGHT   ( .7, .3, .3, .5),
         BOTTOM  ( .3, .7, .4, .3),
-        MIDDLE  ( .3, .4, .4, .4),
-        EVENT   (  0, .8, .3, .4),
-        CHAT    ( .7, .7, .3, .4)
+        MIDDLE  ( .3, .3, .4, .4),
+        EVENT   (  0, .8, .3, .2),
+        CHAT    ( .7, .8, .3, .2)
         ;
 
         public double tlx, tly, dx, dy;
@@ -390,8 +426,6 @@ public class GamePanel extends JPanel {
     }
 
     public void handleMouseEvent(MouseEvent me) {
-        game.setRightPlayer();
-        repaint();
 
         List<String> codes = new ArrayList<>();
         for(Bounds bounds : bounds2String.keySet()) {
@@ -402,7 +436,7 @@ public class GamePanel extends JPanel {
             if (bounding.contains(me.getPoint()))
                 codes.add(bounds2String.get(bounds));
         }
-//        System.out.println("\t" + codes);
+        System.out.println("\t" + codes);
         //TODO: actually handle actionCode
         controller.handleCodes(codes);
 

@@ -9,7 +9,7 @@ public class Controller {
     private Game game;
     private GamePanel gamePanel;
     private boolean isItYourTurn;
-
+    private int playerNumber;
 
     //      Kasra's understanding of MVC, 02.20.2016
     //The model contains the information, presenting the same information to all players.
@@ -24,6 +24,7 @@ public class Controller {
         this.game = game;
         this.gamePanel = gp;
         this.isItYourTurn = false;
+        this.playerNumber = gp.getPlayerNumber();
     }
 
     public void handleCodes(List<String> codes) {
@@ -47,21 +48,16 @@ public class Controller {
             }
         }
 
+        action(box, card, action);
 
         //TODO: two options: 1. handle each motion(selecting cards, drawing) or
         //TODO: 2. handle each turn(find out what actually changed and then send an update pkg)
 
 
-
+        //TODO: implement player inspection
     }
 
     public void action(String box, String card, String action) {
-        switch(box) {
-            case "":
-        }
-    }
-
-    public void option2(String box, String card, String action) {
 
     }
 }
