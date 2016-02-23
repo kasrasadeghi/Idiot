@@ -48,7 +48,47 @@ public class Controller {
             }
         }
 
-        action(box, card, action);
+        if (game.getState() == Game.SETUP_STATE) {
+            if(!card.equals("none")) {
+                try {
+                    int cardVal = Integer.parseInt(card);
+
+                    if (cardVal > -1 && cardVal < 3) {
+                        game.getPlayer(playerNumber)
+                                .setHandSetupSelect(Integer.valueOf(card));
+                        gamePanel.repaint();
+
+                    } else if (cardVal > 2 && cardVal < 6) {
+                        game.getPlayer(playerNumber)
+                                .setTopSetupSelect(cardVal);
+                        gamePanel.repaint();
+                    }
+
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } else if (game.getState() == Game.GAME_STATE) {
+            if (!action.equals("none"))
+                handleActionCode(action);
+
+            if (!box.equals("none")) {
+                try {
+                    int boxval = Integer.parseInt(box);
+                    if (card.equals("none")) {
+                        handleInspectionCode( boxval );
+                    } else {
+                        int cardval = Integer.parseInt(card);
+                        handleCardSelection( boxval, cardval);
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
 
         //TODO: two options: 1. handle each motion(selecting cards, drawing) or
         //TODO: 2. handle each turn(find out what actually changed and then send an update pkg)
@@ -57,18 +97,15 @@ public class Controller {
         //TODO: implement player inspection
     }
 
-    public void action(String box, String card, String action) {
-        if (box.equals(String.valueOf(playerNumber))) {
-            if(!card.equals("none")) {
-                System.out.println("Selecting " + box + ": " + card);
-                game.getPlayer(Integer.valueOf(box)).select(Integer.valueOf(card));
-                gamePanel.repaint();
-            }
-        } else if (!box.equals("none")) {
-            if (gamePanel.isInspecting()) gamePanel.setInspection(-1);
-            else gamePanel.setInspection(Integer.valueOf(box));
-            gamePanel.repaint();
-        }
+    private void handleCardSelection(int boxval, int cardval) {
+
+    }
+
+    private void handleInspectionCode(int boxval) {
+
+    }
+
+    private void handleActionCode(String action) {
 
     }
 }

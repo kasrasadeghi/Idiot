@@ -10,12 +10,23 @@ import static kaz.idiot.CARD.*;
 // THE MODEL
 public class Game {
     private int currentPlayerNumber;
+    public static final int SETUP_STATE = 0;
+    public static final int GAME_STATE = 1;
 
+    private int state = SETUP_STATE;
     private List<Player> players = new ArrayList<>();
     private List<CARD> field = new ArrayList<>();
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
     private boolean rotatingRight;
+
+    public void setState(int s) {
+        state = s;
+    }
+
+    public int getState() {
+        return state;
+    }
 
     public Game(ArrayList<String> playerNames){
         init(playerNames);
@@ -141,7 +152,7 @@ public class Game {
     public void play() {
         List<CARD> played = players.get(currentPlayerNumber).play();
 
-        //TODO: implement play button
+        //TODO: make play button on gamePanel
     }
 
     public boolean checkPlay() {

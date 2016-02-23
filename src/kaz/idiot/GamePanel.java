@@ -20,6 +20,7 @@ import static kaz.idiot.Main.*;
  */
 
 //THE VIEW
+@SuppressWarnings("Duplicates")
 public class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
@@ -127,9 +128,41 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-//        paintAllSides(g);
         setBackground(bg);
         bounds2String.clear();
+        switch (game.getState()) {
+            case Game.SETUP_STATE:
+                paintSetup(g);
+                break;
+            case Game.GAME_STATE:
+                paintGame(g);
+                break;
+        }
+
+    }
+
+    private void paintSetup(Graphics g) {
+        Player me = game.getPlayer(playerNumber);
+        inspection = 0;
+        paintInspection(g);
+        paintSetupButtons(g);
+    }
+
+    private void paintSetupButtons(Graphics g) {
+        Color front = Color.BLACK;
+        Color back = bg;
+        int buttonW = getWidth()/20;
+        int buttonH = getHeight()/30;
+        int tlx = getWidth()*3/4 - 20 - buttonW;
+        int tly = getHeight()/4 + 20;
+
+        //paint swap button
+        paintButton(g, "SWAP", tlx, tly, buttonW, buttonH, back, front);
+    }
+
+    private void paintGame(Graphics g) {
+//        paintAllSides(g);
+
         bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
         bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
         bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
@@ -141,6 +174,7 @@ public class GamePanel extends JPanel {
         paintButtons(g);
         if(inspection != -1)
             paintInspection(g);
+
     }
 
     private void paintInspection(Graphics g) {
@@ -162,6 +196,18 @@ public class GamePanel extends JPanel {
 
     }
 
+    private void paintButton(Graphics g, String s, int tlx, int tly, int w, int h, Color back, Color front) {
+        g.setColor(back);
+        g.fillRect(tlx, tly, w, h);
+        g.setColor(front);
+        g.drawRect(tlx, tly, w, h);
+        Bounds
+        addActionToBounds();
+        tlx = tlx + w/2 - SwingUtilities.computeStringWidth(g.getFontMetrics(), s)/2;
+        tly = tly + h/2 + g.getFontMetrics().getHeight()*2/7;
+        g.drawString(s, tlx, tly);
+    }
+
 //    private void paint
 
     private void paintAllSides(Graphics g) {
@@ -173,7 +219,7 @@ public class GamePanel extends JPanel {
                     (int)(b.w * getWidth()),
                     (int)(b.h * getHeight()));
             g.drawString(side.name(), (int)(b.tlx * getWidth()), (int)(b.tly * getHeight()) + 20);
-//            sideRect(side)
+//            sideRect(side);
 //            g.drawRect();
         }
     }
@@ -300,14 +346,19 @@ public class GamePanel extends JPanel {
         og.fillRect(tlx, tly, w, h);
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
         boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
+        boolean isSetup = game.getState() == Game.SETUP_STATE;
 
         Graphics2D g = (Graphics2D) og;
-
+        Stroke ogStroke = g.getStroke();
         Font playerNameFont = isPlayerMain? mainNameFont : nameFont;
         Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
         if (isCurrentPlayer) {
             playerColor = Color.RED;
-            g.setStroke(new BasicStroke(2));
+            g.setStroke(new BasicStroke(5));
+            tlx += 2;
+            tly += 2;
+            w -= 4;
+            h -= 4;
         }
 
         int playerNameYOffset = playerNameFont.getSize();
@@ -315,6 +366,10 @@ public class GamePanel extends JPanel {
         int cardYOffset = 20;
         int cardXOffset = 30;
         int selectedYOffset = -20;
+        if (isSetup) {
+            cardXOffset += CARD_X;
+            cardYOffset += CARD_Y;
+        }
 
         int otlx = tlx;
         int otly = tly;
@@ -334,6 +389,9 @@ public class GamePanel extends JPanel {
         //paint bot cards
         tly = otly + oh - CARD_Y - cardYOffset/2;
         tlx = otlx + ow - 2*CARD_X;
+        if (isSetup) {
+            tlx -= 2 * CARD_X + cardYOffset/4;
+        }
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
             paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
@@ -343,6 +401,25 @@ public class GamePanel extends JPanel {
         List<CARD> top = p.getTop();
         for (int i = 0; i < top.size(); ++i) {
             paintCard(og, top.get(i), tlx + cardXOffset*i, tly);
+            if (isSetup) {
+                Player me = game.getPlayer(playerNumber);
+                if (i + 3 == me.getTopSetupSelect()) {
+                    Stroke s = g.getStroke();
+                    g.setStroke(new BasicStroke(3));
+                    g.setColor(Color.ORANGE);
+                    g.drawRect(tlx + cardXOffset * i - 1, tly - 1, CARD_X + 2, CARD_Y + 2);
+                    g.setColor(playerColor);
+                    g.setStroke(s);
+                }
+                Bounds bounds = new Bounds(
+                        (double)(tlx + cardXOffset * i)/getWidth(),
+                        (double)(tly)/getHeight(),
+                        (i == top.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
+                        (double)CARD_Y/getHeight()
+                );
+                addCardToBounds(bounds, i + 3);
+            }
+
         }
 
         //paint hand
@@ -360,12 +437,21 @@ public class GamePanel extends JPanel {
                     (i == hand.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
                     (double)CARD_Y/getHeight()
             );
-
+            if (isSetup) {
+                Player me = game.getPlayer(playerNumber);
+                if (i == me.getHandSetupSelect()) {
+                    Stroke s = g.getStroke();
+                    g.setStroke(new BasicStroke(3));
+                    g.setColor(Color.ORANGE);
+                    g.drawRect(tlx + cardXOffset * i - 1, tly - 1, CARD_X + 2, CARD_Y + 2);
+                    g.setColor(playerColor);
+                    g.setStroke(s);
+                }
+            }
             addCardToBounds(bounds, i);
         }
 
-        if(isCurrentPlayer)
-            g.setStroke(new BasicStroke(1));
+        g.setStroke(ogStroke);
     }
 
     /**
@@ -402,6 +488,10 @@ public class GamePanel extends JPanel {
         for (int i = 0; i <game.getDeck().size() && i < 60 ; ++i)
             paintCard(g, CARD.NULL_CARD, tlx, tly+4*i);
         //TODO: fix appearance. maybe horizontal?
+    }
+
+    private void paintDiscard(Graphics g) {
+        //TODO: implement paintDiscard
     }
 
     private void paintCard(Graphics g, CARD card, int tlx, int tly) {
