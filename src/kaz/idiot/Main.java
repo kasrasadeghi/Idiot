@@ -36,7 +36,7 @@ public class Main {
             //TODO: construct GamePanels irrespective of playerNumber, adding them to a game.
             //game should prompt to see if everyone has connected, and then the first player initializes the game and sends it to everyone else
 
-            game = new Game(12);
+            game = new Game(20);
             gp = new GamePanel(game, number, 1920, 1080);
             controller = new Controller(game, gp);
             add(gp, BorderLayout.CENTER);

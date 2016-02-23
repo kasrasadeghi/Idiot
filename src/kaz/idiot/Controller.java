@@ -58,6 +58,17 @@ public class Controller {
     }
 
     public void action(String box, String card, String action) {
+        if (box.equals(String.valueOf(playerNumber))) {
+            if(!card.equals("none")) {
+                System.out.println("Selecting " + box + ": " + card);
+                game.getPlayer(Integer.valueOf(box)).select(Integer.valueOf(card));
+                gamePanel.repaint();
+            }
+        } else if (!box.equals("none")) {
+            if (gamePanel.isInspecting()) gamePanel.setInspection(-1);
+            else gamePanel.setInspection(Integer.valueOf(box));
+            gamePanel.repaint();
+        }
 
     }
 }

@@ -24,9 +24,16 @@ public class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
     private int width, height;
+    private int inspection = -1;
+
+    private final int INSP_MIDDLE = -2;
+    private final int INSP_CHAT = -3;
+    private final int INSP_EVENT = -4;
 
     private Font mainNameFont = new Font("SansSerif", Font.PLAIN, 30);
     private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
+    private Color overGrey = new Color(0, 0, 0, 120);
+    private Color bg = new Color(255, 255, 255);
 
     //<editor-fold desc="----Bounds----">
 
@@ -121,17 +128,41 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 //        paintAllSides(g);
-        setBackground(Color.WHITE);
+        setBackground(bg);
         bounds2String.clear();
-        bounds2String.put(SIDE.MIDDLE.getBounds(), "box middle");
-        bounds2String.put(SIDE.CHAT.getBounds(), "box chat");
-        bounds2String.put(SIDE.EVENT.getBounds(), "box event");
+        bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
+        bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
+        bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
 
         paintPlayers(g);
         paintDeck(g);
         paintField(g);
         paintRotating(g);
+        paintButtons(g);
+        if(inspection != -1)
+            paintInspection(g);
     }
+
+    private void paintInspection(Graphics g) {
+        if (inspection > -1)
+            paintPlayerInspection(g);
+    }
+
+    private void paintPlayerInspection(Graphics g) {
+        g.setColor(overGrey);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        paintPlayer(g, game.getPlayer(inspection), getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
+    }
+
+    private void paintButtons(Graphics g) {
+
+    }
+
+    private void paintPlay(Graphics g) {
+
+    }
+
+//    private void paint
 
     private void paintAllSides(Graphics g) {
         for(SIDE side : SIDE.values()) {
@@ -265,6 +296,8 @@ public class GamePanel extends JPanel {
      * @param h
      */
     private void paintPlayer(Graphics og, Player p, int tlx, int tly, int w, int h) {
+        og.setColor(bg);
+        og.fillRect(tlx, tly, w, h);
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
         boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
 
@@ -441,6 +474,14 @@ public class GamePanel extends JPanel {
         controller.handleCodes(codes);
 
         //TODO: handle random rounding issue (goes towards the top left)
+    }
+
+    public void setInspection( int box ) {
+        inspection = box;
+    }
+
+    public boolean isInspecting() {
+        return inspection != -1;
     }
 
     public int getPlayerNumber() {
