@@ -30,10 +30,13 @@ public class Controller {
     public void handleCodes(List<String> codes) {
         isItYourTurn = game.getCurrentPlayerNumber() == gamePanel.getPlayerNumber();
 
+        //TODO: other controllers have a handle update method.
+
         String box = "none";
         String card = "none";
         String action = "none";
 
+        //figure out what codes are available with this mouse click
         for ( String code : codes ) {
             String[] split = code.split(" ");
             switch(split[0]) {
@@ -44,23 +47,33 @@ public class Controller {
                     card = split[1];
                     break;
                 case "action":
+                    action = split[1];
                     break;
             }
         }
 
+        //if we're still setting up the game
         if (game.getState() == Game.SETUP_STATE) {
+            //if there's an action
+            if (!action.equals("none")) {
+                handleSetupAction(action);
+            }
+
+            //and the player clicks on a card
             if(!card.equals("none")) {
                 try {
+                    //see which card and then select it in the special player indexes for the setup state
                     int cardVal = Integer.parseInt(card);
 
+                    //if it's a hand card
                     if (cardVal > -1 && cardVal < 3) {
                         game.getPlayer(playerNumber)
                                 .setHandSetupSelect(Integer.valueOf(card));
                         gamePanel.repaint();
-
+                    //if it's a top card
                     } else if (cardVal > 2 && cardVal < 6) {
                         game.getPlayer(playerNumber)
-                                .setTopSetupSelect(cardVal);
+                                .setTopSetupSelect(cardVal - 3);
                         gamePanel.repaint();
                     }
 
@@ -71,16 +84,16 @@ public class Controller {
 
         } else if (game.getState() == Game.GAME_STATE) {
             if (!action.equals("none"))
-                handleActionCode(action);
+                handleGameAction(action);
 
             if (!box.equals("none")) {
                 try {
-                    int boxval = Integer.parseInt(box);
+                    int boxVal = Integer.parseInt(box);
                     if (card.equals("none")) {
-                        handleInspectionCode( boxval );
+                        handleInspectionCode( boxVal );
                     } else {
                         int cardval = Integer.parseInt(card);
-                        handleCardSelection( boxval, cardval);
+                        handleCardSelection( boxVal, cardval);
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
@@ -105,7 +118,16 @@ public class Controller {
 
     }
 
-    private void handleActionCode(String action) {
+    private void handleGameAction(String action) {
 
+    }
+
+    private void handleSetupAction(String action) {
+        switch(action) {
+            case "SWAP":
+                game.getPlayer(playerNumber).setupSwap();
+                gamePanel.repaint();
+                break;
+        }
     }
 }

@@ -62,6 +62,14 @@ public class GamePanel extends JPanel {
             this.h = h;
         }
 
+        public Bounds(int tlx, int tly, int w, int h, int wid, int hei) {
+            this.tlx = (double)tlx/wid;
+            this.tly = (double)tly/hei;
+            this.w = (double)w/wid;
+            this.h = (double)h/hei;
+            //TODO: check for usage of double constructor and replace with int constructor
+        }
+
         public String toString() {
             return "[ " + tlx + ", " + tly + ": " + w + ", " + h + " ]";
         }
@@ -143,7 +151,7 @@ public class GamePanel extends JPanel {
 
     private void paintSetup(Graphics g) {
         Player me = game.getPlayer(playerNumber);
-        inspection = 0;
+        inspection = playerNumber;
         paintInspection(g);
         paintSetupButtons(g);
     }
@@ -153,13 +161,28 @@ public class GamePanel extends JPanel {
         Color back = bg;
         int buttonW = getWidth()/20;
         int buttonH = getHeight()/30;
+
         int tlx = getWidth()*3/4 - 20 - buttonW;
         int tly = getHeight()/4 + 20;
-
-        //paint swap button
         paintButton(g, "SWAP", tlx, tly, buttonW, buttonH, back, front);
+
+
+        paintButton(g, "READY", tlx, tly += buttonH + 20, buttonW, buttonH, back, front);
     }
 
+    /**
+     * Adds the middle, the chat area, and the event log to the bounds HashMap.
+     * Then paints the following:
+     *      players
+     *      deck
+     *      field
+     *      rotating symbol
+     *      game buttons
+     *      and if we're inspecting something
+     *          the inspection
+     *
+     * @param g
+     */
     private void paintGame(Graphics g) {
 //        paintAllSides(g);
 
@@ -171,45 +194,67 @@ public class GamePanel extends JPanel {
         paintDeck(g);
         paintField(g);
         paintRotating(g);
-        paintButtons(g);
+        paintGameButtons(g);
         if(inspection != -1)
             paintInspection(g);
 
     }
 
+
+    /**
+     * Paints everything dealing with inspection.
+     *
+     * @param g
+     */
     private void paintInspection(Graphics g) {
         if (inspection > -1)
             paintPlayerInspection(g);
     }
 
+    /**
+     * Greys out the screen and highlights the player in the middle of the screen.
+     *
+     * @param g
+     */
     private void paintPlayerInspection(Graphics g) {
         g.setColor(overGrey);
         g.fillRect(0, 0, getWidth(), getHeight());
         paintPlayer(g, game.getPlayer(inspection), getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
     }
 
-    private void paintButtons(Graphics g) {
+    private void paintGameButtons(Graphics g) {
 
     }
 
-    private void paintPlay(Graphics g) {
-
-    }
-
+    /**
+     * Paints a button and gives it an action
+     *
+     * @param g - graphics object of this pane.
+     * @param s - string of the name that's going to be put on the button and the name of the action code.
+     * @param tlx - top left x-coordinate.
+     * @param tly - top left y-coordinate.
+     * @param w - width.
+     * @param h - height.
+     * @param back - background color for the button.
+     * @param front - foreground color for the button. The text and the border are this color.
+     */
     private void paintButton(Graphics g, String s, int tlx, int tly, int w, int h, Color back, Color front) {
         g.setColor(back);
         g.fillRect(tlx, tly, w, h);
         g.setColor(front);
         g.drawRect(tlx, tly, w, h);
-        Bounds
-        addActionToBounds();
+        Bounds bounds = new Bounds(tlx, tly, w, h, getWidth(), getHeight());
+        addActionToBounds(bounds, s);
         tlx = tlx + w/2 - SwingUtilities.computeStringWidth(g.getFontMetrics(), s)/2;
         tly = tly + h/2 + g.getFontMetrics().getHeight()*2/7;
         g.drawString(s, tlx, tly);
     }
 
-//    private void paint
-
+    /**
+     * Testing function for moving around the dimensions of the SIDE enum.
+     *
+     * @param g
+     */
     private void paintAllSides(Graphics g) {
         for(SIDE side : SIDE.values()) {
             g.setColor(Color.RED);
@@ -237,16 +282,17 @@ public class GamePanel extends JPanel {
         //TODO: add stuff for playing selected cards
     }
 
+    /**
+     * Paints players other than the main player on the pane.
+     *
+     * @param g
+     */
     private void paintSidePlayers(Graphics g) {
         int count = playerNumber + 1;
         int sideCount = (game.getPlayerCount()-1)/3;
         int topCount = game.getPlayerCount() - 1 - sideCount * 2;
         int tlx, tly, dx, dy;
         SIDE side;
-
-        //TODO: less copypasta please
-        //      even the IDE is yelling at me about duplicates and I have no idea what to do
-        //      FeelsGoodMan
 
         //paint right players
         side = SIDE.RIGHT;
@@ -324,7 +370,7 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     * Paints a player with dimenions.
+     * Paints a player with dimensions.
      *      draws a box
      *      paints the name
      *      paints the hand
@@ -403,7 +449,7 @@ public class GamePanel extends JPanel {
             paintCard(og, top.get(i), tlx + cardXOffset*i, tly);
             if (isSetup) {
                 Player me = game.getPlayer(playerNumber);
-                if (i + 3 == me.getTopSetupSelect()) {
+                if (i == me.getTopSetupSelect()) {
                     Stroke s = g.getStroke();
                     g.setStroke(new BasicStroke(3));
                     g.setColor(Color.ORANGE);
@@ -559,9 +605,9 @@ public class GamePanel extends JPanel {
             if (bounding.contains(me.getPoint()))
                 codes.add(bounds2String.get(bounds));
         }
-        System.out.println("\t" + codes);
+        System.out.println(playerNumber + ":\t" + codes);
         //TODO: actually handle actionCode
-        controller.handleCodes(codes);
+        controller[playerNumber].handleCodes(codes);
 
         //TODO: handle random rounding issue (goes towards the top left)
     }

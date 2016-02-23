@@ -24,16 +24,20 @@ public class Player {
         }
     }
 
-    private boolean isPlaying; //whether the player is still in the game
+    private boolean playing; //whether the player is still in the game
     private List<CARD> bot; //
     private List<CARD> top;
     private List<HandCARD> hand;
     private String name;
     private boolean epicMode; //when you've gotten to your bottom cards
+
     private int handSetupSelect = -1;
     private int topSetupSelect = -1;
+    private boolean ready; //is ready from the setup state
 
     public Player(List<CARD> stack9, String name){
+        ready = false;
+        playing = true;
         this.name = name;
         epicMode = false;
 
@@ -62,15 +66,17 @@ public class Player {
     }
 
     public void start() {
-        isPlaying = true;
+        playing = true;
+        topSetupSelect = -1;
+        topSetupSelect = -1;
     }
 
     public void end() {
-        isPlaying = false;
+        playing = false;
     }
 
     public boolean isPlaying() {
-        return isPlaying;
+        return playing;
     }
     public boolean isEpic() {
         return epicMode;
@@ -92,11 +98,13 @@ public class Player {
         return hand;
     }
 
-    public void swapBotAndHand(int h, int b) {
-        CARD handswap = hand.get(h).card;
-        CARD botswap = bot.get(b);
-        hand.set(h, new HandCARD(botswap));
-        bot.set(b, handswap);
+    public void setupSwap() {
+        int h = handSetupSelect;
+        int t = topSetupSelect;
+        CARD handSwap = hand.get(h).card;
+        CARD topSwap = top.get(t);
+        hand.set(h, new HandCARD(topSwap));
+        top.set(t, handSwap);
     }
 
     public CARD getLeastInHand() {
