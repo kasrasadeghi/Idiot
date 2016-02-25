@@ -34,7 +34,11 @@ public class StartFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String name = nameField.getText();
+                Main.address = ipField.getText();
+                Main.port = Integer.parseInt(portField.getText());
+
                 //START GAME WITH NAME
+//                Main.hostServer(name);
             }
         });
 

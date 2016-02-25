@@ -2,10 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$3.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/CARD.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Main.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Player.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
     </list>
     <ignored path="Idiot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,12 +46,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46575344">
-              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+              <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,17 +84,15 @@
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="607" column="44" selection-start-line="607" selection-start-column="44" selection-end-line="607" selection-end-column="44" />
+              <caret line="623" column="52" selection-start-line="623" selection-start-column="52" selection-end-line="623" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#417#448#0" expanded="true" />
                 <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
                 <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
                 <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
                 <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
                 <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
                 <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
                 <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
                 <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -85,38 +103,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scratch" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="148" column="61" selection-start-line="148" selection-start-column="61" selection-end-line="148" selection-end-column="61" />
+              <caret line="194" column="10" selection-start-line="194" selection-start-column="10" selection-end-line="194" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-                <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+                <element signature="e#3053#3054#0" expanded="true" />
+                <element signature="e#3090#3091#0" expanded="true" />
+                <element signature="e#3125#3126#0" expanded="true" />
+                <element signature="e#3162#3163#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Player.java">
+      <file leaf-file-name="CARD.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <caret line="154" column="67" selection-start-line="154" selection-start-column="67" selection-end-line="154" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6582064">
+              <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+                <element signature="method#start#0;class#Player#0" expanded="false" />
                 <element signature="method#botToHand#0;class#Player#0" expanded="false" />
               </folding>
             </state>
@@ -149,7 +171,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/kaz/idiot/Card.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/SetupFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Setup.java" />
@@ -158,11 +179,12 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/Start.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.form" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
       </list>
     </option>
   </component>
@@ -233,6 +255,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches">
         <subPane>
           <PATH>
@@ -243,7 +266,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -280,9 +303,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idiot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idiot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -844,7 +880,8 @@
       <workItem from="1456201874338" duration="38000" />
       <workItem from="1456207698861" duration="3787000" />
       <workItem from="1456247916601" duration="12797000" />
-      <workItem from="1456265458681" duration="4961000" />
+      <workItem from="1456265458681" duration="6673000" />
+      <workItem from="1456276454335" duration="7372000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -856,7 +893,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137146000" />
+    <option name="totallyTimeSpent" value="146230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -868,17 +905,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1787649" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2881907" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1945629" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -917,18 +954,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/kaz/idiot/Player.java</url>
-          <line>154</line>
+          <line>168</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java</url>
-          <line>209</line>
+          <line>220</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java</url>
+          <line>202</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -937,29 +980,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="114" column="27" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintPlayer#1;class#GamePanel#0" expanded="false" />
-            <element signature="docComment;method#paintPlayer#2;class#GamePanel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,7 +987,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -979,6 +1002,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -988,9 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -998,7 +1019,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,14 +1031,12 @@
           <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1032,7 +1053,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1044,6 +1068,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1053,9 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1063,7 +1085,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1073,14 +1097,12 @@
           <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1097,7 +1119,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1109,6 +1134,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1118,9 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1133,7 +1156,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1143,14 +1168,12 @@
           <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1167,7 +1190,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1179,6 +1205,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1188,9 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1203,7 +1227,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1213,14 +1239,12 @@
           <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1237,7 +1261,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1249,6 +1276,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1258,9 +1286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1273,7 +1298,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,14 +1310,12 @@
           <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1307,7 +1332,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1319,6 +1347,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1328,9 +1357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1338,7 +1364,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1348,14 +1376,12 @@
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1372,7 +1398,10 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1384,6 +1413,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
             <element signature="method#botToHand#0;class#Player#0" expanded="false" />
           </folding>
         </state>
@@ -1393,16 +1423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/jre/lib/rt.jar!/javax/swing/JComponent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2222222">
-          <caret line="804" column="21" selection-start-line="804" selection-start-column="21" selection-end-line="804" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1425,16 +1445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="135" column="31" selection-start-line="135" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/title.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1444,7 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="ui-designer">
@@ -1455,6 +1464,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/jre/lib/rt.jar!/javax/swing/JComponent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="577" column="0" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1462,7 +1478,17 @@
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1472,7 +1498,25 @@
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7027027">
+          <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#6108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="154" column="67" selection-start-line="154" selection-start-column="67" selection-end-line="154" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -1480,17 +1524,15 @@
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="607" column="44" selection-start-line="607" selection-start-column="44" selection-end-line="607" selection-end-column="44" />
+          <caret line="623" column="52" selection-start-line="623" selection-start-column="52" selection-end-line="623" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#417#448#0" expanded="true" />
             <element signature="method#equals#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintGame#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGame#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintPlayerInspection#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#paintGameButtons#0;class#GamePanel#0" expanded="false" />
             <element signature="docComment;method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintButton#0;class#GamePanel#0" expanded="false" />
             <element signature="method#paintAllSides#0;class#GamePanel#0" expanded="false" />
@@ -1500,35 +1542,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
-            <element signature="method#botToHand#0;class#Player#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="61" selection-start-line="148" selection-start-column="61" selection-end-line="148" selection-end-column="61" />
+          <caret line="194" column="10" selection-start-line="194" selection-start-column="10" selection-end-line="194" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#dealSetupCards#0;class#Game#0" expanded="false" />
-            <element signature="method#initTurnOrder#0;class#Game#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46575344">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-          <folding />
+        <state vertical-scroll-proportion="0.6582064">
+          <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#HandCARD#0;class#Player#0" expanded="false" />
+            <element signature="method#start#0;class#Player#0" expanded="false" />
+            <element signature="method#botToHand#0;class#Player#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

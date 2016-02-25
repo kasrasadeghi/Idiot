@@ -37,7 +37,7 @@ public class Player {
 
     public Player(List<CARD> stack9, String name){
         ready = false;
-        playing = true;
+        playing = false;
         this.name = name;
         epicMode = false;
 
@@ -47,6 +47,14 @@ public class Player {
                 .stream()
                 .map(c -> new HandCARD(c, false))
                 .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean r) {
+        ready = r;
     }
 
     public void setHandSetupSelect(int handSetupSelect) {
@@ -121,6 +129,12 @@ public class Player {
         // check for same number
         // check for card continuity (is it still your turn after the first card?)
         // deselect those that don't match selection rules
+    }
+
+    private boolean checkMove(List<CARD> cards) {
+        //if all of them are the same number
+        //if all of them
+        return true;
     }
 
     public void draw(CARD c) {

@@ -27,6 +27,7 @@ public class GamePanel extends JPanel {
     private int width, height;
     private int inspection = -1;
 
+
     private final int INSP_MIDDLE = -2;
     private final int INSP_CHAT = -3;
     private final int INSP_EVENT = -4;
@@ -35,6 +36,7 @@ public class GamePanel extends JPanel {
     private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
     private Color overGrey = new Color(0, 0, 0, 120);
     private Color bg = new Color(255, 255, 255);
+
 
     //<editor-fold desc="----Bounds----">
 
@@ -127,6 +129,10 @@ public class GamePanel extends JPanel {
         //TODO: make (synchronized?) queue for handling input
     }
 
+    /**
+     * Sets the preferred size for the window to the dimensions it was constructed with.
+     * @return
+     */
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
     }
@@ -154,6 +160,10 @@ public class GamePanel extends JPanel {
         inspection = playerNumber;
         paintInspection(g);
         paintSetupButtons(g);
+        if (me.isReady()) {
+            g.setColor(new Color(255, 255, 0, 80));
+            g.fillRect(getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
+        }
     }
 
     private void paintSetupButtons(Graphics g) {
@@ -193,6 +203,7 @@ public class GamePanel extends JPanel {
         paintPlayers(g);
         paintDeck(g);
         paintField(g);
+        paintDiscard(g);
         paintRotating(g);
         paintGameButtons(g);
         if(inspection != -1)
@@ -223,7 +234,9 @@ public class GamePanel extends JPanel {
     }
 
     private void paintGameButtons(Graphics g) {
-
+        int tlx = (int) ((SIDE.BOTTOM.tlx + SIDE.BOTTOM.dx)*getWidth());
+        int tly = (int) ((SIDE.BOTTOM.tly)*getHeight());
+        int buttonW = 0;
     }
 
     /**
@@ -288,7 +301,7 @@ public class GamePanel extends JPanel {
      * @param g
      */
     private void paintSidePlayers(Graphics g) {
-        int count = playerNumber + 1;
+        int count =( playerNumber + 1 )%game.getPlayerCount();
         int sideCount = (game.getPlayerCount()-1)/3;
         int topCount = game.getPlayerCount() - 1 - sideCount * 2;
         int tlx, tly, dx, dy;
@@ -398,7 +411,7 @@ public class GamePanel extends JPanel {
         Stroke ogStroke = g.getStroke();
         Font playerNameFont = isPlayerMain? mainNameFont : nameFont;
         Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
-        if (isCurrentPlayer) {
+        if (isCurrentPlayer && !isSetup) {
             playerColor = Color.RED;
             g.setStroke(new BasicStroke(5));
             tlx += 2;
@@ -508,7 +521,8 @@ public class GamePanel extends JPanel {
         try {
             File file = new File((game.isRotatingRight())? "right.png" : "left.png");
             Image image = ImageIO.read(file);
-            g.drawImage(image, getWidth()/2 - 50, (int)(SIDE.RIGHT.tly * getHeight() * 1.5), null);
+            g.drawImage(image, getWidth()/2 - 50, getHeight()/2 -50, null);
+            //(int)(SIDE.RIGHT.tly * getHeight() * 1.5)
         } catch(IOException e) {
             System.err.println("Missing card images.");
             e.printStackTrace();
@@ -521,24 +535,33 @@ public class GamePanel extends JPanel {
      * @param g
      */
     private void paintField(Graphics g) {
-        int tlx = (int) (getWidth()/2 - 2*CARD_X);
-        int tly = (int) (SIDE.RIGHT.tly * getHeight());
-            for (int i = game.getField().size() - 1; i >=0 ; --i)
-                paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
+        int tlx = getWidth()/2 - 2*CARD_X;
+        int tly = getHeight()/2 - CARD_Y/2 - 10;
 
-    }
-
-    private void paintDeck(Graphics g) {
-        int tlx = (int) (getWidth()/2 + CARD_X);
-        int tly = (int) (SIDE.LEFT.tly * getHeight());
-        for (int i = 0; i <game.getDeck().size() && i < 60 ; ++i)
-            paintCard(g, CARD.NULL_CARD, tlx, tly+4*i);
-        //TODO: fix appearance. maybe horizontal?
+        for (int i = game.getField().size() - 4; i >=0 ; --i)
+            paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
     }
 
     private void paintDiscard(Graphics g) {
-        //TODO: implement paintDiscard
+        int tlx = (int) (getWidth()/2 + CARD_X);
+        int tly = (int) getHeight()/2 - CARD_Y/2 - 10;
+
+        paintCard(g, CARD.NULL_CARD, tlx, tly);
     }
+
+    /**
+     * Paints the deck of cards.
+     * @param g
+     */
+    private void paintDeck(Graphics g) {
+        int tlx = getWidth()/2 + CARD_X;
+        int tly = getHeight()/2 + CARD_Y/2;
+        for (int i = 0; i <game.getDeck().size() && i < 60 ; ++i)
+            paintCard(g, CARD.NULL_CARD, tlx-4*i, tly);
+        //TODO: fix appearance. maybe horizontal?
+    }
+
+
 
     private void paintCard(Graphics g, CARD card, int tlx, int tly) {
         g.drawImage(card.getImage(), tlx, tly, null);
@@ -586,14 +609,6 @@ public class GamePanel extends JPanel {
 
     // <editor-fold desc="----Interaction methods----">
 
-    // just in case this is actually useful
-    private SIDE findClickRegion(MouseEvent me) {
-        for (SIDE side : SIDE.values())
-            if (sideRect(side).contains(me.getPoint()))
-                return side;
-        return null;
-    }
-
     public void handleMouseEvent(MouseEvent me) {
 
         List<String> codes = new ArrayList<>();
@@ -606,10 +621,7 @@ public class GamePanel extends JPanel {
                 codes.add(bounds2String.get(bounds));
         }
         System.out.println(playerNumber + ":\t" + codes);
-        //TODO: actually handle actionCode
         controller[playerNumber].handleCodes(codes);
-
-        //TODO: handle random rounding issue (goes towards the top left)
     }
 
     public void setInspection( int box ) {

@@ -30,7 +30,8 @@ public class Controller {
     public void handleCodes(List<String> codes) {
         isItYourTurn = game.getCurrentPlayerNumber() == gamePanel.getPlayerNumber();
 
-        //TODO: other controllers have a handle update method.
+        //TODO: other controllers have a handle update method to update their separate games.
+        // worry about this for servers
 
         String box = "none";
         String card = "none";
@@ -53,7 +54,8 @@ public class Controller {
         }
 
         //if we're still setting up the game
-        if (game.getState() == Game.SETUP_STATE) {
+        if (game.getState() == Game.SETUP_STATE && !game.getPlayer(playerNumber).isReady()) {
+
             //if there's an action
             if (!action.equals("none")) {
                 handleSetupAction(action);
@@ -91,9 +93,9 @@ public class Controller {
                     int boxVal = Integer.parseInt(box);
                     if (card.equals("none")) {
                         handleInspectionCode( boxVal );
-                    } else {
+                    } else if ( boxVal == playerNumber && isItYourTurn) {
                         int cardval = Integer.parseInt(card);
-                        handleCardSelection( boxVal, cardval);
+                        handleCardSelection( cardval);
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
@@ -106,12 +108,11 @@ public class Controller {
         //TODO: two options: 1. handle each motion(selecting cards, drawing) or
         //TODO: 2. handle each turn(find out what actually changed and then send an update pkg)
 
-
-        //TODO: implement player inspection
     }
 
-    private void handleCardSelection(int boxval, int cardval) {
-
+    private void handleCardSelection( int cardval) {
+        game.getPlayer(playerNumber).select(cardval);
+        gamePanel.repaint();
     }
 
     private void handleInspectionCode(int boxval) {
@@ -127,6 +128,17 @@ public class Controller {
             case "SWAP":
                 game.getPlayer(playerNumber).setupSwap();
                 gamePanel.repaint();
+                break;
+            case "READY":
+                game.getPlayer(playerNumber).setReady(true);
+                if (game.checkReady()) {
+                    for (int i = 0; i < Main.gp.length; ++i) {
+                        GamePanel gp = Main.gp[i];
+                        gp.setInspection(-1);
+                        gp.repaint();
+                    }
+                }
+                else gamePanel.repaint();
                 break;
         }
     }

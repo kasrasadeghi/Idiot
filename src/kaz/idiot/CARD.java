@@ -149,4 +149,11 @@ public enum CARD{
             return comp;
         };
     }
+
+    public static Comparator<CARD> moveComp() {
+        return (card1, card2) -> {
+            int comp = card1.getRankValue() - card2.getRankValue();
+            return comp;
+        };
+    }
 }

@@ -13,11 +13,12 @@ public class Game {
     public static final int SETUP_STATE = 0;
     public static final int GAME_STATE = 1;
 
-    private int state = SETUP_STATE;
+    private int state;
     private List<Player> players = new ArrayList<>();
     private List<CARD> field = new ArrayList<>();
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
+    private int waitingForToReady;
     private boolean rotatingRight;
 
     public void setState(int s) {
@@ -46,8 +47,28 @@ public class Game {
             return;
         }
 
+        state = SETUP_STATE;
         dealSetupCards(playerNames);
+
+    }
+
+    public boolean checkReady() {
+        int counter = 0;
+        for (Player p : players) {
+            if (!p.isReady())
+                counter++;
+        }
+        if (counter == 0)
+            start();
+        return counter == 0;
+    }
+
+    private void start() {
         initTurnOrder();
+        state = GAME_STATE;
+
+        for (Player p : players)
+            p.start();
     }
 
     private void dealSetupCards(List<String> playerNames) {
@@ -109,6 +130,10 @@ public class Game {
 
     }
 
+    public List<CARD> getDiscard() {
+        return discard;
+    }
+
     public List<CARD> getField() {
         return field;
     }
@@ -147,6 +172,17 @@ public class Game {
 
     public Player getNextPlayer() {
         return getPlayer((currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size());
+    }
+
+    public List<CARD> getValidMoves() {
+        //if red seven then equal to or higher than beneath
+        //if black seven then equal to or lower than
+        //if nothing then all cards
+        //if normal card then all cards equal to or higher than that card
+        //
+        ArrayList<CARD> cards = new ArrayList<>();
+        cards.addAll(CARD.fullDeck());
+        return cards;
     }
 
     public void play() {
