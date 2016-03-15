@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Controller {
     private Game game;
-    private GamePanel gamePanel;
+    private GamePanel gp;
     private boolean isItYourTurn;
     private int playerNumber;
 
@@ -22,13 +22,13 @@ public class Controller {
 
     public Controller(Game game, GamePanel gp) {
         this.game = game;
-        this.gamePanel = gp;
+        this.gp = gp;
         this.isItYourTurn = false;
         this.playerNumber = gp.getPlayerNumber();
     }
 
     public void handleCodes(List<String> codes) {
-        isItYourTurn = game.getCurrentPlayerNumber() == gamePanel.getPlayerNumber();
+        isItYourTurn = game.getCurrentPlayerNumber() == gp.getPlayerNumber();
 
         //TODO: other controllers have a handle update method to update their separate games.
         // worry about this for servers
@@ -66,24 +66,22 @@ public class Controller {
                 try {
                     //see which card and then select it in the special player indexes for the setup state
                     int cardVal = Integer.parseInt(card);
-
                     //if it's a hand card
                     if (cardVal > -1 && cardVal < 3) {
                         game.getPlayer(playerNumber)
                                 .setHandSetupSelect(Integer.valueOf(card));
-                        gamePanel.repaint();
+                        gp.repaint();
                     //if it's a top card
                     } else if (cardVal > 2 && cardVal < 6) {
                         game.getPlayer(playerNumber)
                                 .setTopSetupSelect(cardVal - 3);
-                        gamePanel.repaint();
+                        gp.repaint();
                     }
-
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
             }
-
+        //if we're actually playing the game
         } else if (game.getState() == Game.GAME_STATE) {
             if (!action.equals("none"))
                 handleGameAction(action);
@@ -91,12 +89,12 @@ public class Controller {
             if (!box.equals("none")) {
                 try {
                     int boxVal = Integer.parseInt(box);
-                    if (card.equals("none")) {
-                        handleInspectionCode( boxVal );
-                    } else if ( boxVal == playerNumber && isItYourTurn) {
+                    if ( boxVal == playerNumber && isItYourTurn) {
                         int cardval = Integer.parseInt(card);
                         handleCardSelection( cardval);
                     }
+                    else if (card.equals("none"))
+                        handleInspectionCode( boxVal );
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
@@ -112,11 +110,14 @@ public class Controller {
 
     private void handleCardSelection( int cardval) {
         game.getPlayer(playerNumber).select(cardval);
-        gamePanel.repaint();
+        gp.repaint();
     }
 
     private void handleInspectionCode(int boxval) {
-
+        if (gp.isInspecting())
+            gp.setInspection(GamePanel.NOT_INSP);
+        gp.setInspection(boxval);
+        gp.repaint();
     }
 
     private void handleGameAction(String action) {
@@ -127,7 +128,7 @@ public class Controller {
         switch(action) {
             case "SWAP":
                 game.getPlayer(playerNumber).setupSwap();
-                gamePanel.repaint();
+                gp.repaint();
                 break;
             case "READY":
                 game.getPlayer(playerNumber).setReady(true);
@@ -138,7 +139,7 @@ public class Controller {
                         gp.repaint();
                     }
                 }
-                else gamePanel.repaint();
+                else gp.repaint();
                 break;
         }
     }

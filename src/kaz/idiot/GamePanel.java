@@ -27,10 +27,10 @@ public class GamePanel extends JPanel {
     private int width, height;
     private int inspection = -1;
 
-
-    private final int INSP_MIDDLE = -2;
-    private final int INSP_CHAT = -3;
-    private final int INSP_EVENT = -4;
+    public static final int NOT_INSP = -1;
+    public static  final int INSP_MIDDLE = -2;
+    public static final int INSP_CHAT = -3;
+    public static final int INSP_EVENT = -4;
 
     private Font mainNameFont = new Font("SansSerif", Font.PLAIN, 30);
     private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
@@ -69,7 +69,6 @@ public class GamePanel extends JPanel {
             this.tly = (double)tly/hei;
             this.w = (double)w/wid;
             this.h = (double)h/hei;
-            //TODO: check for usage of double constructor and replace with int constructor
         }
 
         public String toString() {
@@ -171,12 +170,10 @@ public class GamePanel extends JPanel {
         Color back = bg;
         int buttonW = getWidth()/20;
         int buttonH = getHeight()/30;
-
         int tlx = getWidth()*3/4 - 20 - buttonW;
         int tly = getHeight()/4 + 20;
+
         paintButton(g, "SWAP", tlx, tly, buttonW, buttonH, back, front);
-
-
         paintButton(g, "READY", tlx, tly += buttonH + 20, buttonW, buttonH, back, front);
     }
 
@@ -211,7 +208,6 @@ public class GamePanel extends JPanel {
 
     }
 
-
     /**
      * Paints everything dealing with inspection.
      *
@@ -234,9 +230,15 @@ public class GamePanel extends JPanel {
     }
 
     private void paintGameButtons(Graphics g) {
+        Color front = Color.BLACK;
+        Color back = bg;
         int tlx = (int) ((SIDE.BOTTOM.tlx + SIDE.BOTTOM.dx)*getWidth());
         int tly = (int) ((SIDE.BOTTOM.tly)*getHeight());
-        int buttonW = 0;
+        int w = getWidth()/20;
+        int h = getHeight()/30;
+        tlx -= w;
+
+        paintButton(g, "PLAY", tlx, tly, w, h, back, front);
     }
 
     /**
@@ -292,7 +294,6 @@ public class GamePanel extends JPanel {
         Bounds bounds = SIDE.BOTTOM.getBounds();
         paintPlayer(g, playerNumber, bounding);
         addPlayerToBounds(bounds, playerNumber);
-        //TODO: add stuff for playing selected cards
     }
 
     /**
@@ -529,7 +530,6 @@ public class GamePanel extends JPanel {
         }
     }
 
-
     /**
      * Paints the active field of cards
      * @param g
@@ -542,6 +542,11 @@ public class GamePanel extends JPanel {
             paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
     }
 
+    /**
+     * Paints the discard stack.
+     *
+     * @param g
+     */
     private void paintDiscard(Graphics g) {
         int tlx = (int) (getWidth()/2 + CARD_X);
         int tly = (int) getHeight()/2 - CARD_Y/2 - 10;
@@ -560,8 +565,6 @@ public class GamePanel extends JPanel {
             paintCard(g, CARD.NULL_CARD, tlx-4*i, tly);
         //TODO: fix appearance. maybe horizontal?
     }
-
-
 
     private void paintCard(Graphics g, CARD card, int tlx, int tly) {
         g.drawImage(card.getImage(), tlx, tly, null);
@@ -629,7 +632,7 @@ public class GamePanel extends JPanel {
     }
 
     public boolean isInspecting() {
-        return inspection != -1;
+        return inspection != NOT_INSP;
     }
 
     public int getPlayerNumber() {
