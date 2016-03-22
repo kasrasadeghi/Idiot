@@ -826,7 +826,7 @@
       <workItem from="1456974711786" duration="266000" />
       <workItem from="1457470095711" duration="2535000" />
       <workItem from="1458005040089" duration="864000" />
-      <workItem from="1458673597642" duration="604000" />
+      <workItem from="1458673597642" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -846,11 +846,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458674460400</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added netbeans support">
+      <created>1458674470086</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1458674470086</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152331000" />
+    <option name="totallyTimeSpent" value="152357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
