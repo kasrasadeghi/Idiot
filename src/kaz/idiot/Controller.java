@@ -108,15 +108,16 @@ public class Controller {
 
     }
 
-    private void handleCardSelection( int cardval) {
-        game.getPlayer(playerNumber).select(cardval);
+    private void handleCardSelection( int cardVal) {
+        game.getPlayer(playerNumber).select(cardVal);
         gp.repaint();
     }
 
-    private void handleInspectionCode(int boxval) {
+    private void handleInspectionCode(int boxVal) {
         if (gp.isInspecting())
             gp.setInspection(GamePanel.NOT_INSP);
-        gp.setInspection(boxval);
+        else gp.setInspection(boxVal);
+
         gp.repaint();
     }
 

@@ -47,7 +47,7 @@ public class Game {
             return;
         }
 
-        state = SETUP_STATE;
+        state = GAME_STATE;
         dealSetupCards(playerNames);
 
     }
