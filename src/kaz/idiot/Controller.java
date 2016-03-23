@@ -10,6 +10,7 @@ public class Controller {
     private GamePanel gp;
     private boolean isItYourTurn;
     private int playerNumber;
+    private Player me;
 
     //      Kasra's understanding of MVC, 02.20.2016
     //The model contains the information, presenting the same information to all players.
@@ -25,6 +26,7 @@ public class Controller {
         this.gp = gp;
         this.isItYourTurn = false;
         this.playerNumber = gp.getPlayerNumber();
+        this.me = game.getPlayer(playerNumber);
     }
 
     public void handleCodes(List<String> codes) {
@@ -54,7 +56,7 @@ public class Controller {
         }
 
         //if we're still setting up the game
-        if (game.getState() == Game.SETUP_STATE && !game.getPlayer(playerNumber).isReady()) {
+        if (game.getState() == STATE.SETUP && !me.isReady()) {
 
             //if there's an action
             if (!action.equals("none")) {
@@ -68,13 +70,11 @@ public class Controller {
                     int cardVal = Integer.parseInt(card);
                     //if it's a hand card
                     if (cardVal > -1 && cardVal < 3) {
-                        game.getPlayer(playerNumber)
-                                .setHandSetupSelect(Integer.valueOf(card));
+                        me.setHandSetupSelect(Integer.valueOf(card));
                         gp.repaint();
                     //if it's a top card
                     } else if (cardVal > 2 && cardVal < 6) {
-                        game.getPlayer(playerNumber)
-                                .setTopSetupSelect(cardVal - 3);
+                        me.setTopSetupSelect(cardVal - 3);
                         gp.repaint();
                     }
                 } catch (NumberFormatException e) {
@@ -82,7 +82,7 @@ public class Controller {
                 }
             }
         //if we're actually playing the game
-        } else if (game.getState() == Game.GAME_STATE) {
+        } else if (game.getState() == STATE.PLAYING) {
             if (!action.equals("none"))
                 handleGameAction(action);
 
@@ -103,8 +103,9 @@ public class Controller {
 
 
 
-        //TODO: two options: 1. handle each motion(selecting cards, drawing) or
-        //TODO: 2. handle each turn(find out what actually changed and then send an update pkg)
+        //TODO: two options for handling interController updates.
+        // 1. handle each motion(selecting cards, drawing) or
+        // 2. handle each turn(find out what actually changed and then send an update pkg)
 
     }
 
@@ -122,7 +123,11 @@ public class Controller {
     }
 
     private void handleGameAction(String action) {
-
+        switch (action) {
+            case "PLAY":
+                //TODO: implement play behavior
+                break;
+        }
     }
 
     private void handleSetupAction(String action) {

@@ -24,22 +24,22 @@ public class Player {
         }
     }
 
-    private boolean playing; //whether the player is still in the game
+    private STATE state;
+
     private List<CARD> bot; //
     private List<CARD> top;
     private List<HandCARD> hand;
     private String name;
-    private boolean epicMode; //when you've gotten to your bottom cards
+
+    //TODO: remove epicMode boolean value. implement epicMode as a state based mechanic.
+    // states: init, setup, ready, playing
 
     private int handSetupSelect = -1;
     private int topSetupSelect = -1;
-    private boolean ready; //is ready from the setup state
 
     public Player(List<CARD> stack9, String name){
-        ready = false;
-        playing = false;
+        state = STATE.INIT;
         this.name = name;
-        epicMode = false;
 
         bot = new ArrayList<>(stack9.subList(0, 3));
         top = new ArrayList<>(stack9.subList(3, 6));
@@ -47,14 +47,15 @@ public class Player {
                 .stream()
                 .map(c -> new HandCARD(c, false))
                 .collect(Collectors.toCollection(LinkedList::new));
+        state = STATE.SETUP;
     }
 
     public boolean isReady() {
-        return ready;
+        return state == STATE.READY;
     }
 
     public void setReady(boolean r) {
-        ready = r;
+        state = STATE.READY;
     }
 
     public void setHandSetupSelect(int handSetupSelect) {
@@ -73,21 +74,24 @@ public class Player {
         return topSetupSelect;
     }
 
-    public void start() {
-        playing = true;
+    public Player start() {
+        assert state == STATE.READY;
+        state = STATE.PLAYING;
         topSetupSelect = -1;
         topSetupSelect = -1;
+        return this;
     }
 
     public void end() {
-        playing = false;
+        state = STATE.SPECTATING;
     }
 
     public boolean isPlaying() {
-        return playing;
+        return state == STATE.PLAYING;
     }
+
     public boolean isEpic() {
-        return epicMode;
+        return hand.isEmpty() && top.isEmpty() && !bot.isEmpty();
     }
 
     public String getName() {
@@ -166,7 +170,6 @@ public class Player {
     }
 
     public void botToHand(int i) {
-        draw(bot.get(i));
-        epicMode = true;
+        draw(bot.set(i, CARD.NULL_CARD));
     }
 }

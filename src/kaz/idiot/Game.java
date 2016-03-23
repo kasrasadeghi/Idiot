@@ -10,22 +10,20 @@ import static kaz.idiot.CARD.*;
 // THE MODEL
 public class Game {
     private int currentPlayerNumber;
-    public static final int SETUP_STATE = 0;
-    public static final int GAME_STATE = 1;
+    //TODO: use enum STATE
 
-    private int state;
+    private STATE state;
     private List<Player> players = new ArrayList<>();
     private List<CARD> field = new ArrayList<>();
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
-    private int waitingForToReady;
     private boolean rotatingRight;
 
-    public void setState(int s) {
+    public void setState(STATE s) {
         state = s;
     }
 
-    public int getState() {
+    public STATE getState() {
         return state;
     }
 
@@ -47,7 +45,7 @@ public class Game {
             return;
         }
 
-        state = GAME_STATE;
+        state = STATE.SETUP;
         dealSetupCards(playerNames);
 
     }
@@ -65,10 +63,9 @@ public class Game {
 
     private void start() {
         initTurnOrder();
-        state = GAME_STATE;
+        state = STATE.PLAYING;
 
-        for (Player p : players)
-            p.start();
+        players.forEach(Player::start);//why are we start()ing twice
     }
 
     private void dealSetupCards(List<String> playerNames) {
@@ -83,9 +80,8 @@ public class Game {
                 stack9.add(draw());
             }
 
-            players.add(new Player(stack9, name));
+            players.add(new Player(stack9, name).start());//this is the second time we're starting?
         }
-        players.get(0).start();
     }
 
     private void initTurnOrder() {

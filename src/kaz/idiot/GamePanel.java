@@ -144,10 +144,10 @@ public class GamePanel extends JPanel {
         setBackground(bg);
         bounds2String.clear();
         switch (game.getState()) {
-            case Game.SETUP_STATE:
+            case SETUP:
                 paintSetup(g);
                 break;
-            case Game.GAME_STATE:
+            case PLAYING:
                 paintGame(g);
                 break;
         }
@@ -406,7 +406,7 @@ public class GamePanel extends JPanel {
         og.fillRect(tlx, tly, w, h);
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
         boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
-        boolean isSetup = game.getState() == Game.SETUP_STATE;
+        boolean isSetup = game.getState() == STATE.SETUP;
 
         Graphics2D g = (Graphics2D) og;
         Stroke ogStroke = g.getStroke();
