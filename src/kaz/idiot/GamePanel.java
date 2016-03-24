@@ -21,13 +21,13 @@ import static kaz.idiot.Main.*;
 
 //THE VIEW
 @SuppressWarnings("Duplicates")
-public class GamePanel extends JPanel {
+class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
     private int startWidth, startHeight;
     private int inspection = -1;
 
-    public static final int NOT_INSP = -1;
+    public static final int INSP_GAME = -1;
     public static  final int INSP_MIDDLE = -2;
     public static final int INSP_CHAT = -3;
     public static final int INSP_EVENT = -4;
@@ -632,7 +632,7 @@ public class GamePanel extends JPanel {
     }
 
     public boolean isInspecting() {
-        return inspection != NOT_INSP;
+        return inspection != INSP_GAME;
     }
 
     public int getPlayerNumber() {

@@ -123,7 +123,7 @@ public class Controller {
 
     private void handleInspectionCode(int boxVal) {
         if (gp.isInspecting())
-            gp.setInspection(GamePanel.NOT_INSP);
+            gp.setInspection(GamePanel.INSP_GAME);
         else gp.setInspection(boxVal);
 
         gp.repaint();
@@ -133,6 +133,7 @@ public class Controller {
         switch (action) {
             case "PLAY":
                 //TODO: implement play behavior
+                game.play();
                 break;
         }
     }

@@ -74,6 +74,14 @@ public class Player {
         return topSetupSelect;
     }
 
+    public STATE getState() {
+        return state;
+    }
+
+    public void setState(STATE s) {
+        this.state = s;
+    }
+
     public Player start() {
         assert state == STATE.READY;
         state = STATE.PLAYING;
@@ -129,16 +137,6 @@ public class Player {
 
     public void select(int i) {
         hand.get(i).selected = !hand.get(i).selected;
-        //TODO: handle selection logic
-        // check for same number
-        // check for card continuity (is it still your turn after the first card?)
-        // deselect those that don't match selection rules
-    }
-
-    private boolean checkMove(List<CARD> cards) {
-        //if all of them are the same number
-        //if all of them
-        return true;
     }
 
     public void draw(CARD c) {

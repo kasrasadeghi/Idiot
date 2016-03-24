@@ -123,7 +123,9 @@ public class Game {
     }
 
     private void burn() {
-
+        //TODO: write burn function
+        // put all cards in field into discard.
+//        discard
     }
 
     public List<CARD> getDiscard() {
@@ -182,13 +184,14 @@ public class Game {
     }
 
     public void play() {
-        List<CARD> played = players.get(currentPlayerNumber).play();
-
-        //TODO: make play button on gamePanel
+        //TODO: i guess i have to check the play somehow. I dunno, we'll see.
+        if (checkPlay())
+            field.addAll(players.get(currentPlayerNumber).play());
     }
 
     public boolean checkPlay() {
-        //TODO: actually write this function
+        //TODO: check the selected cards to see if they are valid
+        // this will suffice as the selection checker because you are playing the selected cards for the current player
         return true;
     }
 }
