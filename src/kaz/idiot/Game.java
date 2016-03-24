@@ -185,8 +185,14 @@ public class Game {
 
     public void play() {
         //TODO: i guess i have to check the play somehow. I dunno, we'll see.
-        if (checkPlay())
-            field.addAll(players.get(currentPlayerNumber).play());
+        if (checkPlay()) {
+            Player current = players.get(currentPlayerNumber);
+            field.addAll(current.play());
+            while (current.getHand().size() < 3) {
+                current.draw(draw());
+            }
+            setNextPlayer();
+        }
     }
 
     public boolean checkPlay() {

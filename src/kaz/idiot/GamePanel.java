@@ -538,7 +538,7 @@ class GamePanel extends JPanel {
         int tlx = getWidth()/2 - 2*CARD_X;
         int tly = getHeight()/2 - CARD_Y/2 - 10;
 
-        for (int i = game.getField().size() - 4; i >=0 ; --i)
+        for (int i = 0; i < game.getField().size() ; ++i)
             paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
     }
 

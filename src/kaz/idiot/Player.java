@@ -155,7 +155,7 @@ public class Player {
 
     public List<CARD> play() {
         List<CARD> output = new LinkedList<>();
-        for (int i = 0; i < hand.size(); ++i) {
+        for (int i = hand.size() - 1; i > -1; --i) {
             HandCARD hc = hand.get(i);
             if (hc.selected)
                 output.add(hand.remove(i).card);

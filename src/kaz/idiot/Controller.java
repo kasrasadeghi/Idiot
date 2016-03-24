@@ -86,7 +86,7 @@ public class Controller {
             if (!action.equals("none"))
                 handleGameAction(action);
 
-            if (!box.equals("none")) {
+            else if (!box.equals("none")) {
                 try {
                     int boxVal = Integer.parseInt(box);
                     if ( boxVal == playerNumber && isItYourTurn) {
@@ -107,7 +107,6 @@ public class Controller {
                 }
             }
         }
-
 
 
         //TODO: two options for handling interController updates.
@@ -133,7 +132,11 @@ public class Controller {
         switch (action) {
             case "PLAY":
                 //TODO: implement play behavior
-                game.play();
+                if (isItYourTurn) {
+                    game.play();
+                    for (GamePanel gamePanel : Main.gp)
+                        gamePanel.repaint();
+                }
                 break;
         }
     }
