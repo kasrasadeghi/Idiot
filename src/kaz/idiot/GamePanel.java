@@ -24,7 +24,7 @@ import static kaz.idiot.Main.*;
 public class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
-    private int width, height;
+    private int startWidth, startHeight;
     private int inspection = -1;
 
     public static final int NOT_INSP = -1;
@@ -110,10 +110,10 @@ public class GamePanel extends JPanel {
     public GamePanel (Game game, int pn, int w, int h) {
         this.game = game;
         this.playerNumber = pn;
-        this.width = w;
-        this.height = h;
+        this.startWidth = w;
+        this.startHeight = h;
 
-        setMinimumSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(startWidth, startHeight));
 
         addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -133,7 +133,7 @@ public class GamePanel extends JPanel {
      * @return
      */
     public Dimension getPreferredSize() {
-        return new Dimension(width, height);
+        return new Dimension(startWidth, startHeight);
     }
 
     // <editor-fold desc="----Painting methods----">
@@ -248,8 +248,8 @@ public class GamePanel extends JPanel {
      * @param s - string of the name that's going to be put on the button and the name of the action code.
      * @param tlx - top left x-coordinate.
      * @param tly - top left y-coordinate.
-     * @param w - width.
-     * @param h - height.
+     * @param w - startWidth.
+     * @param h - startHeight.
      * @param back - background color for the button.
      * @param front - foreground color for the button. The text and the border are this color.
      */
@@ -375,8 +375,8 @@ public class GamePanel extends JPanel {
      * @param num - number of painted player
      * @param tlx - top left x coordinate
      * @param tly - top left y coordinate
-     * @param w - width
-     * @param h - height
+     * @param w - startWidth
+     * @param h - startHeight
      */
     private void paintPlayer(Graphics g, int num, int tlx, int tly, int w, int h) {
         Player p = game.getPlayer(num);

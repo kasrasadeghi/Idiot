@@ -90,8 +90,15 @@ public class Controller {
                 try {
                     int boxVal = Integer.parseInt(box);
                     if ( boxVal == playerNumber && isItYourTurn) {
-                        int cardval = Integer.parseInt(card);
-                        handleCardSelection( cardval);
+                        if (!card.equals("none")) {
+                            try {
+                                //TODO: fix exception for card == none
+                                int cardVal = Integer.parseInt(card);
+                                handleCardSelection(cardVal);
+                            } catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                     else if (card.equals("none"))
                         handleInspectionCode( boxVal );

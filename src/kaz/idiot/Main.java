@@ -23,6 +23,10 @@ public class Main {
     public static Socket hostSocket;
 
     public static void main(String[] args) {
+        //TODO: maybe implement a developer multiviewer:
+        // one main view in the center and all the other views on the right bar
+        // or maybe just the generic viewer and then all the other viewers in a tiny thing on another window,
+        // and then accessible by clicking on that other window
         game = new Game(playerCount);
         controller = new Controller[playerCount];
         gp = new GamePanel[playerCount];
@@ -35,6 +39,7 @@ public class Main {
         //TODO: make the rubik's square game.
     }
 
+    //region public static void hostServer(String name) {...}
     //TODO: work on server stuff
    /* public static void hostServer(String name) {
         try {
@@ -52,6 +57,7 @@ public class Main {
     public static void connectToServer() {
 
     }*/
+    //endregion
 
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
