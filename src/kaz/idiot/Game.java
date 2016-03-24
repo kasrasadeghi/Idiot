@@ -123,9 +123,8 @@ public class Game {
     }
 
     private void burn() {
-        //TODO: write burn function
-        // put all cards in field into discard.
-//        discard
+        while (!field.isEmpty())
+            discard.add(field.remove(0));
     }
 
     public List<CARD> getDiscard() {
