@@ -142,6 +142,28 @@ public enum CARD{
         }
     }
 
+    public int getPlayRank() {
+        switch(getRank()) {
+            case "10": return 73;
+            case "7": return 37;
+
+            case "A": return 14;
+            case "K": return 13;
+            case "Q": return 12;
+            case "J": return 11;
+            case "9": return 9;
+            case "8": return 8;
+            case "6": return 6;
+            case "5": return 5;
+            case "4": return 4;
+            case "3": return 3;
+
+            case "2": return -1;
+
+            default: return 0;
+        }
+    }
+
     public static Comparator<CARD> getComp() {
         return (card1, card2) -> {
             int comp = card1.getRankValue() - card2.getRankValue();

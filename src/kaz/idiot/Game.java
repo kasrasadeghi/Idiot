@@ -1,6 +1,7 @@
 package kaz.idiot;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static kaz.idiot.CARD.*;
 /**
@@ -14,7 +15,7 @@ public class Game {
 
     private STATE state;
     private List<Player> players = new ArrayList<>();
-    private List<CARD> field = new ArrayList<>();
+    private LinkedList<CARD> field = new LinkedList<>();
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
     private boolean rotatingRight;
@@ -124,14 +125,14 @@ public class Game {
 
     private void burn() {
         while (!field.isEmpty())
-            discard.add(field.remove(0));
+            discard.add(field.remove());
     }
 
     public List<CARD> getDiscard() {
         return discard;
     }
 
-    public List<CARD> getField() {
+    public LinkedList<CARD> getField() {
         return field;
     }
 
@@ -163,40 +164,88 @@ public class Game {
         return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
     }
 
-    public void setNextPlayer() {
+    public void setCurrentPlayerToNext() {
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+    }
+
+    public void setCurrentPlayer(int playerNumber) {
+        currentPlayerNumber = playerNumber;
     }
 
     public Player getNextPlayer() {
         return getPlayer((currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size());
     }
 
-    public List<CARD> getValidMoves() {
-        //if red seven then equal to or higher than beneath
-        //if black seven then equal to or lower than
-        //if nothing then all cards
-        //if normal card then all cards equal to or higher than that card
-        //
-        ArrayList<CARD> cards = new ArrayList<>();
-        cards.addAll(CARD.fullDeck());
-        return cards;
-    }
-
     public void play() {
-        //TODO: i guess i have to check the play somehow. I dunno, we'll see.
-        if (checkPlay()) {
-            Player current = players.get(currentPlayerNumber);
-            field.addAll(current.play());
-            while (current.getHand().size() < 3) {
-                current.draw(draw());
-            }
-            setNextPlayer();
+        //TODO: when setting the next turn we have to compute whether or not someone can play.
+        // check that the cards that are being played are the same card rank
+        // check that the card rank that is being played is viable with the underlying condition
+        Player current = players.get(currentPlayerNumber);
+        if (!canPlay())  {
+            current.pickUp(field);
+            return;
         }
+        if (!checkCurrentPlay()) return;
+
+        //Implement play code
+        field.addAll(current.play());
+        //
+
+        while (current.getHand().size() < 3 && !deck.isEmpty()) {
+            current.draw(draw());
+        }
+        setCurrentPlayerToNext();
     }
 
-    public boolean checkPlay() {
+    public boolean checkCurrentPlay() {
+        List<CARD> currentCards = players.get(currentPlayerNumber).getHand()
+                .stream().map(hc -> hc.card).collect(Collectors.toList());
+        return checkRankEquality(currentCards);
+    }
+
+    /**
+     * checkPlay
+     * Checks whether the card follows the card playing rules.
+     *
+     * Card playing rules:
+     * after a red two, anything is playable.
+     * after a black two, if playerCount > 2 then reverse turn order
+     *                        else set the next player to the current player.
+     *                    then play with the underlying conditions.
+     * after a ten, the stack burns and the next player is the current player.
+     * after a red seven, check the conditions of the card below
+     * after a black seven, play lower than or equal to the next conditional card.
+     *     a conditional card is a non-magic card.
+     *
+     * the default behaviour of a card is to player equal to or greater than the current playRank of the card.
+     * Ace's are high.
+     *
+     * @return whether or not the currently selected hand cards of the current player are a valid move
+     */
+    public boolean checkRankEquality(List<CARD> cards) {
         //TODO: check the selected cards to see if they are valid
-        // this will suffice as the selection checker because you are playing the selected cards for the current player
+        // cards are valid if they are all the same number.
+        // if they aren't all the same number, return false.
+
+
+        // cards also have to follow the rules laid out by the field.
+        return checkField(field.size() - 1, cards);
+    }
+
+    public boolean checkField(int index, List<CARD> cards) {
+        return true;
+    }
+
+
+
+    /**
+     * @return true when current player has a card in hand that can be played to the field.
+     */
+    public boolean canPlay() {
+        for( Player.HandCARD handCARD : players.get(currentPlayerNumber).getHand()) {
+            CARD card = handCARD.card;
+
+        }
         return true;
     }
 }

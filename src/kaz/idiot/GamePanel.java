@@ -414,11 +414,11 @@ class GamePanel extends JPanel {
         Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
         if (isCurrentPlayer && !isSetup) {
             playerColor = Color.RED;
-            g.setStroke(new BasicStroke(5));
-            tlx += 2;
-            tly += 2;
-            w -= 4;
-            h -= 4;
+            g.setStroke(new BasicStroke(3));
+//            tlx += 2;
+//            tly += 2;
+//            w -= 4;
+//            h -= 4;
         }
 
         int playerNameYOffset = playerNameFont.getSize();
@@ -539,7 +539,7 @@ class GamePanel extends JPanel {
         int tly = getHeight()/2 - CARD_Y/2 - 10;
 
         for (int i = 0; i < game.getField().size() ; ++i)
-            paintCard(g, game.getField().get(i), tlx +2*i, tly+2*i);
+            paintCard(g, game.getField().get(i), tlx +2*i - game.getField().size()*2, tly);
     }
 
     /**
@@ -550,8 +550,8 @@ class GamePanel extends JPanel {
     private void paintDiscard(Graphics g) {
         int tlx = (int) (getWidth()/2 + CARD_X);
         int tly = (int) getHeight()/2 - CARD_Y/2 - 10;
-
-        paintCard(g, CARD.NULL_CARD, tlx, tly);
+        if (!game.getDiscard().isEmpty())
+            paintCard(g, CARD.NULL_CARD, tlx, tly);
     }
 
     /**
@@ -563,7 +563,6 @@ class GamePanel extends JPanel {
         int tly = getHeight()/2 + CARD_Y/2;
         for (int i = 0; i <game.getDeck().size() && i < 60 ; ++i)
             paintCard(g, CARD.NULL_CARD, tlx-4*i, tly);
-        //TODO: fix appearance. maybe horizontal?
     }
 
     private void paintCard(Graphics g, CARD card, int tlx, int tly) {

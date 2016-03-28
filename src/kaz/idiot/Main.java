@@ -15,7 +15,7 @@ public class Main {
     public static Game game;
     public static final int CARD_X = 79;
     public static final int CARD_Y = 123;
-    public static final int playerCount = 2;
+    public static final int playerCount = 5;
 
     public static String address;
     public static int port;
