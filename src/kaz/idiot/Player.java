@@ -144,6 +144,7 @@ public class Player {
     }
 
     public void pickUp(List<CARD> cards) {
+        System.err.println("Picking up");
         cards.forEach(this::draw);
     }
 

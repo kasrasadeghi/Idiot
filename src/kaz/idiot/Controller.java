@@ -151,7 +151,7 @@ public class Controller {
                 break;
             case "READY":
                 game.getPlayer(playerNumber).setReady(true);
-                if (game.checkReady()) {
+                if (game.allReady()) {
                     for (int i = 0; i < Main.gp.length; ++i) {
                         GamePanel gp = Main.gp[i];
                         gp.setInspection(-1);

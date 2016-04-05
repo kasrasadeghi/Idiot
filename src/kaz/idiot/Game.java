@@ -48,15 +48,16 @@ public class Game {
 
         state = STATE.SETUP;
         dealSetupCards(playerNames);
-
     }
 
-    public boolean checkReady() {
+    public boolean allReady() {
         int counter = 0;
-        for (Player p : players) {
+        for (Player p : players)
             if (!p.isReady())
                 counter++;
-        }
+        //region TODO tempcode
+        setCurrentPlayerToNext();
+        //endregion
         if (counter == 0)
             start();
         return counter == 0;
@@ -66,7 +67,7 @@ public class Game {
         initTurnOrder();
         state = STATE.PLAYING;
 
-        players.forEach(Player::start);//why are we start()ing twice
+        players.forEach(Player::start);//why are we start()ing each player twice
     }
 
     private void dealSetupCards(List<String> playerNames) {
@@ -166,6 +167,11 @@ public class Game {
 
     public void setCurrentPlayerToNext() {
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+        //region TODO: temp change
+        Main.activeFrame.setVisible(false);
+        Main.activeFrame = Main.frames[currentPlayerNumber];
+        Main.activeFrame.setVisible(true);
+        //endregion temp change
     }
 
     public void setCurrentPlayer(int playerNumber) {

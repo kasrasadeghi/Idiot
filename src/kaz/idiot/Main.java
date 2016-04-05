@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Main {
+    public static JFrame activeFrame;
     public static GamePanel[] gp;
     public static Controller[] controller;
     public static Game game;
@@ -23,7 +24,7 @@ public class Main {
     public static Socket hostSocket;
 
     public static void main(String[] args) {
-        //TODO: maybe implement a developer multiviewer:
+        //TODO: maybe implement a developer multiViewer:
         // one main view in the center and all the other views on the right bar
         // or maybe just the generic viewer and then all the other viewers in a tiny thing on another window,
         // and then accessible by clicking on that other window
@@ -39,6 +40,9 @@ public class Main {
         for (int i = 0; i < playerCount; ++i) {
             frames[i] = new IdiotFrame(i);
         }
+        activeFrame = frames[game.getCurrentPlayerNumber()];
+        activeFrame.setVisible(true);
+
         //TODO: make the rubik's square game.
     }
 
@@ -83,7 +87,6 @@ public class Main {
             add(gp[number], BorderLayout.CENTER);
             pack();
             setResizable(true);
-            setVisible(true);
         }
     }
 }
