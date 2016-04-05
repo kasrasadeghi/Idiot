@@ -55,6 +55,8 @@ public class Controller {
             }
         }
 
+        //TODO: reorganize case matching below
+
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
 

@@ -29,6 +29,7 @@ class GamePanel extends JPanel {
 
     public static final int INSP_GAME = -1;
     public static  final int INSP_MIDDLE = -2;
+    //TODO: Implement middle inspection
     public static final int INSP_CHAT = -3;
     public static final int INSP_EVENT = -4;
 
@@ -156,7 +157,7 @@ class GamePanel extends JPanel {
 
     private void paintSetup(Graphics g) {
         Player me = game.getPlayer(playerNumber);
-        inspection = playerNumber;
+        inspection = playerNumber;//TODO: this line keeps occurring every update. maybe make it only happen once?
         paintInspection(g);
         paintSetupButtons(g);
         if (me.isReady()) {
@@ -415,10 +416,6 @@ class GamePanel extends JPanel {
         if (isCurrentPlayer && !isSetup) {
             playerColor = Color.RED;
             g.setStroke(new BasicStroke(3));
-//            tlx += 2;
-//            tly += 2;
-//            w -= 4;
-//            h -= 4;
         }
 
         int playerNameYOffset = playerNameFont.getSize();

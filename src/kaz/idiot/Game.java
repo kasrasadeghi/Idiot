@@ -181,26 +181,40 @@ public class Game {
         // check that the cards that are being played are the same card rank
         // check that the card rank that is being played is viable with the underlying condition
         Player current = players.get(currentPlayerNumber);
+        //if the current player can't play then he has to pick up the field.
         if (!canPlay())  {
             current.pickUp(field);
             return;
         }
-        if (!checkCurrentPlay()) return;
+        //if the current player's selected cards aren't a valid move then return
+        if (!checkCurrentPlay()) {
+            //send message to console. "illegal move"
+            System.out.println("Illegal Move");
+            return;
+        }
 
-        //Implement play code
+        //  Implement play code
+        //add selected cards to the field.
         field.addAll(current.play());
-        //
 
+        //if the current player has less than 3 cards and the deck isn't empty
+        //draw until they maintain 3
         while (current.getHand().size() < 3 && !deck.isEmpty()) {
             current.draw(draw());
         }
+
+        //post-move logic.
         setCurrentPlayerToNext();
+        //last four cards are the same rank = burn, even with magic cards.
     }
 
     public boolean checkCurrentPlay() {
         List<CARD> currentCards = players.get(currentPlayerNumber).getHand()
-                .stream().map(hc -> hc.card).collect(Collectors.toList());
-        return checkRankEquality(currentCards);
+                .stream()
+                .filter(hc -> hc.selected)
+                .map(hc -> hc.card)
+                .collect(Collectors.toList());
+        return checkPlay(currentCards);
     }
 
     /**
@@ -222,21 +236,120 @@ public class Game {
      *
      * @return whether or not the currently selected hand cards of the current player are a valid move
      */
-    public boolean checkRankEquality(List<CARD> cards) {
+    public boolean checkPlay(List<CARD> selected) {
         //TODO: check the selected cards to see if they are valid
         // cards are valid if they are all the same number.
         // if they aren't all the same number, return false.
-
+        int rank = selected.get(0).getRankValue();
+        if (!selected.stream().allMatch(c -> c.getRankValue() == rank))
+            return false;
 
         // cards also have to follow the rules laid out by the field.
-        return checkField(field.size() - 1, cards);
+        return checkField(field.size() - 1, selected);
     }
 
-    public boolean checkField(int index, List<CARD> cards) {
-        return true;
+    public boolean checkField(int index, List<CARD> selected) {
+        String rank = selected.get(0).getRank();
+        return getValidRanks(index, true).contains(rank);
     }
 
+    public List<String> getValidRanks(int index, boolean red) {
+        //TODO: check all of the conditions
+        List<String> validRanks = new ArrayList<>();
+        if (index < 0) {
+            Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+            return validRanks;
+        }
+        Collections.addAll(validRanks, "10", "7", "2");
+        CARD conditional = field.get(index);
+        if (red) {
+            //red 7 switch
+            switch(conditional.getRank()) {
+                case "3":
+                    validRanks.add("3");
+                case "4":
+                    validRanks.add("4");
+                case "5":
+                    validRanks.add("5");
+                case "6":
+                    validRanks.add("6");
+                case "8":
+                    validRanks.add("8");
+                case "9":
+                    validRanks.add("9");
+                case "J":
+                    validRanks.add("J");
+                case "Q":
+                    validRanks.add("Q");
+                case "K":
+                    validRanks.add("K");
+                case "A":
+                    validRanks.add("A");
+                    return validRanks;
 
+                case "2":
+                    if (conditional == CARD.HEART_2 || conditional == CARD.DIAMOND_2){
+                        Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+                        return validRanks;
+                    }
+                    else {
+                        switchRotation();
+                        return getValidRanks(index - 1, true);
+                    }
+                case "7":
+                    //check redness switch
+                    if (conditional == CARD.CLUB_7 || conditional == CARD.SPADE_7)
+                        red = false;
+                    return getValidRanks(index - 1, red);
+                case "10":
+                    System.err.println("Unburned Stack Error");
+                    break;
+            }
+        } else {
+            //black 7 switch
+            switch(conditional.getRank()) {
+
+                case "A":
+                    validRanks.add("A");
+                case "K":
+                    validRanks.add("K");
+                case "Q":
+                    validRanks.add("Q");
+                case "J":
+                    validRanks.add("J");
+                case "9":
+                    validRanks.add("9");
+                case "8":
+                    validRanks.add("8");
+                case "6":
+                    validRanks.add("6");
+                case "5":
+                    validRanks.add("5");
+                case "4":
+                    validRanks.add("4");
+                case "3":
+                    validRanks.add("3");
+                    return validRanks;
+
+                case "2":
+                    if (conditional == CARD.HEART_2 || conditional == CARD.DIAMOND_2){
+                        Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+                        return validRanks;
+                    }
+                    else {
+                        switchRotation();
+                        return getValidRanks(index - 1, false);
+                    }
+                case "7":
+                    return getValidRanks(index - 1, false);
+                case "10":
+                    System.err.println("Unburned Stack Error");
+                    break;
+            }
+        }
+
+        return null;
+    }
 
     /**
      * @return true when current player has a card in hand that can be played to the field.
@@ -244,8 +357,10 @@ public class Game {
     public boolean canPlay() {
         for( Player.HandCARD handCARD : players.get(currentPlayerNumber).getHand()) {
             CARD card = handCARD.card;
-
+            if (checkField(field.size() - 1, new ArrayList<CARD>() {{ add(card);}} ))
+                //what if field.size() == 0;
+                return true;
         }
-        return true;
+        return false;
     }
 }
