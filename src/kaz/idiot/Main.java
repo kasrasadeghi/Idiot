@@ -9,10 +9,10 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Main {
-    public static JFrame frame;
     public static GamePanel[] gp;
     public static Controller[] controller;
     public static Game game;
+    public static JFrame[] frames;
     public static final int CARD_X = 79;
     public static final int CARD_Y = 123;
     public static final int playerCount = 2;
@@ -30,11 +30,14 @@ public class Main {
         game = new Game(playerCount);
         controller = new Controller[playerCount];
         gp = new GamePanel[playerCount];
+        frames = new JFrame[playerCount]; //temporary.
+        //in the final version of the game, delete the JFrame array and make it present only the controlling player's JFrame.
+        //also need to only have one GamePanel and one Controller, so they can interface with the network and the Game.
 
 //        SwingUtilities.invokeLater(() -> frame = new StartFrame());
 //        SwingUtilities.invokeLater(() -> frame = new IdiotFrame());
         for (int i = 0; i < playerCount; ++i) {
-            new IdiotFrame(i);
+            frames[i] = new IdiotFrame(i);
         }
         //TODO: make the rubik's square game.
     }

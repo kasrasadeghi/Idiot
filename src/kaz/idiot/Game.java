@@ -204,8 +204,40 @@ public class Game {
         }
 
         //post-move logic.
-        setCurrentPlayerToNext();
+
+        postPlayFieldActions();
+    }
+
+    private void postPlayFieldActions() {
         //last four cards are the same rank = burn, even with magic cards.
+        if (fourCardBurnCheck(field.size() - 1, 0)) {
+            burn();
+        }
+        setCurrentPlayerToNext();
+    }
+
+    private boolean fourCardBurnCheck(int index, int count) {
+        if (count == 4) {
+            return true;
+        }
+        if (index < 0) {
+            return false;
+        }
+        String rank = field.get(index).getRank();
+        switch(rank) {
+            case "A":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "8":
+            case "9":
+            case "J":
+            case "Q":
+            case "K":
+                count++;
+        }
+        return fourCardBurnCheck(index - 1, count);
     }
 
     public boolean checkCurrentPlay() {
@@ -237,7 +269,6 @@ public class Game {
      * @return whether or not the currently selected hand cards of the current player are a valid move
      */
     public boolean checkPlay(List<CARD> selected) {
-        //TODO: check the selected cards to see if they are valid
         // cards are valid if they are all the same number.
         // if they aren't all the same number, return false.
         int rank = selected.get(0).getRankValue();
@@ -254,7 +285,6 @@ public class Game {
     }
 
     public List<String> getValidRanks(int index, boolean red) {
-        //TODO: check all of the conditions
         List<String> validRanks = new ArrayList<>();
         if (index < 0) {
             Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
@@ -293,7 +323,6 @@ public class Game {
                         return validRanks;
                     }
                     else {
-                        switchRotation();
                         return getValidRanks(index - 1, true);
                     }
                 case "7":
@@ -337,7 +366,6 @@ public class Game {
                         return validRanks;
                     }
                     else {
-                        switchRotation();
                         return getValidRanks(index - 1, false);
                     }
                 case "7":
