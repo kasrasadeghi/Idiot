@@ -214,6 +214,12 @@ public class Game {
         postPlayFieldActions();
     }
 
+    public void pickUp(){
+        players.get(currentPlayerNumber).pickUp(field);
+        //maybe empty field?
+        //see how pickup works.... make sure it works with drawing cards from the deck
+    }
+
     private void postPlayFieldActions() {
         //last four cards are the same rank = burn, even with magic cards.
         if (fourCardBurnCheck(field.size() - 1, 0)) {

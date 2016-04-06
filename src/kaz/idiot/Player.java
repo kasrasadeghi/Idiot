@@ -145,6 +145,7 @@ public class Player {
 
     public void pickUp(List<CARD> cards) {
         System.err.println("Picking up");
+        //picking up but not emptying field.
         cards.forEach(this::draw);
     }
 

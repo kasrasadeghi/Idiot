@@ -238,8 +238,9 @@ class GamePanel extends JPanel {
         int w = getWidth()/20;
         int h = getHeight()/30;
         tlx -= w;
-
-        paintButton(g, "PLAY", tlx, tly, w, h, back, front);
+        if (game.canPlay())
+            paintButton(g, "PLAY", tlx, tly, w, h, back, front);
+        else paintButton(g, "PASS", tlx, tly, w, h, back, front);
     }
 
     /**

@@ -65,7 +65,7 @@ public class Controller {
                 handleSetupAction(action);
             }
 
-            //and the player clicks on a card
+            //if the player clicks on a card
             if(!card.equals("none")) {
                 try {
                     //see which card and then select it in the special player indexes for the setup state
@@ -140,6 +140,12 @@ public class Controller {
                         gamePanel.repaint();
                 }
                 break;
+            case "PASS":
+                if (isItYourTurn) {
+                    game.play();
+                    for (GamePanel gamePanel : Main.gp)
+                        gamePanel.repaint();
+                }
         }
     }
 
