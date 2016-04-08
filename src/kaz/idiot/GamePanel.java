@@ -335,7 +335,7 @@ class GamePanel extends JPanel {
 
         for (int i = topCount - 1; i >= 0; --i, count = (count+1)%game.getPlayerCount()) {
             Rectangle bounding = new Rectangle( tlx + dx/topCount * i, tly, dx/topCount, dy);
-            Bounds bounds = new Bounds ( 
+            Bounds bounds = new Bounds (
                     (double)tlx/getWidth() + (double)dx/getWidth()/topCount * i,
                     (double)tly/getHeight(),
                     (double)dx/getWidth()/topCount,

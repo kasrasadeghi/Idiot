@@ -93,13 +93,8 @@ public class Controller {
                     int boxVal = Integer.parseInt(box);
                     if ( boxVal == playerNumber && isItYourTurn) {
                         if (!card.equals("none")) {
-                            try {
-                                //TODO: fix exception for card == none
-                                int cardVal = Integer.parseInt(card);
-                                handleCardSelection(cardVal);
-                            } catch (NumberFormatException e) {
-                                e.printStackTrace();
-                            }
+                            int cardVal = Integer.parseInt(card);
+                            handleCardSelection(cardVal);
                         }
                     }
                     else if (card.equals("none"))
@@ -114,6 +109,8 @@ public class Controller {
         //TODO: two options for handling interController updates.
         // 1. handle each motion(selecting cards, drawing) or
         // 2. handle each turn(find out what actually changed and then send an update pkg)
+
+        //#1 is easier, and probably looks better. might be slower. let's see...
 
     }
 
