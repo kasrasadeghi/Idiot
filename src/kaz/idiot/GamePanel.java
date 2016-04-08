@@ -240,7 +240,7 @@ class GamePanel extends JPanel {
         tlx -= w;
         if (game.canPlay())
             paintButton(g, "PLAY", tlx, tly, w, h, back, front);
-        else paintButton(g, "PASS", tlx, tly, w, h, back, front);
+        else paintButton(g, "PICKUP", tlx, tly, w, h, back, front);
     }
 
     /**
@@ -281,8 +281,6 @@ class GamePanel extends JPanel {
                     (int)(b.w * getWidth()),
                     (int)(b.h * getHeight()));
             g.drawString(side.name(), (int)(b.tlx * getWidth()), (int)(b.tly * getHeight()) + 20);
-//            sideRect(side);
-//            g.drawRect();
         }
     }
 
@@ -337,7 +335,7 @@ class GamePanel extends JPanel {
 
         for (int i = topCount - 1; i >= 0; --i, count = (count+1)%game.getPlayerCount()) {
             Rectangle bounding = new Rectangle( tlx + dx/topCount * i, tly, dx/topCount, dy);
-            Bounds bounds = new Bounds (
+            Bounds bounds = new Bounds ( 
                     (double)tlx/getWidth() + (double)dx/getWidth()/topCount * i,
                     (double)tly/getHeight(),
                     (double)dx/getWidth()/topCount,
@@ -454,6 +452,7 @@ class GamePanel extends JPanel {
         for (int i = 0; i < bot.size(); ++i) {
             paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
         }
+
         //paint top cards
         tly -= cardYOffset;
         List<CARD> top = p.getTop();
@@ -536,8 +535,9 @@ class GamePanel extends JPanel {
         int tlx = getWidth()/2 - 2*CARD_X;
         int tly = getHeight()/2 - CARD_Y/2 - 10;
 
+        int delta = 20;
         for (int i = 0; i < game.getField().size() ; ++i)
-            paintCard(g, game.getField().get(i), tlx +2*i - game.getField().size()*2, tly);
+            paintCard(g, game.getField().get(i), tlx +delta*i - game.getField().size()*delta, tly);
     }
 
     /**

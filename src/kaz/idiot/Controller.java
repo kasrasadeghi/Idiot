@@ -140,9 +140,9 @@ public class Controller {
                         gamePanel.repaint();
                 }
                 break;
-            case "PASS":
+            case "PICKUP":
                 if (isItYourTurn) {
-                    game.play();
+                    game.pickUp();
                     for (GamePanel gamePanel : Main.gp)
                         gamePanel.repaint();
                 }

@@ -26,7 +26,7 @@ public class Player {
 
     private STATE state;
 
-    private List<CARD> bot; //
+    private List<CARD> bot;
     private List<CARD> top;
     private List<HandCARD> hand;
     private String name;
@@ -118,6 +118,13 @@ public class Player {
         return hand;
     }
 
+    public List<CARD> getSelected() {
+        return getHand().stream()
+                .filter(hc -> hc.selected)
+                .map(hc -> hc.card)
+                .collect(Collectors.toList());
+    }
+
     public void setupSwap() {
         int h = handSetupSelect;
         int t = topSetupSelect;
@@ -146,12 +153,13 @@ public class Player {
     public void pickUp(List<CARD> cards) {
         System.err.println("Picking up");
         //picking up but not emptying field.
-        cards.forEach(this::draw);
+        removeToHand(cards);
     }
 
     public void removeToHand(List<CARD> cards) {
-        for (int i = 0; i < cards.size(); ++i) {
-            hand.add(new HandCARD(cards.remove(i)));
+        for (int i = cards.size() - 1; i >= 0; --i) {
+            CARD card = cards.remove(i);
+            hand.add(new HandCARD(card));
         }
     }
 

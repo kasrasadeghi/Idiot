@@ -55,7 +55,7 @@ public class Game {
         for (Player p : players)
             if (!p.isReady())
                 counter++;
-        //region TODO tempcode
+        //region TODO: temp code
         setCurrentPlayerToNext();
         //endregion
         if (counter == 0)
@@ -67,7 +67,12 @@ public class Game {
         initTurnOrder();
         state = STATE.PLAYING;
 
-        players.forEach(Player::start);//why are we start()ing each player twice
+        players.forEach(Player::start);
+
+        //TODO: temp code
+        Main.activeFrame.setVisible(false);
+        Main.activeFrame = Main.frames[currentPlayerNumber];
+        Main.activeFrame.setVisible(true);
     }
 
     private void dealSetupCards(List<String> playerNames) {
@@ -82,7 +87,7 @@ public class Game {
                 stack9.add(draw());
             }
 
-            players.add(new Player(stack9, name).start());//this is the second time we're starting?
+            players.add(new Player(stack9, name));
         }
     }
 
@@ -145,7 +150,7 @@ public class Game {
         return rotatingRight;
     }
 
-    public void switchRotation() {
+    public void reverseTurnOrder() {
         rotatingRight = !rotatingRight;
     }
 
@@ -182,16 +187,20 @@ public class Game {
         return getPlayer((currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size());
     }
 
+    public void pickUp(){
+        players.get(currentPlayerNumber).pickUp(field);
+        //maybe empty field?
+        setCurrentPlayerToNext();
+    }
+
     public void play() {
         //TODO: when setting the next turn we have to compute whether or not someone can play.
         // check that the cards that are being played are the same card rank
         // check that the card rank that is being played is viable with the underlying condition
         Player current = players.get(currentPlayerNumber);
-        //if the current player can't play then he has to pick up the field.
-        if (!canPlay())  {
-            current.pickUp(field);
+        //if the player doesn't have currently selected cards
+        if (current.getSelected().isEmpty())
             return;
-        }
         //if the current player's selected cards aren't a valid move then return
         if (!checkCurrentPlay()) {
             //send message to console. "illegal move"
@@ -201,34 +210,67 @@ public class Game {
 
         //  Implement play code
         //add selected cards to the field.
-        field.addAll(current.play());
+        List<CARD> lastPlay = current.play();
+        field.addAll(lastPlay);
 
-        //if the current player has less than 3 cards and the deck isn't empty
-        //draw until they maintain 3
-        while (current.getHand().size() < 3 && !deck.isEmpty()) {
-            current.draw(draw());
-        }
+
+
 
         //post-move logic.
-
-        postPlayFieldActions();
+        postPlayPlayerActions();
+        postPlayFieldActions(lastPlay);
     }
 
-    public void pickUp(){
-        players.get(currentPlayerNumber).pickUp(field);
-        //maybe empty field?
-        //see how pickup works.... make sure it works with drawing cards from the deck
-    }
-
-    private void postPlayFieldActions() {
-        //last four cards are the same rank = burn, even with magic cards.
-        if (fourCardBurnCheck(field.size() - 1, 0)) {
-            burn();
+    private void postPlayPlayerActions() {
+        Player current = getPlayer(currentPlayerNumber);
+        //if the current player has less than 3 cards and the deck isn't empty
+        //draw until they maintain 3
+        if (!deck.isEmpty()) {
+            while (current.getHand().size() < 3 )
+                current.draw(draw());
+        } else {
+            if (current.getHand().isEmpty()) {
+                if (!current.getTop().isEmpty()) {
+                    current.topToHand();
+                } else {
+                    if (!current.getBot().isEmpty()) {
+                        current.setState(STATE.EPICMODE);
+                    } else {
+                        current.setState(STATE.SPECTATING);
+                    }
+                }
+            }
         }
-        setCurrentPlayerToNext();
     }
 
-    private boolean fourCardBurnCheck(int index, int count) {
+    private void postPlayFieldActions(List<CARD> lastPlay) {
+        boolean again = false;
+        //if a black two has been played, reverse turn order.
+        if (lastPlay.stream().anyMatch( c -> c == CARD.CLUB_2 || c == CARD.SPADE_2)) {
+            //if there are only two people playing, then current player goes again.
+            again = true;
+            reverseTurnOrder();
+        }
+        //if the top card is a ten, burn all the cards.
+        if (field.getLast().getRank().equals("10")) {
+            burn();
+            again = true;
+        }
+        //last four cards are the same rank = burn, even with magic cards.
+        if (fourCardBurnCheck()) {
+            burn();
+            again = true;
+        }
+        if (!again)
+            setCurrentPlayerToNext();
+    }
+
+    private boolean fourCardBurnCheck() {
+        if (field.size() < 4) return false;
+        return fourCardBurnDig(field.size() - 1, 0, field.getLast().getRank());
+    }
+
+    private boolean fourCardBurnDig(int index, int count, String rankCheck) {
         if (count == 4) {
             return true;
         }
@@ -236,28 +278,25 @@ public class Game {
             return false;
         }
         String rank = field.get(index).getRank();
-        switch(rank) {
-            case "A":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "8":
-            case "9":
-            case "J":
-            case "Q":
-            case "K":
-                count++;
+        if (rank.equals(rankCheck)) {
+            return fourCardBurnDig(index - 1, count + 1, rankCheck);
+        } else {
+            switch (field.get(index)) {
+                //if the card is a black two or a 7, then it's invisible, so we can dig further.
+                case SPADE_2:
+                case CLUB_2:
+                case HEART_7:
+                case DIAMOND_7:
+                case SPADE_7:
+                case CLUB_7:
+                    return fourCardBurnDig(index - 1, count, rankCheck);
+                default: return false;
+            }
         }
-        return fourCardBurnCheck(index - 1, count);
     }
 
     public boolean checkCurrentPlay() {
-        List<CARD> currentCards = players.get(currentPlayerNumber).getHand()
-                .stream()
-                .filter(hc -> hc.selected)
-                .map(hc -> hc.card)
-                .collect(Collectors.toList());
+        List<CARD> currentCards = players.get(currentPlayerNumber).getSelected();
         return checkPlay(currentCards);
     }
 
@@ -374,6 +413,7 @@ public class Game {
 
                 case "2":
                     if (conditional == CARD.HEART_2 || conditional == CARD.DIAMOND_2){
+                        validRanks = new ArrayList<>();
                         Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
                         return validRanks;
                     }
