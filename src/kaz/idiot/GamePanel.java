@@ -174,8 +174,8 @@ class GamePanel extends JPanel {
         int tlx = getWidth()*3/4 - 20 - buttonW;
         int tly = getHeight()/4 + 20;
 
-        paintButton(g, "SWAP", tlx, tly, buttonW, buttonH, back, front);
-        paintButton(g, "READY", tlx, tly += buttonH + 20, buttonW, buttonH, back, front);
+        paintClickableButton(g, "SWAP", tlx, tly, buttonW, buttonH, back, front);
+        paintClickableButton(g, "READY", tlx, tly += buttonH + 20, buttonW, buttonH, back, front);
     }
 
     /**
@@ -202,7 +202,7 @@ class GamePanel extends JPanel {
         paintDeck(g);
         paintField(g);
         paintDiscard(g);
-        paintRotating(g);
+        paintRotation(g);
         paintGameButtons(g);
         if(inspection != -1)
             paintInspection(g);
@@ -239,8 +239,8 @@ class GamePanel extends JPanel {
         int h = getHeight()/30;
         tlx -= w;
         if (game.canPlay())
-            paintButton(g, "PLAY", tlx, tly, w, h, back, front);
-        else paintButton(g, "PICKUP", tlx, tly, w, h, back, front);
+            paintClickableButton(g, "PLAY", tlx, tly, w, h, back, front);
+        else paintClickableButton(g, "PICKUP", tlx, tly, w, h, back, front);
     }
 
     /**
@@ -255,7 +255,7 @@ class GamePanel extends JPanel {
      * @param back - background color for the button.
      * @param front - foreground color for the button. The text and the border are this color.
      */
-    private void paintButton(Graphics g, String s, int tlx, int tly, int w, int h, Color back, Color front) {
+    private void paintClickableButton(Graphics g, String s, int tlx, int tly, int w, int h, Color back, Color front) {
         g.setColor(back);
         g.fillRect(tlx, tly, w, h);
         g.setColor(front);
@@ -406,13 +406,12 @@ class GamePanel extends JPanel {
         og.fillRect(tlx, tly, w, h);
         boolean isPlayerMain = p.equals(game.getPlayer(playerNumber));
         boolean isCurrentPlayer = p.equals(game.getPlayer(game.getCurrentPlayerNumber()));
-        boolean isSetup = game.getState() == STATE.SETUP;
 
         Graphics2D g = (Graphics2D) og;
         Stroke ogStroke = g.getStroke();
         Font playerNameFont = isPlayerMain? mainNameFont : nameFont;
         Color playerColor = isPlayerMain? Color.BLUE : Color.BLACK;
-        if (isCurrentPlayer && !isSetup) {
+        if (isCurrentPlayer && game.getState() != STATE.SETUP) {
             playerColor = Color.RED;
             g.setStroke(new BasicStroke(3));
         }
@@ -422,7 +421,7 @@ class GamePanel extends JPanel {
         int cardYOffset = 20;
         int cardXOffset = 30;
         int selectedYOffset = -20;
-        if (isSetup) {
+        if (game.getState() == STATE.SETUP) {
             cardXOffset += CARD_X;
             cardYOffset += CARD_Y;
         }
@@ -445,12 +444,32 @@ class GamePanel extends JPanel {
         //paint bot cards
         tly = otly + oh - CARD_Y - cardYOffset/2;
         tlx = otlx + ow - 2*CARD_X;
-        if (isSetup) {
+        if (game.getState() == STATE.SETUP) {
             tlx -= 2 * CARD_X + cardYOffset/4;
         }
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
-            paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
+//            if (p.getState() == STATE.PLAYING)
+//                paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
+//            if (p.getState() == STATE.EPICMODE)
+                paintCard(og, CARD.NULL_CARD, otlx + ow/3 * i - CARD_X/2 + ow/6, otly + oh/2 - CARD_Y/2);
+        }
+//        if (p.getState() == STATE.EPICMODE)
+        {
+            Color front = Color.BLACK;
+            Color back = bg;
+            int btly = otly + oh/2 + CARD_Y;
+            int bw = getWidth()/20;
+            int bh = getHeight()/30;
+            int i = 0;
+            int btlx = otlx + ow/6 - bw/2 + ow/3 * i;
+            paintClickableButton(og, "LEFT", btlx, btly, bw, bh, back, front);
+            i = 1;
+            btlx = otlx + ow/6 - bw/2 + ow/3 * i;
+            paintClickableButton(og, "CENTER", btlx, btly, bw, bh, back, front);
+            i = 2;
+            btlx = otlx + ow/6 - bw/2 + ow/3 * i;
+            paintClickableButton(og, "RIGHT", btlx, btly, bw, bh, back, front);
         }
 
         //paint top cards
@@ -458,7 +477,7 @@ class GamePanel extends JPanel {
         List<CARD> top = p.getTop();
         for (int i = 0; i < top.size(); ++i) {
             paintCard(og, top.get(i), tlx + cardXOffset*i, tly);
-            if (isSetup) {
+            if (game.getState() == STATE.SETUP) {
                 Player me = game.getPlayer(playerNumber);
                 if (i == me.getTopSetupSelect()) {
                     Stroke s = g.getStroke();
@@ -494,7 +513,7 @@ class GamePanel extends JPanel {
                     (i == hand.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
                     (double)CARD_Y/getHeight()
             );
-            if (isSetup) {
+            if (game.getState() == STATE.SETUP) {
                 Player me = game.getPlayer(playerNumber);
                 if (i == me.getHandSetupSelect()) {
                     Stroke s = g.getStroke();
@@ -515,7 +534,7 @@ class GamePanel extends JPanel {
      * Paints the rotating symbol in the middle of the game.
      * @param g
      */
-    private void paintRotating(Graphics g) {
+    private void paintRotation(Graphics g) {
         try {
             File file = new File((game.isRotatingRight())? "right.png" : "left.png");
             Image image = ImageIO.read(file);
