@@ -1,7 +1,6 @@
 package kaz.idiot;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static kaz.idiot.CARD.*;
 /**
@@ -84,7 +83,7 @@ public class Game {
             String name = playerNames.get(i);
             List<CARD> stack9 = new LinkedList<>();
             for (int j = 0; j < 9; j++) {
-                stack9.add(draw());
+                stack9.add(drawFromDeck());
             }
 
             players.add(new Player(stack9, name));
@@ -121,12 +120,8 @@ public class Game {
         return currentPlayerNumber;
     }
 
-    private CARD draw() {
+    private CARD drawFromDeck() {
         return deck.remove((int) (Math.random() * deck.size()));
-    }
-
-    private boolean isDiscardEmpty() {
-        return discard.isEmpty();
     }
 
     private void burn() {
@@ -213,37 +208,21 @@ public class Game {
         List<CARD> lastPlay = current.play();
         field.addAll(lastPlay);
 
-
-
-
         //post-move logic.
-        postPlayPlayerActions();
-        postPlayFieldActions(lastPlay);
-    }
 
-    private void postPlayPlayerActions() {
-        Player current = getPlayer(currentPlayerNumber);
-        //if the current player has less than 3 cards and the deck isn't empty
-        //draw until they maintain 3
-        if (!deck.isEmpty()) {
+        //Player Actions
+        if (!deck.isEmpty())    //if the current player has less than 3 cards and the deck isn't empty
             while (current.getHand().size() < 3 )
-                current.draw(draw());
-        } else {
-            if (current.getHand().isEmpty()) {
-                if (!current.getTop().isEmpty()) {
-                    current.topToHand();
-                } else {
-                    if (!current.getBot().isEmpty()) {
-                        current.setState(STATE.EPICMODE);
-                    } else {
-                        current.setState(STATE.SPECTATING);
-                    }
-                }
-            }
+                current.draw(drawFromDeck());           //drawFromDeck until they maintain 3
+        else if (current.getHand().isEmpty()) { //if the hand is empty
+            if (!current.getTop().isEmpty())    //and the top is NOT empty
+                current.topToHand();            //move the top to the hand
+            else if (!current.getBot().isEmpty())
+                current.setState(STATE.EPICMODE);
+            else current.setState(STATE.SPECTATING);
         }
-    }
 
-    private void postPlayFieldActions(List<CARD> lastPlay) {
+        //Field Actions
         boolean again = false;
         //if a black two has been played, reverse turn order.
         if (lastPlay.stream().anyMatch( c -> c == CARD.CLUB_2 || c == CARD.SPADE_2)) {

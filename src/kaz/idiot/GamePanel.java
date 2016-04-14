@@ -137,8 +137,6 @@ class GamePanel extends JPanel {
         return new Dimension(startWidth, startHeight);
     }
 
-    // <editor-fold desc="----Painting methods----">
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -154,6 +152,8 @@ class GamePanel extends JPanel {
         }
 
     }
+
+    // <editor-fold desc="----Painting methods----">
 
     private void paintSetup(Graphics g) {
         Player me = game.getPlayer(playerNumber);
@@ -539,7 +539,6 @@ class GamePanel extends JPanel {
             File file = new File((game.isRotatingRight())? "right.png" : "left.png");
             Image image = ImageIO.read(file);
             g.drawImage(image, getWidth()/2 - 50, getHeight()/2 -50, null);
-            //(int)(SIDE.RIGHT.tly * getHeight() * 1.5)
         } catch(IOException e) {
             System.err.println("Missing card images.");
             e.printStackTrace();
@@ -565,8 +564,8 @@ class GamePanel extends JPanel {
      * @param g
      */
     private void paintDiscard(Graphics g) {
-        int tlx = (int) (getWidth()/2 + CARD_X);
-        int tly = (int) getHeight()/2 - CARD_Y/2 - 10;
+        int tlx = (getWidth()/2 + CARD_X);
+        int tly = getHeight()/2 - CARD_Y/2 - 10;
         if (!game.getDiscard().isEmpty())
             paintCard(g, CARD.NULL_CARD, tlx, tly);
     }
