@@ -128,21 +128,18 @@ public class Controller {
     }
 
     private void handleGameAction(String action) {
+        if (!isItYourTurn) return;
         switch (action) {
             case "PLAY":
                 //TODO: implement play behavior
-                if (isItYourTurn) {
-                    game.play();
-                    for (GamePanel gamePanel : Main.gp)
-                        gamePanel.repaint();
-                }
+                game.play();
+                for (GamePanel gamePanel : Main.gp)
+                    gamePanel.repaint();
                 break;
             case "PICKUP":
-                if (isItYourTurn) {
-                    game.pickUp();
-                    for (GamePanel gamePanel : Main.gp)
-                        gamePanel.repaint();
-                }
+                game.pickUp();
+                for (GamePanel gamePanel : Main.gp)
+                    gamePanel.repaint();
         }
     }
 

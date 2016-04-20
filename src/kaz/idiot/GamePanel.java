@@ -449,12 +449,12 @@ class GamePanel extends JPanel {
         }
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
-//            if (p.getState() == STATE.PLAYING)
-//                paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
-//            if (p.getState() == STATE.EPICMODE)
+            if (p.getState() != STATE.EPICMODE)
+                paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
+            else
                 paintCard(og, CARD.NULL_CARD, otlx + ow/3 * i - CARD_X/2 + ow/6, otly + oh/2 - CARD_Y/2);
         }
-//        if (p.getState() == STATE.EPICMODE)
+        if (p.getState() == STATE.EPICMODE)
         {
             Color front = Color.BLACK;
             Color back = bg;
