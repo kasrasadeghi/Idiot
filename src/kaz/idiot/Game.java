@@ -172,6 +172,20 @@ public class Game {
         Main.activeFrame = Main.frames[currentPlayerNumber];
         Main.activeFrame.setVisible(true);
         //endregion temp change
+        //make the next player enter epic mode if they don't have top cards or hands cards.
+        if (getCurrentPlayer().getHand().isEmpty() && getCurrentPlayer().getTop().isEmpty())
+            getCurrentPlayer().setState(STATE.EPICMODE);
+
+        //TODO: the current player should be set to STATE.SPECTATING after they play.
+        // it sees if they are all out of cards and then it sets the player to
+        //TODO: make a dev mode kinda thing that's separate from this nonsense.
+        //be able to discard cards
+        //be able to chose current player
+        //be able to get a chosen card.
+    }
+
+    public Player getCurrentPlayer() {
+        return players.get(currentPlayerNumber);
     }
 
     public void setCurrentPlayer(int playerNumber) {
@@ -184,12 +198,11 @@ public class Game {
 
     public void pickUp(){
         players.get(currentPlayerNumber).pickUp(field);
-        //maybe empty field?
         setCurrentPlayerToNext();
     }
 
     public void play() {
-        //TODO: when setting the next turn we have to compute whether or not someone can play.
+        // when setting the next turn we have to compute whether or not someone can play.
         // check that the cards that are being played are the same card rank
         // check that the card rank that is being played is viable with the underlying condition
         Player current = players.get(currentPlayerNumber);

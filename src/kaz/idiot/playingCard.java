@@ -7,14 +7,18 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import static kaz.idiot.Main.*;
+
+import static kaz.idiot.Main.CARD_X;
+import static kaz.idiot.Main.CARD_Y;
 
 /**
  * Created by kasra on 2/6/2016.
  *
- * This is the proprietary card class for Idiot.
+ * This is the proprietary card class for Card Games.
+ *
+ * This card class is not actually used in the Idiot project.
  */
-public enum CARD{
+public enum playingCard {
     SPADE_A(       0, 3*CARD_Y, CARD_X, CARD_Y),
     SPADE_2(  CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
     SPADE_3(2*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
@@ -75,7 +79,7 @@ public enum CARD{
 
     private Image image = null;
 
-    CARD(int tlx, int tly, int w, int h) {
+    playingCard(int tlx, int tly, int w, int h) {
         try {
             image = ImageIO.read(new File("cards.png")).getSubimage(tlx, tly, w, h);
         } catch(IOException e) {
@@ -86,111 +90,47 @@ public enum CARD{
     /**
      * @return a random card that isn't NULL_CARD;
      */
-    public static CARD random() {
+    public static playingCard random() {
         return values()[(int)(Math.random() * values().length - 1)];
     }
 
     /**
      * @return a list of a normal deck of playing cards. not shuffled.
      */
-    public static List<CARD> fullDeck() {
+    public static List<playingCard> fullDeck() {
         return Arrays.asList(values()).subList(0, values().length - 1);
     }
 
+    /**
+     *
+     * @return the name
+     */
     @Override
     public String toString() {
         return name();
     }
 
+    /**
+     *
+     * @return graphics image for use with Graphics.drawImage(image, tlx, tly, null);
+     */
     public Image getImage() {
         return image;
     }
 
+    /**
+     *
+     * @return the suit of the card: SPADE, CLUB, DIAMOND, HEART
+     */
     public String getSuit() {
         return name().split("_")[0];
     }
 
-    public int getSuitValue() {
-        switch(getSuit()) {
-            case "SPADE": return 1;
-            case "CLUB": return 2;
-            case "DIAMOND": return 3;
-            case "HEART": return 4;
-            default: return 0;
-        }
-    }
-
+    /**
+     *
+     * @return the rank of the card: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K
+     */
     public String getRank() {
         return name().split("_")[1];
-    }
-
-    public int getRankValue() {
-        switch(getRank()) {
-            case "A": return 14;
-            case "2": return 30;
-            case "3": return 3;
-            case "4": return 4;
-            case "5": return 5;
-            case "6": return 6;
-            case "7": return 50;
-            case "8": return 8;
-            case "9": return 9;
-            case "10": return 100;
-            case "J": return 11;
-            case "Q": return 12;
-            case "K": return 13;
-            default: return 0;
-        }
-    }
-
-    public int getPostRank() {
-        switch(getRank()) {
-            case "10": return 73;
-            case "7": return 37;
-            case "2": return 20;
-
-            case "A": return 14;
-            case "K": return 13;
-            case "Q": return 12;
-            case "J": return 11;
-            case "9": return 9;
-            case "8": return 8;
-            case "6": return 6;
-            case "5": return 5;
-            case "4": return 4;
-            case "3": return 3;
-
-
-            default: return 0;
-        }
-    }
-
-    public int getPreRank() {
-        switch(getRank()) {
-            case "10": return 73;
-            case "7": return 37;
-
-            case "A": return 14;
-            case "K": return 13;
-            case "Q": return 12;
-            case "J": return 11;
-            case "9": return 9;
-            case "8": return 8;
-            case "6": return 6;
-            case "5": return 5;
-            case "4": return 4;
-            case "3": return 3;
-            case "2": return -1;
-
-            default: return 0;
-        }
-    }
-
-    public static Comparator<CARD> getComp() {
-        return (card1, card2) -> {
-            int comp = card1.getRankValue() - card2.getRankValue();
-            if (comp == 0) comp = card1.getSuitValue() - card2.getSuitValue();
-            return comp;
-        };
     }
 }
