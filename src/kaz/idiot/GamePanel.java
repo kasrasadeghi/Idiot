@@ -29,7 +29,7 @@ class GamePanel extends JPanel {
 
     public static final int INSP_GAME = -1;
     public static  final int INSP_MIDDLE = -2;
-    //TODO: Implement middle inspection
+    //#endgame TODO: Implement middle inspection
     public static final int INSP_CHAT = -3;
     public static final int INSP_EVENT = -4;
 
@@ -125,8 +125,6 @@ class GamePanel extends JPanel {
             public void mouseEntered(MouseEvent mouseEvent) {}
             public void mouseExited(MouseEvent mouseEvent) {}
         });
-        //TODO: add a pane for an event log and a chat log
-        //TODO: make (synchronized?) queue for handling input
     }
 
     /**
@@ -157,7 +155,7 @@ class GamePanel extends JPanel {
 
     private void paintSetup(Graphics g) {
         Player me = game.getPlayer(playerNumber);
-        inspection = playerNumber;//TODO: this line keeps occurring every update. maybe make it only happen once?
+        inspection = playerNumber;
         paintInspection(g);
         paintSetupButtons(g);
         if (me.isReady()) {

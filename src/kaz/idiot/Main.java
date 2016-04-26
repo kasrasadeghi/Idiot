@@ -24,7 +24,7 @@ public class Main {
     public static Socket hostSocket;
 
     public static void main(String[] args) {
-        //TODO: maybe implement a developer multiViewer:
+        //#devmode TODO: maybe implement a developer multiViewer:
         // one main view in the center and all the other views on the right bar
         // or maybe just the generic viewer and then all the other viewers in a tiny thing on another window,
         // and then accessible by clicking on that other window
@@ -43,11 +43,11 @@ public class Main {
         activeFrame = frames[game.getCurrentPlayerNumber()];
         activeFrame.setVisible(true);
 
-        //TODO: make the rubik's square game.
+        //#after TODO: make the rubik's square game.
     }
 
     //region public static void hostServer(String name) {...}
-    //TODO: work on server stuff
+    //#server TODO: work on server stuff
    /* public static void hostServer(String name) {
         try {
             hostServerSocket = new ServerSocket(port);

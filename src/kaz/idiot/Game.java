@@ -10,7 +10,6 @@ import static kaz.idiot.CARD.*;
 // THE MODEL
 public class Game {
     private int currentPlayerNumber;
-    //TODO: use enum STATE
 
     private STATE state;
     private List<Player> players = new ArrayList<>();
@@ -54,9 +53,7 @@ public class Game {
         for (Player p : players)
             if (!p.isReady())
                 counter++;
-        //region TODO: temp code
         setCurrentPlayerToNext();
-        //endregion
         if (counter == 0)
             start();
         return counter == 0;
@@ -68,15 +65,13 @@ public class Game {
 
         players.forEach(Player::start);
 
-        //TODO: temp code
+        //#devmode TODO: temp code
         Main.activeFrame.setVisible(false);
         Main.activeFrame = Main.frames[currentPlayerNumber];
         Main.activeFrame.setVisible(true);
     }
 
     private void dealSetupCards(List<String> playerNames) {
-        //TODO: make alternate dealer that completely randomizes cards. works against card counting
-        //  doesn't have decks. uses individual randomized cards. drawing is merely getting a random card.
         for (int i = 0; i < playerNames.size()/5 + 1; ++i)
             deck.addAll(fullDeck());
         for (int i = 0; i < playerNames.size(); ++i) {
@@ -167,7 +162,8 @@ public class Game {
 
     public void setCurrentPlayerToNext() {
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
-        //region TODO: temp change
+        //region
+        //#devmode TODO: temp change
         Main.activeFrame.setVisible(false);
         Main.activeFrame = Main.frames[currentPlayerNumber];
         Main.activeFrame.setVisible(true);
@@ -176,12 +172,13 @@ public class Game {
         if (getCurrentPlayer().getHand().isEmpty() && getCurrentPlayer().getTop().isEmpty())
             getCurrentPlayer().setState(STATE.EPICMODE);
 
-        //TODO: the current player should be set to STATE.SPECTATING after they play.
-        // it sees if they are all out of cards and then it sets the player to
-        //TODO: make a dev mode kinda thing that's separate from this nonsense.
-        //be able to discard cards
-        //be able to chose current player
+        //#endgame TODO: winning
+        // it sees if they are all out of cards and then it sets the player to STATE.spectating
+        //#devmode TODO: make a dev mode kinda thing that's separate from this nonsense.
+        //be able to discard cards.
+        //be able to chose current player.
         //be able to get a chosen card.
+        //be able to set a player's state.
     }
 
     public Player getCurrentPlayer() {

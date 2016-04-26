@@ -32,8 +32,7 @@ public class Controller {
     public void handleCodes(List<String> codes) {
         isItYourTurn = game.getCurrentPlayerNumber() == gp.getPlayerNumber();
 
-        //TODO: other controllers have a handle update method to update their separate games.
-        // worry about this for servers
+        //#server TODO: other controllers have a handle update method to update their separate games.
 
         String box = "none";
         String card = "none";
@@ -55,7 +54,7 @@ public class Controller {
             }
         }
 
-        //TODO: reorganize case matching below
+        //#codeclean TODO: reorganize case matching below
 
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
@@ -106,7 +105,7 @@ public class Controller {
         }
 
 
-        //TODO: two options for handling interController updates.
+        //#server TODO: two options for handling inter-controller updates.
         // 1. handle each motion(selecting cards, drawing) or
         // 2. handle each turn(find out what actually changed and then send an update pkg)
 
@@ -131,7 +130,6 @@ public class Controller {
         if (!isItYourTurn) return;
         switch (action) {
             case "PLAY":
-                //TODO: implement play behavior
                 game.play();
                 for (GamePanel gamePanel : Main.gp)
                     gamePanel.repaint();

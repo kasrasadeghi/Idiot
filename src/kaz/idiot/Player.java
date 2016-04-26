@@ -31,9 +31,6 @@ public class Player {
     private List<HandCARD> hand;
     private String name;
 
-    //TODO: remove epicMode boolean value. implement epicMode as a state based mechanic.
-    // states: init, setup, ready, playing
-
     private int handSetupSelect = -1;
     private int topSetupSelect = -1;
 
