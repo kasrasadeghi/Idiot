@@ -212,11 +212,33 @@ class GamePanel extends JPanel {
      * @param g
      */
     private void paintInspection(Graphics g) {
-        if (inspection > -1)
-            paintPlayerInspection(g);
-        if (inspection == INSP_MIDDLE) {
-            //#endgame TODO: make switch statement
+        switch (inspection) {
+            case INSP_GAME:
+                //paint game
+                break;
+            case INSP_MIDDLE:
+                paintMiddleInspection(g);
+                break;
+            default:
+                paintPlayerInspection(g);
+                break;
         }
+    }
+
+    private void paintMiddleInspection(Graphics g) {
+        g.setColor(overGrey);
+        g.fillRect(0, 0, getWidth(), getHeight());
+
+        int w = getWidth();
+        int h = getHeight();
+
+        g.setColor(bg);
+        g.fillRect(w/4, h/4, w/2, h/2);
+        //paint deck, field, rotation, discard
+        paintDeck(g);
+        paintRotation(g);
+        paintDiscard(g);
+        paintField(g);
     }
 
     /**
@@ -559,8 +581,10 @@ class GamePanel extends JPanel {
         int tly = getHeight()/2 - CARD_Y/2 - 10;
 
         int delta = 20;
-        for (int i = 0; i < game.getField().size() ; ++i)
-            paintCard(g, game.getField().get(i), tlx +delta*i - game.getField().size()*delta, tly);
+        for (int i = 0; i < game.getField().size() ; ++i) {
+            if (i > game.getField().size() - 10)
+                paintCard(g, game.getField().get(i), tlx + delta*i - game.getField().size()*delta, tly);
+        }
     }
 
     /**

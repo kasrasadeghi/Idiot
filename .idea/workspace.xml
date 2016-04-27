@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="added EPIC Controller GameActions">
+    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Player.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/playingCard.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/playingCard.java" />
     </list>
     <ignored path="Idiot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,13 +37,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="playingCard.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/playingCard.java">
+      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+            <state relative-caret-position="282">
+              <caret line="236" column="46" selection-start-line="236" selection-start-column="46" selection-end-line="236" selection-end-column="46" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1461722551644" expanded="false" signature="417:448" placeholder="/Duplicates/" />
               </folding>
             </state>
           </provider>
@@ -83,10 +89,10 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/playingCard.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
       </list>
     </option>
   </component>
@@ -245,7 +251,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE" value="left" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
-    <property name="SearchEverywhereHistoryKey" value="paintcard&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintCard&#10;INSP_GAME&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#INSP_GAME&#10;inspection&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintInspection&#10;paintplayer&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintPlayer&#10;bottohan&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrentplayerton&#9;null&#9;null&#10;setcu&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayer&#10;bottohand&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrent&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;botohand&#9;null&#9;null&#10;setcurrentpla&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;Bounds&#9;PSI&#9;JAVA://kaz.idiot.GamePanel.Bounds&#10;pickup&#9;PSI&#9;JAVA://kaz.idiot.Game#pickUp&#10;paintfie&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintField&#10;game&#9;FILE&#9;file://C:/Users/kasra/Documents/GitHub/IDEA/Idiot/src/kaz/idiot/Game.java&#10;burn&#9;PSI&#9;JAVA://com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer&#10;controller&#9;PSI&#9;JAVA://kaz.idiot.Controller" />
+    <property name="SearchEverywhereHistoryKey" value="play&#9;PSI&#9;JAVA://kaz.idiot.Game#play&#10;paintmidd&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintmiddle&#9;null&#9;null&#10;paintins&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintInspection&#10;inspection&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintdeck&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintDeck&#10;paintcard&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintCard&#10;INSP_GAME&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#INSP_GAME&#10;paintplayer&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintPlayer&#10;bottohan&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrentplayerton&#9;null&#9;null&#10;setcu&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayer&#10;bottohand&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrent&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;botohand&#9;null&#9;null&#10;setcurrentpla&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;Bounds&#9;PSI&#9;JAVA://kaz.idiot.GamePanel.Bounds&#10;pickup&#9;PSI&#9;JAVA://kaz.idiot.Game#pickUp&#10;paintfie&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintField&#10;game&#9;FILE&#9;file://C:/Users/kasra/Documents/GitHub/IDEA/Idiot/src/kaz/idiot/Game.java&#10;burn&#9;PSI&#9;JAVA://com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer&#10;controller&#9;PSI&#9;JAVA://kaz.idiot.Controller" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -796,7 +802,7 @@
       <workItem from="1461691846295" duration="355000" />
       <workItem from="1461692231597" duration="55000" />
       <workItem from="1461706286374" duration="571000" />
-      <workItem from="1461708705342" duration="8760000" />
+      <workItem from="1461708705342" duration="12566000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -924,11 +930,18 @@
       <option name="project" value="LOCAL" />
       <updated>1461183117901</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added EPIC Controller GameActions&#10;moved STATE change to EPICMODE and SPECTATING to setCurrentPlayerToNext&#10;fixed EPICMODE graphics&#10;added changeSTATE(PLAYING) to player after picking a bot card in EPICMODE&#10;updated playingCard so it's independent of the Idiot project&#10;">
+      <created>1461718912407</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1461718912407</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236793000" />
+    <option name="totallyTimeSpent" value="240599000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -951,13 +964,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983378" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29221347" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27735645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3066089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22121535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18526544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20735608" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -998,7 +1011,8 @@
     <MESSAGE value="implemented graphics for EPIC MODE. maybe consider card clicking instead of or in addition to button clicking." />
     <MESSAGE value="hopefully clarified post-move Player Actions&#10;" />
     <MESSAGE value="condensed Controller.handleGameAction&#10;undid comments for graphics relating to EPICMODE.&#10;TODO: actually use EPICMODE PROPERLY" />
-    <option name="LAST_COMMIT_MESSAGE" value="condensed Controller.handleGameAction&#10;undid comments for graphics relating to EPICMODE.&#10;TODO: actually use EPICMODE PROPERLY" />
+    <MESSAGE value="added EPIC Controller GameActions&#10;moved STATE change to EPICMODE and SPECTATING to setCurrentPlayerToNext&#10;fixed EPICMODE graphics&#10;added changeSTATE(PLAYING) to player after picking a bot card in EPICMODE&#10;updated playingCard so it's independent of the Idiot project&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added EPIC Controller GameActions&#10;moved STATE change to EPICMODE and SPECTATING to setCurrentPlayerToNext&#10;fixed EPICMODE graphics&#10;added changeSTATE(PLAYING) to player after picking a bot card in EPICMODE&#10;updated playingCard so it's independent of the Idiot project&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1337,80 +1351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-          <folding>
-            <marker date="1461714220251" expanded="false" signature="27:72" placeholder="..." />
-            <marker date="1461714220251" expanded="true" signature="73:113" placeholder="/**...*/" />
-            <marker date="1461714220251" expanded="false" signature="493:504" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="514:520" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="549:560" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="573:579" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="627:637" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="655:661" placeholder=" }" />
-            <marker date="1461714220251" expanded="true" signature="690:861" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="911:1123" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="1155:1387" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="1414:1702" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="1762:2180" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="2215:2864" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="2900:2911" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="2933:2939" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="2972:2983" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3005:3011" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3052:3063" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3090:3096" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3129:3140" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3196:3202" placeholder=" }" />
-            <marker date="1461714220251" expanded="true" signature="3228:3309" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="3345:3356" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3371:3377" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3417:3428" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3441:3447" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3480:3491" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3503:3509" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3547:3558" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3579:3585" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3621:3632" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3663:3669" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3703:3714" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3777:3783" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3819:3830" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="3889:3895" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="3928:3939" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="4020:4026" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="4061:4072" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="4148:4154" placeholder=" }" />
-            <marker date="1461714220251" expanded="true" signature="4197:5306" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="4313:4789" placeholder="" />
-            <marker date="1461714220251" expanded="false" signature="5344:5355" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="5395:5401" placeholder=" }" />
-            <marker date="1461714220251" expanded="false" signature="5453:5464" placeholder=" { " />
-            <marker date="1461714220251" expanded="false" signature="5499:5505" placeholder=" }" />
-            <marker date="1461714220251" expanded="true" signature="5541:5650" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="5676:5773" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="5798:7935" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="5808:6063" placeholder="//..." />
-            <marker date="1461714220251" expanded="true" signature="6507:6573" placeholder="//..." />
-            <marker date="1461714220251" expanded="true" signature="6661:6705" placeholder="//..." />
-            <marker date="1461714220251" expanded="true" signature="7977:8108" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="8186:8942" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="8982:9111" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="9117:10032" placeholder="/**...*/" />
-            <marker date="1461714220251" expanded="false" signature="10083:10486" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="10093:10205" placeholder="//..." />
-            <marker date="1461714220251" expanded="false" signature="10550:10664" placeholder="{...}" />
-            <marker date="1461714220251" expanded="false" signature="10728:14176" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="14182:14285" placeholder="/**...*/" />
-            <marker date="1461714220251" expanded="false" signature="14315:14639" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="14509:14524" placeholder="{...}" />
-            <marker date="1461714220251" expanded="true" signature="14510:14523" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1509,93 +1449,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/playingCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="217" column="43" selection-start-line="217" selection-start-column="43" selection-end-line="217" selection-end-column="43" />
+        <state relative-caret-position="459">
+          <caret line="128" column="47" selection-start-line="128" selection-start-column="47" selection-end-line="128" selection-end-column="47" />
           <folding>
-            <marker date="1461718283329" expanded="false" signature="27:361" placeholder="..." />
-            <marker date="1461718283329" expanded="true" signature="364:404" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="false" signature="417:448" placeholder="/Duplicates/" />
-            <marker date="1461718283329" expanded="true" signature="1137:3235" placeholder="----Bounds----" />
-            <marker date="1461718283329" expanded="false" signature="1301:1312" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="1349:1355" placeholder=" }" />
-            <marker date="1461718283329" expanded="false" signature="1408:1419" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="1455:1461" placeholder=" }" />
-            <marker date="1461718283329" expanded="false" signature="1520:1531" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="1570:1576" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="1602:3213" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="1702:1817" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="1891:2054" placeholder="{...}" />
-            <marker date="1461718283329" expanded="false" signature="2088:2103" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="2163:2173" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="2233:2634" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="2684:3207" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="3292:3915" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="3522:3907" placeholder="{...}" />
-            <marker date="1461718283329" expanded="false" signature="3583:3602" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="3631:3645" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="3921:4036" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="false" signature="4076:4087" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="4133:4139" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="4201:4502" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="4508:20119" placeholder="----Painting methods----" />
-            <marker date="1461718283329" expanded="true" signature="4598:4920" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="4969:5380" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="5386:5719" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="5759:6082" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="6088:6172" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="6218:6394" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="6400:6517" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="6569:6767" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="6815:7272" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="7278:7793" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="7911:8341" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="8347:8456" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="8500:8923" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="8967:9031" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="9078:9283" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="9289:9385" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="9432:12034" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="12103:12180" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="12186:12521" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="12604:12694" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="12700:13154" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="13239:18441" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="18447:18535" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="18579:18940" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="18946:19013" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="19054:19336" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="19342:19409" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="19452:19645" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="19651:19711" placeholder="/**...*/" />
-            <marker date="1461718283329" expanded="true" signature="19751:19965" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="20034:20045" placeholder=" { " />
-            <marker date="1461718283329" expanded="true" signature="20090:20096" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="20125:21068" placeholder="----SIDE stuff----" />
-            <marker date="1461718283329" expanded="true" signature="20182:20786" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="20572:20691" placeholder="{...}" />
-            <marker date="1461718283329" expanded="false" signature="20719:20734" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="20770:20780" placeholder=" }" />
-            <marker date="1461718283329" expanded="true" signature="20827:21046" placeholder="{...}" />
-            <marker date="1461718283329" expanded="true" signature="21074:22001" placeholder="----Interaction methods----" />
-            <marker date="1461718283329" expanded="true" signature="21175:21748" placeholder="{...}" />
-            <marker date="1461718283329" expanded="false" signature="21790:21801" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="21818:21824" placeholder=" }" />
-            <marker date="1461718283329" expanded="false" signature="21859:21870" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="21901:21907" placeholder=" }" />
-            <marker date="1461718283329" expanded="false" signature="21941:21952" placeholder=" { " />
-            <marker date="1461718283329" expanded="false" signature="21972:21978" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="27:165" placeholder="..." />
+            <marker date="1461718436224" expanded="true" signature="167:534" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="true" signature="1755:1965" placeholder="{...}" />
+            <marker date="1461718436224" expanded="true" signature="1971:2033" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="2072:2083" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="2143:2149" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="2155:2237" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="2284:2295" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="2358:2364" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="2370:2412" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="2455:2466" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="2480:2486" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="2492:2596" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="2624:2635" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="2648:2654" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="2660:2942" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="true" signature="2998:3037" placeholder="{...}" />
+            <marker date="1461718436224" expanded="true" signature="3043:3126" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="3154:3165" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="3193:3199" placeholder=" }" />
+            <marker date="1461718436224" expanded="true" signature="3205:3299" placeholder="/**...*/" />
+            <marker date="1461718436224" expanded="false" signature="3327:3338" placeholder=" { " />
+            <marker date="1461718436224" expanded="false" signature="3366:3372" placeholder=" }" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/playingCard.java">
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+        <state relative-caret-position="-194">
+          <caret line="218" column="11" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1461721065781" expanded="false" signature="27:72" placeholder="..." />
+            <marker date="1461721065781" expanded="true" signature="73:113" placeholder="/**...*/" />
+            <marker date="1461721065781" expanded="false" signature="493:504" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="514:520" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="549:560" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="573:579" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="627:637" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="655:661" placeholder=" }" />
+            <marker date="1461721065781" expanded="true" signature="690:861" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="911:1123" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="1155:1387" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="1414:1702" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="1762:2180" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="2215:2864" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="2900:2911" placeholder=" { " />
+            <marker date="1461721065781" expanded="true" signature="2933:2939" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="2972:2983" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3005:3011" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3052:3063" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3090:3096" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3129:3140" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3196:3202" placeholder=" }" />
+            <marker date="1461721065781" expanded="true" signature="3228:3309" placeholder="{...}" />
+            <marker date="1461721065781" expanded="false" signature="3345:3356" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3371:3377" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3417:3428" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3441:3447" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3480:3491" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3503:3509" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3547:3558" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3579:3585" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3621:3632" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3663:3669" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3703:3714" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3777:3783" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3819:3830" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="3889:3895" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="3928:3939" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="4020:4026" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="4061:4072" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="4148:4154" placeholder=" }" />
+            <marker date="1461721065781" expanded="true" signature="4197:5306" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="4313:4789" placeholder="" />
+            <marker date="1461721065781" expanded="false" signature="5344:5355" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="5395:5401" placeholder=" }" />
+            <marker date="1461721065781" expanded="false" signature="5453:5464" placeholder=" { " />
+            <marker date="1461721065781" expanded="false" signature="5499:5505" placeholder=" }" />
+            <marker date="1461721065781" expanded="true" signature="5541:5650" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="5676:5773" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="5798:7947" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="5808:6063" placeholder="//..." />
+            <marker date="1461721065781" expanded="true" signature="6250:6585" placeholder="//..." />
+            <marker date="1461721065781" expanded="true" signature="6673:6717" placeholder="//..." />
+            <marker date="1461721065781" expanded="true" signature="7989:8120" placeholder="{...}" />
+            <marker date="1461721065781" expanded="false" signature="8198:8954" placeholder="{...}" />
+            <marker date="1461721065781" expanded="false" signature="8994:9123" placeholder="{...}" />
+            <marker date="1461721065781" expanded="false" signature="9129:10044" placeholder="/**...*/" />
+            <marker date="1461721065781" expanded="false" signature="10095:10498" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="10105:10217" placeholder="//..." />
+            <marker date="1461721065781" expanded="false" signature="10562:10676" placeholder="{...}" />
+            <marker date="1461721065781" expanded="false" signature="10740:14188" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="14194:14297" placeholder="/**...*/" />
+            <marker date="1461721065781" expanded="false" signature="14327:14651" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="14521:14536" placeholder="{...}" />
+            <marker date="1461721065781" expanded="true" signature="14522:14535" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="236" column="46" selection-start-line="236" selection-start-column="46" selection-end-line="236" selection-end-column="46" />
+          <folding>
+            <marker date="1461722551644" expanded="false" signature="417:448" placeholder="/Duplicates/" />
           </folding>
         </state>
       </provider>
