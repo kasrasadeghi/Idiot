@@ -49,14 +49,17 @@ public class Game {
     }
 
     public boolean allReady() {
-        int counter = 0;
-        for (Player p : players)
-            if (!p.isReady())
-                counter++;
+        int notReady = (int)players.stream().filter(p -> !p.isReady()).count();
         setCurrentPlayerToNext();
-        if (counter == 0)
+        if (notReady == 0)
             start();
-        return counter == 0;
+        return notReady == 0;
+    }
+
+    public long playingCount() {
+        return players.stream()
+                .filter(p -> p.getState() == STATE.PLAYING)
+                .count();
     }
 
     private void start() {
@@ -162,6 +165,8 @@ public class Game {
 
     public void setCurrentPlayerToNext() {
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+        Player current = getCurrentPlayer();
+        if (current.isEmpty()) current.setState(STATE.SPECTATING);
         //region
         //#devmode TODO: temp change
         Main.activeFrame.setVisible(false);
@@ -179,11 +184,27 @@ public class Game {
             return;
         }
         //make the next player enter epic mode if they don't have top cards or hands cards.
-        if (getCurrentPlayer().getHand().isEmpty() && getCurrentPlayer().getTop().isEmpty()) {
-            if (getCurrentPlayer().getBot().isEmpty())
-                getCurrentPlayer().setState(STATE.SPECTATING);
-            else getCurrentPlayer().setState(STATE.EPICMODE);
+        if (current.isEpic())
+            current.setState(STATE.EPICMODE);
+    }
+
+    public void setCurrentPlayerToPlayAgain() {
+        Player current = getCurrentPlayer();
+        if (current.isEmpty()) current.setState(STATE.SPECTATING);
+        //region
+        //#devmode TODO: temp change
+        Main.activeFrame.setVisible(false);
+        Main.activeFrame = Main.frames[currentPlayerNumber];
+        Main.activeFrame.setVisible(true);
+        //endregion temp change
+
+        if (getCurrentPlayer().getState() == STATE.SPECTATING) {
+            setCurrentPlayerToNext();
+            return;
         }
+        //make the next player enter epic mode if they don't have top cards or hands cards.
+        if (current.isEpic())
+            current.setState(STATE.EPICMODE);
     }
 
     public Player getCurrentPlayer() {
@@ -254,6 +275,7 @@ public class Game {
         }
         if (!again)
             setCurrentPlayerToNext();
+        else setCurrentPlayerToPlayAgain();
     }
 
     private boolean fourCardBurnCheck() {

@@ -14,9 +14,9 @@ public class Controller {
 
     //      Kasra's understanding of MVC, 02.20.2016
     //The model contains the information, presenting the same information to all players.
-    //     ^ updates                /-> other models                                |
-    //     |                        |                                               | information
-    //The controller updates everyone's game depending on the user's input.         |
+    //     ^ updates               /-> other models - - - - - - - - - - - - - - -\  |
+    //     |                       |                                              \ | information
+    //The controller updates everyone's game depending on the user's input.        \|
     //     ^ interaction (player unique)                                            | interpretation
     //     |                                                                        v
     //The view interacts with the player, showing what's in the game, but never directly changing what's in the game.
@@ -90,7 +90,7 @@ public class Controller {
             else if (!box.equals("none")) {
                 try {
                     int boxVal = Integer.parseInt(box);
-                    if ( boxVal == playerNumber && isItYourTurn) {
+                    if ( boxVal == playerNumber) {
                         if (!card.equals("none")) {
                             int cardVal = Integer.parseInt(card);
                             handleCardSelection(cardVal);
