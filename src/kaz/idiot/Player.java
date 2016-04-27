@@ -173,6 +173,8 @@ public class Player {
     }
 
     public void botToHand(int i) {
+        assert state == STATE.EPICMODE;
         draw(bot.set(i, CARD.NULL_CARD));
+        state = STATE.PLAYING;
     }
 }

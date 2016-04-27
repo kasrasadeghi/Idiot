@@ -25,11 +25,12 @@ class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
     private int startWidth, startHeight;
-    private int inspection = -1;
+    private int inspection = INSP_GAME;
 
     public static final int INSP_GAME = -1;
     public static  final int INSP_MIDDLE = -2;
     //#endgame TODO: Implement middle inspection
+    //#server TODO: Make chat and eventLog
     public static final int INSP_CHAT = -3;
     public static final int INSP_EVENT = -4;
 
@@ -193,8 +194,6 @@ class GamePanel extends JPanel {
 //        paintAllSides(g);
 
         bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
-        bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
-        bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
 
         paintPlayers(g);
         paintDeck(g);
@@ -215,6 +214,9 @@ class GamePanel extends JPanel {
     private void paintInspection(Graphics g) {
         if (inspection > -1)
             paintPlayerInspection(g);
+        if (inspection == INSP_MIDDLE) {
+            //#endgame TODO: make switch statement
+        }
     }
 
     /**
@@ -447,10 +449,12 @@ class GamePanel extends JPanel {
         }
         List<CARD> bot = p.getBot();
         for (int i = 0; i < bot.size(); ++i) {
-            if (p.getState() != STATE.EPICMODE)
-                paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
-            else
-                paintCard(og, CARD.NULL_CARD, otlx + ow/3 * i - CARD_X/2 + ow/6, otly + oh/2 - CARD_Y/2);
+            if (bot.get(i) != CARD.NULL_CARD) {
+                if (p.getState() != STATE.EPICMODE)
+                    paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly);
+                else
+                    paintCard(og, CARD.NULL_CARD, otlx + ow / 3 * i - CARD_X / 2 + ow / 6, otly + oh / 2 - CARD_Y / 2);
+            }
         }
         if (p.getState() == STATE.EPICMODE)
         {
@@ -461,13 +465,16 @@ class GamePanel extends JPanel {
             int bh = getHeight()/30;
             int i = 0;
             int btlx = otlx + ow/6 - bw/2 + ow/3 * i;
-            paintClickableButton(og, "LEFT", btlx, btly, bw, bh, back, front);
+            if (bot.get(0) != CARD.NULL_CARD)
+                paintClickableButton(og, "LEFT", btlx, btly, bw, bh, back, front);
             i = 1;
             btlx = otlx + ow/6 - bw/2 + ow/3 * i;
-            paintClickableButton(og, "CENTER", btlx, btly, bw, bh, back, front);
+            if (bot.get(1) != CARD.NULL_CARD)
+                paintClickableButton(og, "CENTER", btlx, btly, bw, bh, back, front);
             i = 2;
             btlx = otlx + ow/6 - bw/2 + ow/3 * i;
-            paintClickableButton(og, "RIGHT", btlx, btly, bw, bh, back, front);
+            if (bot.get(2) != CARD.NULL_CARD)
+                paintClickableButton(og, "RIGHT", btlx, btly, bw, bh, back, front);
         }
 
         //paint top cards

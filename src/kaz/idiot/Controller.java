@@ -54,7 +54,7 @@ public class Controller {
             }
         }
 
-        //#codeclean TODO: reorganize case matching below
+        //#after TODO: reorganize case matching below
 
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
@@ -131,14 +131,23 @@ public class Controller {
         switch (action) {
             case "PLAY":
                 game.play();
-                for (GamePanel gamePanel : Main.gp)
-                    gamePanel.repaint();
                 break;
             case "PICKUP":
                 game.pickUp();
-                for (GamePanel gamePanel : Main.gp)
-                    gamePanel.repaint();
+
+                break;
+            case "LEFT":
+                me.botToHand(0);
+                break;
+            case "CENTER":
+                me.botToHand(1);
+                break;
+            case "RIGHT":
+                me.botToHand(2);
+                break;
         }
+        for (GamePanel gamePanel : Main.gp)
+            gamePanel.repaint();
     }
 
     private void handleSetupAction(String action) {

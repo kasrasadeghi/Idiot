@@ -29,7 +29,7 @@ public class StartFrame extends JFrame{
         setContentPane(rootPanel);
         rootPanel.setBackground(bg);
 
-        //#gui TODO: add the "start" subtitle
+        //#server TODO: add the "start" subtitle
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

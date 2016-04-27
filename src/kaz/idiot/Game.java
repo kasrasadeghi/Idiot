@@ -167,18 +167,23 @@ public class Game {
         Main.activeFrame.setVisible(false);
         Main.activeFrame = Main.frames[currentPlayerNumber];
         Main.activeFrame.setVisible(true);
-        //endregion temp change
-        //make the next player enter epic mode if they don't have top cards or hands cards.
-        if (getCurrentPlayer().getHand().isEmpty() && getCurrentPlayer().getTop().isEmpty())
-            getCurrentPlayer().setState(STATE.EPICMODE);
-
-        //#endgame TODO: winning
-        // it sees if they are all out of cards and then it sets the player to STATE.spectating
         //#devmode TODO: make a dev mode kinda thing that's separate from this nonsense.
         //be able to discard cards.
         //be able to chose current player.
         //be able to get a chosen card.
         //be able to set a player's state.
+        //endregion temp change
+
+        if (getCurrentPlayer().getState() == STATE.SPECTATING) {
+            setCurrentPlayerToNext();
+            return;
+        }
+        //make the next player enter epic mode if they don't have top cards or hands cards.
+        if (getCurrentPlayer().getHand().isEmpty() && getCurrentPlayer().getTop().isEmpty()) {
+            if (getCurrentPlayer().getBot().isEmpty())
+                getCurrentPlayer().setState(STATE.SPECTATING);
+            else getCurrentPlayer().setState(STATE.EPICMODE);
+        }
     }
 
     public Player getCurrentPlayer() {
@@ -227,9 +232,6 @@ public class Game {
         else if (current.getHand().isEmpty()) { //if the hand is empty
             if (!current.getTop().isEmpty())    //and the top is NOT empty
                 current.topToHand();            //move the top to the hand
-            else if (!current.getBot().isEmpty())
-                current.setState(STATE.EPICMODE);
-            else current.setState(STATE.SPECTATING);
         }
 
         //Field Actions
