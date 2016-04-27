@@ -99,6 +99,8 @@ public class Player {
         return hand.isEmpty() && top.isEmpty() && !bot.isEmpty();
     }
 
+    public boolean isEmpty() { return hand.isEmpty() && top.isEmpty() && bot.isEmpty(); }
+
     public String getName() {
         return name;
     }
