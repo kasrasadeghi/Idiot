@@ -164,10 +164,16 @@ public class Game {
     }
 
     public void setCurrentPlayerToNext() {
+        //change the player, then player to play
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+        setPlayerToPlay();
+    }
+
+    public void setPlayerToPlay() {
         Player current = getCurrentPlayer();
         if (current.isEmpty()) current.setState(STATE.SPECTATING);
-        //region
+        //#endgame TODO: check end of game (playingCount == 1)
+        //region ----devmode
         //#devmode TODO: temp change
         Main.activeFrame.setVisible(false);
         Main.activeFrame = Main.frames[currentPlayerNumber];
@@ -177,25 +183,6 @@ public class Game {
         //be able to chose current player.
         //be able to get a chosen card.
         //be able to set a player's state.
-        //endregion temp change
-
-        if (getCurrentPlayer().getState() == STATE.SPECTATING) {
-            setCurrentPlayerToNext();
-            return;
-        }
-        //make the next player enter epic mode if they don't have top cards or hands cards.
-        if (current.isEpic())
-            current.setState(STATE.EPICMODE);
-    }
-
-    public void setCurrentPlayerToPlayAgain() {
-        Player current = getCurrentPlayer();
-        if (current.isEmpty()) current.setState(STATE.SPECTATING);
-        //region
-        //#devmode TODO: temp change
-        Main.activeFrame.setVisible(false);
-        Main.activeFrame = Main.frames[currentPlayerNumber];
-        Main.activeFrame.setVisible(true);
         //endregion temp change
 
         if (getCurrentPlayer().getState() == STATE.SPECTATING) {
@@ -275,7 +262,7 @@ public class Game {
         }
         if (!again)
             setCurrentPlayerToNext();
-        else setCurrentPlayerToPlayAgain();
+        else setPlayerToPlay();
     }
 
     private boolean fourCardBurnCheck() {
