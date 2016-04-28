@@ -16,7 +16,7 @@ import static kaz.idiot.Main.*;
 
 
 /**
- * Created by kasra on 2/6/2016.
+ * Created by Kasra Sadeghi on 2/6/2016.
  */
 
 //THE VIEW
@@ -28,7 +28,7 @@ class GamePanel extends JPanel {
     private int inspection = INSP_GAME;
 
     public static final int INSP_GAME = -1;
-    public static  final int INSP_MIDDLE = -2;
+    public static final int INSP_MIDDLE = -2;
     //#endgame TODO: Implement middle inspection
     //#server TODO: Make chat and eventLog
     public static final int INSP_CHAT = -3;
@@ -203,7 +203,35 @@ class GamePanel extends JPanel {
         paintGameButtons(g);
         if(inspection != -1)
             paintInspection(g);
+        if(game.checkRoundOver())
+            paintGameOver(g);
+    }
 
+    private void paintGameOver(Graphics g) {
+        int w = getWidth();
+        int h = getHeight();
+        g.setColor(Color.RED);
+        g.fillRect(w/4, h/4, w/2, h/2);
+        g.setColor(Color.WHITE);
+        Font oldFont = g.getFont();
+        g.setFont(mainNameFont);
+        String s = "GAME OVER";
+        int tlx = w/2 - SwingUtilities.computeStringWidth(g.getFontMetrics(), s)/2;
+        int tly = h/4 + h/6 + g.getFontMetrics().getHeight()*2/7;
+        g.drawString(s, tlx, tly);
+        int margin = w/10;
+        int buttonHeight = h/12;
+        int buttonWidth = w/6;
+        int ltlx = w/2 - margin/2 - buttonWidth;
+        int btly = h/4 + h/3 - buttonHeight/2;
+        int rtlx = w/2 + margin/2;
+        g.setFont(oldFont);
+        paintClickableButton(g, "HOST_REMATCH",
+                ltlx, btly, buttonWidth, buttonHeight,
+                bg, Color.BLACK);
+        paintClickableButton(g, "RETURN_TO_MAIN_MENU",
+                rtlx, btly, buttonWidth, buttonHeight,
+                bg, Color.BLACK);
     }
 
     /**
@@ -284,6 +312,7 @@ class GamePanel extends JPanel {
         g.drawRect(tlx, tly, w, h);
         Bounds bounds = new Bounds(tlx, tly, w, h, getWidth(), getHeight());
         addActionToBounds(bounds, s);
+        s = s.replace('_',' ');
         tlx = tlx + w/2 - SwingUtilities.computeStringWidth(g.getFontMetrics(), s)/2;
         tly = tly + h/2 + g.getFontMetrics().getHeight()*2/7;
         g.drawString(s, tlx, tly);

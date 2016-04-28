@@ -35,8 +35,7 @@ public class Main {
         //in the final version of the game, delete the JFrame array and make it present only the controlling player's JFrame.
         //also need to only have one GamePanel and one Controller, so they can interface with the network and the Game.
 
-//        SwingUtilities.invokeLater(() -> frame = new StartFrame());
-//        SwingUtilities.invokeLater(() -> frame = new IdiotFrame());
+//        SwingUtilities.invokeLater(() -> activeFrame = StartFrame.instance());
         for (int i = 0; i < playerCount; ++i) {
             frames[i] = new IdiotFrame(i);
         }

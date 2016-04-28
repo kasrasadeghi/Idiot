@@ -4,7 +4,7 @@ import java.util.*;
 
 import static kaz.idiot.CARD.*;
 /**
- * Created by kasra on 2/6/2016.
+ * Created by Kasra Sadeghi on 2/6/2016.
  */
 
 // THE MODEL
@@ -48,18 +48,25 @@ public class Game {
         dealSetupCards(playerNames);
     }
 
+    private void dealSetupCards(List<String> playerNames) {
+        for (int i = 0; i < playerNames.size()/5 + 1; ++i)
+            deck.addAll(fullDeck());
+        for (int i = 0; i < playerNames.size(); ++i) {
+            String name = playerNames.get(i);
+            List<CARD> stack9 = new LinkedList<>();
+            for (int j = 0; j < 9; j++) {
+                stack9.add(drawFromDeck());
+            }
+            players.add(new Player(stack9, name));
+        }
+    }
+
     public boolean allReady() {
         int notReady = (int)players.stream().filter(p -> !p.isReady()).count();
         setCurrentPlayerToNext();
         if (notReady == 0)
             start();
         return notReady == 0;
-    }
-
-    public long playingCount() {
-        return players.stream()
-                .filter(p -> p.getState() == STATE.PLAYING)
-                .count();
     }
 
     private void start() {
@@ -72,20 +79,6 @@ public class Game {
         Main.activeFrame.setVisible(false);
         Main.activeFrame = Main.frames[currentPlayerNumber];
         Main.activeFrame.setVisible(true);
-    }
-
-    private void dealSetupCards(List<String> playerNames) {
-        for (int i = 0; i < playerNames.size()/5 + 1; ++i)
-            deck.addAll(fullDeck());
-        for (int i = 0; i < playerNames.size(); ++i) {
-            String name = playerNames.get(i);
-            List<CARD> stack9 = new LinkedList<>();
-            for (int j = 0; j < 9; j++) {
-                stack9.add(drawFromDeck());
-            }
-
-            players.add(new Player(stack9, name));
-        }
     }
 
     private void initTurnOrder() {
@@ -228,7 +221,7 @@ public class Game {
 
         //  Implement play code
         //add selected cards to the field.
-        List<CARD> lastPlay = current.play();
+        List<CARD> lastPlay = current.playSelectedCards();
         field.addAll(lastPlay);
 
         //post-move logic.
@@ -437,9 +430,18 @@ public class Game {
         for( Player.HandCARD handCARD : players.get(currentPlayerNumber).getHand()) {
             CARD card = handCARD.card;
             if (checkField(field.size() - 1, new ArrayList<CARD>() {{ add(card);}} ))
-                //what if field.size() == 0;
                 return true;
         }
         return false;
+    }
+
+    public boolean checkRoundOver() {
+        //if there is only one player not spectating (one player still playing),
+        // then return true
+        // only one is less than 2, but maybe two players can win at the same time?
+        // that's not really supposed to happen, but this is logically equivalent
+        return players.stream()
+                .filter(p -> p.getState() != STATE.SPECTATING)
+                .count() /*== 1*/ < 2;
     }
 }

@@ -160,7 +160,7 @@ public class Player {
         }
     }
 
-    public List<CARD> play() {
+    public List<CARD> playSelectedCards() {
         List<CARD> output = new LinkedList<>();
         for (int i = hand.size() - 1; i > -1; --i) {
             HandCARD hc = hand.get(i);

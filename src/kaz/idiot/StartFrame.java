@@ -22,8 +22,10 @@ public class StartFrame extends JFrame{
     private JPanel titlePanel;
     private JPanel bottomPanel;
     private final Color bg = Color.WHITE;
+    private static StartFrame instance = new StartFrame();
 
-    public StartFrame() {
+    public static StartFrame instance() { return instance;}
+    private StartFrame() {
         super("Start");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(rootPanel);

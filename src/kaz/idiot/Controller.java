@@ -128,22 +128,32 @@ public class Controller {
 
     private void handleGameAction(String action) {
         if (!isItYourTurn) return;
-        switch (action) {
-            case "PLAY":
-                game.play();
+        if (!game.checkRoundOver())
+            switch (action) {
+                case "PLAY":
+                    game.play();
+                    break;
+                case "PICKUP":
+                    game.pickUp();
+                    break;
+                case "LEFT":
+                    me.botToHand(0);
+                    break;
+                case "CENTER":
+                    me.botToHand(1);
+                    break;
+                case "RIGHT":
+                    me.botToHand(2);
+                    break;
+            }
+        else switch (action) {
+            case "HOST_REMATCH":
+                //#server TODO: make it go to the play menu
+                Main.activeFrame = StartFrame.instance();
                 break;
-            case "PICKUP":
-                game.pickUp();
-
-                break;
-            case "LEFT":
-                me.botToHand(0);
-                break;
-            case "CENTER":
-                me.botToHand(1);
-                break;
-            case "RIGHT":
-                me.botToHand(2);
+            case "RETURN_TO_MAIN_MENU":
+                //#server TODO: make it go to the main menu
+                Main.activeFrame = StartFrame.instance();
                 break;
         }
         for (GamePanel gamePanel : Main.gp)
