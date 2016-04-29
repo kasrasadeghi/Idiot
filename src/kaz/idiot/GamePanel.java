@@ -247,11 +247,27 @@ class GamePanel extends JPanel {
             case INSP_MIDDLE:
                 paintMiddleInspection(g);
                 break;
+            case INSP_CHAT:
+                paintChatInspection(g);
+                break;
+            case INSP_EVENT:
+                paintEventInspection(g);
+                break;
             default:
                 paintPlayerInspection(g);
                 break;
         }
     }
+
+
+    private void paintEventInspection(Graphics g) {
+        //#devmode TODO: console
+    }
+
+    private void paintChatInspection(Graphics g) {
+        //#server TODO: chat
+    }
+
 
     private void paintMiddleInspection(Graphics g) {
         g.setColor(overGrey);
