@@ -85,6 +85,7 @@
         </constraints>
         <properties>
           <columns value="10"/>
+          <text value="devmode"/>
         </properties>
       </component>
       <vspacer id="9c29">

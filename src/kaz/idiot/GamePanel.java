@@ -29,14 +29,14 @@ class GamePanel extends JPanel {
 
     public static final int INSP_GAME = -1;
     public static final int INSP_MIDDLE = -2;
-    //#server TODO: Make chat and eventLog
-    public static final int INSP_CHAT = -3;
-    public static final int INSP_EVENT = -4;
+    public static final int INSP_EVENT = -3;
+    public static final int INSP_CHAT = -4;
 
-    private Font mainNameFont = new Font("SansSerif", Font.PLAIN, 30);
-    private Font nameFont = new Font("SansSerif", Font.PLAIN, 22);
+    private Font mainNameFont, nameFont;
     private Color overGrey = new Color(0, 0, 0, 120);
     private Color bg = new Color(255, 255, 255);
+
+    JPanel chatPanel, eventLogPanel;
 
 
     //<editor-fold desc="----Bounds----">
@@ -116,6 +116,13 @@ class GamePanel extends JPanel {
 
         setMinimumSize(new Dimension(startWidth, startHeight));
 
+        chatPanel = new ChatPanel();
+        eventLogPanel = new EventLogPanel();
+        chatPanel.setVisible(false);
+        eventLogPanel.setVisible(false);
+        add(chatPanel);
+        add(eventLogPanel);
+
         addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent mouseEvent) {
                 handleMouseEvent(mouseEvent);
@@ -125,6 +132,39 @@ class GamePanel extends JPanel {
             public void mouseEntered(MouseEvent mouseEvent) {}
             public void mouseExited(MouseEvent mouseEvent) {}
         });
+    }
+
+    private class ChatPanel extends JPanel {
+        public ChatPanel() {
+            //#server TODO: once done with a chat panel or a console or whatever, see if read user input "\n" spawns a new line
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.setColor(bg);
+            paintInspection(g);
+        }
+    }
+
+    private class EventLogPanel extends JPanel {
+        private EventLogPanel() {
+            JTextArea chatArea = new JTextArea();
+            JScrollPane scrollPane = new JScrollPane(chatArea);
+            add(scrollPane);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.setColor(bg);
+//            if(inspection != -1) {
+//                g.setColor(overGrey);
+//                g.fillRect(0, 0, getWidth(), getHeight());
+//            }
+            //#server TODO: work on graphics for the event log
+            paintInspection(g);
+        }
     }
 
     /**
@@ -138,6 +178,10 @@ class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        mainNameFont = new Font("SansSerif", Font.PLAIN, getHeight()/36); // 1440/48 = 30, and 30 is the default size.
+        nameFont = new Font("SansSerif", Font.BOLD, getHeight()/60); // 1440/60 = 24, and 24 is the default size.
+
         setBackground(bg);
         bounds2String.clear();
         switch (game.getState()) {
@@ -148,7 +192,6 @@ class GamePanel extends JPanel {
                 paintGame(g);
                 break;
         }
-
     }
 
     // <editor-fold desc="----Painting methods----">
@@ -193,6 +236,13 @@ class GamePanel extends JPanel {
 //        paintAllSides(g);
 
         bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
+        bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
+        bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
+
+        chatPanel.setVisible(true);
+        eventLogPanel.setVisible(true);
+        chatPanel.setBounds(sideRect(SIDE.CHAT));
+        eventLogPanel.setBounds(sideRect(SIDE.EVENT));
 
         paintPlayers(g);
         paintDeck(g);
@@ -260,7 +310,7 @@ class GamePanel extends JPanel {
 
 
     private void paintEventInspection(Graphics g) {
-        //#devmode TODO: console
+        //#devmode 1 TODO: console
     }
 
     private void paintChatInspection(Graphics g) {
@@ -302,7 +352,8 @@ class GamePanel extends JPanel {
         int tly = (int) ((SIDE.BOTTOM.tly)*getHeight());
         int w = getWidth()/20;
         int h = getHeight()/30;
-        tlx -= w;
+        tly += 1;
+        tlx -= w + 3;
         if (game.canPlay())
             paintClickableButton(g, "PLAY", tlx, tly, w, h, back, front);
         else paintClickableButton(g, "PICKUP", tlx, tly, w, h, back, front);
@@ -357,6 +408,8 @@ class GamePanel extends JPanel {
 
     private void paintMainPlayer(Graphics g) {
         Rectangle bounding = sideRect(SIDE.BOTTOM);
+        bounding.x += 1;
+        bounding.width -= 3;
         Bounds bounds = SIDE.BOTTOM.getBounds();
         paintPlayer(g, playerNumber, bounding);
         addPlayerToBounds(bounds, playerNumber);
