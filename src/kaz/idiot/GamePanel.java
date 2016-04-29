@@ -29,7 +29,6 @@ class GamePanel extends JPanel {
 
     public static final int INSP_GAME = -1;
     public static final int INSP_MIDDLE = -2;
-    //#endgame TODO: Implement middle inspection
     //#server TODO: Make chat and eventLog
     public static final int INSP_CHAT = -3;
     public static final int INSP_EVENT = -4;

@@ -26,6 +26,7 @@ public class Game {
         return state;
     }
 
+    //region ---- Game Initialization and Reset ----
     public Game(ArrayList<String> playerNames){
         init(playerNames);
     }
@@ -99,6 +100,9 @@ public class Game {
         rotatingRight = CARD.getComp().compare(left.getLeastInHand(), right.getLeastInHand()) > 0;
     }
 
+    //endregion
+
+    //region ---- Player Handling Methods ----
     public Player getPlayer(int i) {
         return players.get(i);
     }
@@ -107,53 +111,24 @@ public class Game {
         return players.size();
     }
 
-    public int getCurrentPlayerNumber() {
-        return currentPlayerNumber;
+    public Player getRightPlayer() {
+        return getPlayer((currentPlayerNumber + 1)%players.size());
     }
 
-    private CARD drawFromDeck() {
-        return deck.remove((int) (Math.random() * deck.size()));
-    }
-
-    private void burn() {
-        while (!field.isEmpty())
-            discard.add(field.remove());
-    }
-
-    public List<CARD> getDiscard() {
-        return discard;
-    }
-
-    public LinkedList<CARD> getField() {
-        return field;
-    }
-
-    public List<CARD> getDeck() {
-        return deck;
-    }
-
-    public boolean isRotatingRight() {
-        return rotatingRight;
-    }
-
-    public void reverseTurnOrder() {
-        rotatingRight = !rotatingRight;
+    public Player getLeftPlayer() {
+        return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
     }
 
     public void setRightPlayer() {
         currentPlayerNumber = (currentPlayerNumber + 1)%players.size();
     }
 
-    public Player getRightPlayer() {
-        return getPlayer((currentPlayerNumber + 1)%players.size());
-    }
-
     public void setLeftPlayer() {
         currentPlayerNumber = (currentPlayerNumber  + players.size() - 1)%players.size();
     }
 
-    public Player getLeftPlayer() {
-        return getPlayer((currentPlayerNumber + players.size() - 1)%players.size());
+    public int getCurrentPlayerNumber() {
+        return currentPlayerNumber;
     }
 
     public void setCurrentPlayerToNext() {
@@ -165,7 +140,6 @@ public class Game {
     public void setPlayerToPlay() {
         Player current = getCurrentPlayer();
         if (current.isEmpty()) current.setState(STATE.SPECTATING);
-        //#endgame TODO: check end of game (playingCount == 1)
         //region ----devmode
         //#devmode TODO: temp change
         Main.activeFrame.setVisible(false);
@@ -195,13 +169,87 @@ public class Game {
         currentPlayerNumber = playerNumber;
     }
 
-    public Player getNextPlayer() {
-        return getPlayer((currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size());
+    //endregion
+
+    //region ---- Game Interactions ----
+
+    public List<CARD> getDiscard() {
+        return discard;
     }
+
+    public LinkedList<CARD> getField() {
+        return field;
+    }
+
+    public List<CARD> getDeck() {
+        return deck;
+    }
+
+    public boolean isRotatingRight() {
+        return rotatingRight;
+    }
+
+    //endregion
+
+    //region ---- Game Actions ----
 
     public void pickUp(){
         players.get(currentPlayerNumber).pickUp(field);
         setCurrentPlayerToNext();
+    }
+
+    private CARD drawFromDeck() {
+        return deck.remove((int) (Math.random() * deck.size()));
+    }
+
+    public void reverseTurnOrder() {
+        rotatingRight = !rotatingRight;
+    }
+
+    private boolean fourCardBurnCheck() {
+        return field.size() >= 4 && fourCardBurnDig(field.size() - 1, 0, field.getLast().getRank());
+    }
+
+    private boolean fourCardBurnDig(int index, int count, String rankCheck) {
+        if (count == 4) {
+            return true;
+        }
+        if (index < 0) {
+            return false;
+        }
+        String rank = field.get(index).getRank();
+        if (rank.equals(rankCheck)) {
+            return fourCardBurnDig(index - 1, count + 1, rankCheck);
+        } else {
+            switch (field.get(index)) {
+                //if the card is a black two or a 7, then it's invisible, so we can dig further.
+                case SPADE_2:
+                case CLUB_2:
+                case HEART_7:
+                case DIAMOND_7:
+                case SPADE_7:
+                case CLUB_7:
+                    return fourCardBurnDig(index - 1, count, rankCheck);
+                default: return false;
+            }
+        }
+    }
+
+    private void burn() {
+        while (!field.isEmpty())
+            discard.add(field.remove());
+    }
+
+    /**
+     * @return true when current player has a card in hand that can be played to the field.
+     */
+    public boolean canPlay() {
+        for( Player.HandCARD handCARD : players.get(currentPlayerNumber).getHand()) {
+            CARD card = handCARD.card;
+            if (checkField(field.size() - 1, new ArrayList<CARD>() {{ add(card);}} ))
+                return true;
+        }
+        return false;
     }
 
     public void play() {
@@ -256,35 +304,6 @@ public class Game {
         if (!again)
             setCurrentPlayerToNext();
         else setPlayerToPlay();
-    }
-
-    private boolean fourCardBurnCheck() {
-        return field.size() >= 4 && fourCardBurnDig(field.size() - 1, 0, field.getLast().getRank());
-    }
-
-    private boolean fourCardBurnDig(int index, int count, String rankCheck) {
-        if (count == 4) {
-            return true;
-        }
-        if (index < 0) {
-            return false;
-        }
-        String rank = field.get(index).getRank();
-        if (rank.equals(rankCheck)) {
-            return fourCardBurnDig(index - 1, count + 1, rankCheck);
-        } else {
-            switch (field.get(index)) {
-                //if the card is a black two or a 7, then it's invisible, so we can dig further.
-                case SPADE_2:
-                case CLUB_2:
-                case HEART_7:
-                case DIAMOND_7:
-                case SPADE_7:
-                case CLUB_7:
-                    return fourCardBurnDig(index - 1, count, rankCheck);
-                default: return false;
-            }
-        }
     }
 
     public boolean checkCurrentPlay() {
@@ -423,18 +442,6 @@ public class Game {
         return null;
     }
 
-    /**
-     * @return true when current player has a card in hand that can be played to the field.
-     */
-    public boolean canPlay() {
-        for( Player.HandCARD handCARD : players.get(currentPlayerNumber).getHand()) {
-            CARD card = handCARD.card;
-            if (checkField(field.size() - 1, new ArrayList<CARD>() {{ add(card);}} ))
-                return true;
-        }
-        return false;
-    }
-
     public boolean checkRoundOver() {
         //if there is only one player not spectating (one player still playing),
         // then return true
@@ -444,4 +451,7 @@ public class Game {
                 .filter(p -> p.getState() != STATE.SPECTATING)
                 .count() /*== 1*/ < 2;
     }
+
+    //endregion
+
 }
