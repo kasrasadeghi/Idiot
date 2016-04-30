@@ -36,7 +36,8 @@ class GamePanel extends JPanel {
     private Color overGrey = new Color(0, 0, 0, 120);
     private Color bg = new Color(255, 255, 255);
 
-    JPanel chatPanel, eventLogPanel;
+    private ChatPanel chatPanel;
+    private EventLogPanel eventLogPanel;
 
 
     //<editor-fold desc="----Bounds----">
@@ -148,16 +149,40 @@ class GamePanel extends JPanel {
     }
 
     private class EventLogPanel extends JPanel {
+        private JScrollPane scrollPane;
+        private JTextArea eventLog;
         private EventLogPanel() {
-            JTextArea chatArea = new JTextArea();
-            JScrollPane scrollPane = new JScrollPane(chatArea);
+            setBackground(bg);
+            setBorder(null);
+
+
+            eventLog = new JTextArea();
+            eventLog.setEditable(false);
+
+            eventLog.setBackground(bg);
+            eventLog.setBorder(BorderFactory.createTitledBorder("Event Log"));
+            eventLog.setText("Game Start! \n");
+
+            scrollPane = new JScrollPane(eventLog);
+            resizeScrollPane();
+            scrollPane.setBackground(bg);
             add(scrollPane);
+        }
+
+        public void resizeScrollPane() {
+            eventLog.setMargin(new Insets(0, 0, 0, 0));
+            scrollPane.setBounds(0, 0, this.getWidth(), this.getHeight());
+            eventLog.setBounds(0, 0, this.getWidth(), this.getHeight());
+        }
+
+        public void println(String text) {
+            eventLog.append(text + "\n");
+            eventLog.setCaretPosition(eventLog.getDocument().getLength());
         }
 
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.setColor(bg);
             //#server TODO: work on graphics for the event log
             paintInspection(g);
         }
@@ -185,9 +210,24 @@ class GamePanel extends JPanel {
                 paintSetup(g);
                 break;
             case PLAYING:
+                updatePanels();
                 paintGame(g);
                 break;
         }
+    }
+
+//    private int counter;
+    private void updatePanels() {
+        eventLogPanel.resizeScrollPane();
+        bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
+        bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
+        bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
+
+        chatPanel.setVisible(true);
+        eventLogPanel.setVisible(true);
+        chatPanel.setBounds(sideRect(SIDE.CHAT));
+        eventLogPanel.setBounds(sideRect(SIDE.EVENT));
+//        eventLogPanel.println(counter++ + "");
     }
 
     // <editor-fold desc="----Painting methods----">
@@ -218,6 +258,7 @@ class GamePanel extends JPanel {
     /**
      * Adds the middle, the chat area, and the event log to the bounds HashMap.
      * Then paints the following:
+     *      the panels
      *      players
      *      deck
      *      field
@@ -230,15 +271,6 @@ class GamePanel extends JPanel {
      */
     private void paintGame(Graphics g) {
 //        paintAllSides(g);
-
-        bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
-        bounds2String.put(SIDE.CHAT.getBounds(), "box " + INSP_CHAT);
-        bounds2String.put(SIDE.EVENT.getBounds(), "box " + INSP_EVENT);
-
-        chatPanel.setVisible(true);
-        eventLogPanel.setVisible(true);
-        chatPanel.setBounds(sideRect(SIDE.CHAT));
-        eventLogPanel.setBounds(sideRect(SIDE.EVENT));
 
         paintPlayers(g);
         paintDeck(g);
