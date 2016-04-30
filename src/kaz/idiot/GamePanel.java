@@ -158,10 +158,6 @@ class GamePanel extends JPanel {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.setColor(bg);
-//            if(inspection != -1) {
-//                g.setColor(overGrey);
-//                g.fillRect(0, 0, getWidth(), getHeight());
-//            }
             //#server TODO: work on graphics for the event log
             paintInspection(g);
         }
