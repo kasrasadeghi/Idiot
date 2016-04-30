@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="added endgame circumstances:&#10; - added endgame gameActions to the Controller&#10; - added checkRoundOver to Game&#10; - added paintGameOver to GamePanel&#10; - renamed player play() -&gt; playSelectedCards()&#10;  - fixed StartFrame to be a singleton">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" />
+    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
     </list>
     <ignored path="Idiot.iws" />
@@ -34,12 +34,22 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="794" column="54" selection-start-line="794" selection-start-column="54" selection-end-line="794" selection-end-column="54" />
+            <state relative-caret-position="-1224">
+              <caret line="230" column="16" selection-start-line="230" selection-start-column="16" selection-end-line="230" selection-end-column="16" />
               <folding>
-                <element signature="class#Bounds#0;class#GamePanel#0" expanded="false" />
-                <marker date="1461987180823" expanded="false" signature="425:456" placeholder="/Duplicates/" />
+                <element signature="e#7077#7078#0" expanded="true" />
+                <element signature="e#7120#7121#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="263" column="34" selection-start-line="263" selection-start-column="34" selection-end-line="263" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,14 +91,15 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/Start.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.form" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/STATE.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/playingCard.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
+        <option value="/RegExp Fragment (Controller.java:1593).regexp" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
       </list>
     </option>
   </component>
@@ -224,7 +235,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../PitcherProblem" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="JAVA&#10;CoffeeScriptLiterate" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="293" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -249,6 +260,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
     <property name="SearchEverywhereHistoryKey" value="paintClick&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintClickableButton&#10;play&#9;PSI&#9;JAVA://kaz.idiot.Game#play&#10;setcurr&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;paintmidd&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintmiddle&#9;null&#9;null&#10;paintins&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintInspection&#10;inspection&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintdeck&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintDeck&#10;paintcard&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintCard&#10;INSP_GAME&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#INSP_GAME&#10;paintplayer&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintPlayer&#10;bottohan&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrentplayerton&#9;null&#9;null&#10;setcu&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayer&#10;bottohand&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrent&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;botohand&#9;null&#9;null&#10;setcurrentpla&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;Bounds&#9;PSI&#9;JAVA://kaz.idiot.GamePanel.Bounds&#10;pickup&#9;PSI&#9;JAVA://kaz.idiot.Game#pickUp&#10;paintfie&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintField&#10;game&#9;FILE&#9;file://C:/Users/kasra/Documents/GitHub/IDEA/Idiot/src/kaz/idiot/Game.java&#10;burn&#9;PSI&#9;JAVA://com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer&#10;controller&#9;PSI&#9;JAVA://kaz.idiot.Controller" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="520" />
+    <property name="last.edited.regexp" value="0: [action READY]" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -802,7 +814,7 @@
       <workItem from="1461708705342" duration="20615000" />
       <workItem from="1461866318229" duration="8519000" />
       <workItem from="1461959903446" duration="1523000" />
-      <workItem from="1461984623228" duration="2556000" />
+      <workItem from="1461984623228" duration="13050000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -965,11 +977,18 @@
       <option name="project" value="LOCAL" />
       <updated>1461875037838</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="implemented a basic event log">
+      <created>1461987199012</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1461987199012</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261246000" />
+    <option name="totallyTimeSpent" value="271740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -998,6 +1017,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22814499" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18418202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20682302" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1010,7 +1030,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18515284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1045,11 +1064,12 @@
     <MESSAGE value="added selection when it's not your turn&#10;fixed playAgain errors" />
     <MESSAGE value="simplified fourCardBurnCheck" />
     <MESSAGE value="added endgame circumstances:&#10; - added endgame gameActions to the Controller&#10; - added checkRoundOver to Game&#10; - added paintGameOver to GamePanel&#10; - renamed player play() -&gt; playSelectedCards()&#10;  - fixed StartFrame to be a singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="added endgame circumstances:&#10; - added endgame gameActions to the Controller&#10; - added checkRoundOver to Game&#10; - added paintGameOver to GamePanel&#10; - renamed player play() -&gt; playSelectedCards()&#10;  - fixed StartFrame to be a singleton" />
+    <MESSAGE value="implemented a basic event log" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented a basic event log" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1333,21 +1353,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/playingCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="128" column="47" selection-start-line="128" selection-start-column="47" selection-end-line="128" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/classes/kaz/idiot/StartFrame.form" />
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1374,14 +1379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -1400,32 +1397,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/playingCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="128" column="47" selection-start-line="128" selection-start-column="47" selection-end-line="128" selection-end-column="47" />
+          <folding>
+            <element signature="e#3328#3329#0" expanded="true" />
+            <element signature="e#3371#3372#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <element signature="e#3991#3992#0" expanded="true" />
+            <element signature="e#4034#4035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="154" column="59" selection-start-line="154" selection-start-column="59" selection-end-line="154" selection-end-column="59" />
+        <state relative-caret-position="274">
+          <caret line="224" column="26" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
           <folding>
-            <marker date="1461984033924" expanded="true" signature="44:85" placeholder="/**...*/" />
-            <marker date="1461984033924" expanded="true" signature="253:966" placeholder="//..." />
-            <marker date="1461984033924" expanded="true" signature="1015:1203" placeholder="{...}" />
-            <marker date="1461984033924" expanded="true" signature="1253:4277" placeholder="{...}" />
-            <marker date="1461984033924" expanded="true" signature="2026:2117" placeholder="//..." />
-            <marker date="1461984033924" expanded="true" signature="3969:4270" placeholder="//..." />
-            <marker date="1461984033924" expanded="true" signature="4330:4413" placeholder="{...}" />
-            <marker date="1461984033924" expanded="true" signature="4465:4616" placeholder="{...}" />
-            <marker date="1461984033924" expanded="true" signature="4667:5726" placeholder="{...}" />
-            <marker date="1461984033924" expanded="true" signature="5778:6378" placeholder="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#println2codeList#0;class#Controller#0" expanded="false" />
+            <element signature="e#5395#5396#0" expanded="true" />
+            <element signature="e#5426#5427#0" expanded="true" />
+            <element signature="method#handleEvent#0;class#Controller#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="263" column="34" selection-start-line="263" selection-start-column="34" selection-end-line="263" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="794" column="54" selection-start-line="794" selection-start-column="54" selection-end-line="794" selection-end-column="54" />
+        <state relative-caret-position="-1224">
+          <caret line="230" column="16" selection-start-line="230" selection-start-column="16" selection-end-line="230" selection-end-column="16" />
           <folding>
-            <element signature="class#Bounds#0;class#GamePanel#0" expanded="false" />
-            <marker date="1461987180823" expanded="false" signature="425:456" placeholder="/Duplicates/" />
+            <element signature="e#7077#7078#0" expanded="true" />
+            <element signature="e#7120#7121#0" expanded="true" />
           </folding>
         </state>
       </provider>

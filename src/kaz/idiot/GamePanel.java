@@ -216,7 +216,6 @@ class GamePanel extends JPanel {
         }
     }
 
-//    private int counter;
     private void updatePanels() {
         eventLogPanel.resizeScrollPane();
         bounds2String.put(SIDE.MIDDLE.getBounds(), "box " + INSP_MIDDLE);
@@ -227,7 +226,10 @@ class GamePanel extends JPanel {
         eventLogPanel.setVisible(true);
         chatPanel.setBounds(sideRect(SIDE.CHAT));
         eventLogPanel.setBounds(sideRect(SIDE.EVENT));
-//        eventLogPanel.println(counter++ + "");
+    }
+
+    public void printEvent(String text) {
+        eventLogPanel.println(text);
     }
 
     // <editor-fold desc="----Painting methods----">
@@ -792,8 +794,8 @@ class GamePanel extends JPanel {
             if (bounding.contains(me.getPoint()))
                 codes.add(bounds2String.get(bounds));
         }
-        System.out.println(playerNumber + ":\t" + codes);
         controller[playerNumber].handleCodes(codes);
+        controller[playerNumber].println(playerNumber + ": " + codes);
     }
 
     public void setInspection( int box ) {

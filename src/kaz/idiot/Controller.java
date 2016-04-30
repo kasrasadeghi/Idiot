@@ -1,6 +1,10 @@
 package kaz.idiot;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by kasra on 2/20/2016.
@@ -29,6 +33,43 @@ public class Controller {
         this.me = game.getPlayer(playerNumber);
     }
 
+    public void println(String text) {
+        //this has to send the text to the server, and then the server has to echo it to everyone.
+        //then it has to make it into a List<String> of codes, so the handleCodes method can parse through it.
+
+        //sending to server
+        for (GamePanel gamePanel : Main.gp) {
+            gamePanel.printEvent(text);
+        }
+    }
+
+    /**
+     * The almost immediately deprecated implementation of Option #1 for handling inter-controller updates for the game.
+     *
+     * @param println - the println to be turned into a codelist for the original handleCodes to handle.
+     * @return a list of codes that was equivalent to the one output by the GamePanel bounds checker.
+     */
+    public List<String> println2codeList(String println) {
+        // code for INTER-CONTROLLER UPDATES CHOICE #1
+        //well actually this bit of code is actually useless, because we want to see if the mouseClicks are useful
+        // before they are sent over.
+        //so first we need to run them through the case matcher, then send a message like 0: gameAction PLAY
+        // or something. That way we can use regex's and have them actually be decent.
+        //parse output into list of codes
+        Pattern pattern = Pattern.compile("(?<playerNumber>\\d+): \\[(?<codes>.*)\\]");
+        Matcher matcher = pattern.matcher(println);
+        int playerNumber;
+        String codeList= null;
+        if (matcher.matches()) {
+            playerNumber = Integer.parseInt(matcher.group("playerNumber"));
+            codeList = matcher.group("codes");
+        }
+        assert codeList != null;
+        List<String> codes = new ArrayList<>();
+        Collections.addAll(codes, codeList.split(","));
+        return codes;
+    }
+
     public void handleCodes(List<String> codes) {
         isItYourTurn = game.getCurrentPlayerNumber() == gp.getPlayerNumber();
 
@@ -54,7 +95,7 @@ public class Controller {
             }
         }
 
-        //#after TODO: reorganize case matching below
+        //#server TODO: reorganize case matching below
 
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
@@ -66,21 +107,7 @@ public class Controller {
 
             //if the player clicks on a card
             if(!card.equals("none")) {
-                try {
-                    //see which card and then select it in the special player indexes for the setup state
-                    int cardVal = Integer.parseInt(card);
-                    //if it's a hand card
-                    if (cardVal > -1 && cardVal < 3) {
-                        me.setHandSetupSelect(Integer.valueOf(card));
-                        gp.repaint();
-                    //if it's a top card
-                    } else if (cardVal > 2 && cardVal < 6) {
-                        me.setTopSetupSelect(cardVal - 3);
-                        gp.repaint();
-                    }
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
+                handleSetupCard(card);
             }
         //if we're actually playing the game
         } else if (game.getState() == STATE.PLAYING) {
@@ -88,42 +115,106 @@ public class Controller {
                 handleGameAction(action);
 
             else if (!box.equals("none")) {
-                try {
-                    int boxVal = Integer.parseInt(box);
-                    if ( boxVal == playerNumber) {
-                        if (!card.equals("none")) {
-                            int cardVal = Integer.parseInt(card);
-                            handleCardSelection(cardVal);
-                        }
-                    }
-                    else if (card.equals("none"))
-                        handleInspectionCode( boxVal );
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                if (card.equals("none"))
+                    handleInspectionCode(box);
+                if ( box.equals(playerNumber + "") && !card.equals("none")) {
+                    handleGameCard(card);
                 }
             }
         }
 
-
         //#server TODO: two options for handling inter-controller updates.
         // 1. handle each motion(selecting cards, drawing) or
         // 2. handle each turn(find out what actually changed and then send an update pkg)
+        // 3. filter down to either a view action that doesn't require server echo, because it doesn't affect game state,
+        //      or a [setup|game][card|action]
 
         //#1 is easier, and probably looks better. might be slower. let's see...
-
+        //#3 is what i'm going to try to implement
     }
 
-    private void handleCardSelection( int cardVal) {
-        game.getPlayer(playerNumber).select(cardVal);
-        gp.repaint();
+    public void sendEvent(String ev) {
+        handleEvent(ev);
     }
 
-    private void handleInspectionCode(int boxVal) {
-        if (gp.isInspecting())
-            gp.setInspection(GamePanel.INSP_GAME);
-        else gp.setInspection(boxVal);
+    public void handleEvent(String ev) {
+        String[] event = ev.split(" ");
+        switch (event[0]) {
+            case "setupCard":
+                handleSetupCard(event[1]);
+                break;
+            case "setupAction":
+                handleSetupAction(event[1]);
+                break;
+            case "gameCard":
+                handleGameCard(event[1]);
+                break;
+            case "gameAction":
+                handleGameAction(event[1]);
+                break;
+        }
+    }
 
-        gp.repaint();
+    private void handleInspectionCode(String box) {
+        try {
+            int boxVal = Integer.parseInt(box);
+            if (gp.isInspecting())
+                gp.setInspection(GamePanel.INSP_GAME);
+            else gp.setInspection(boxVal);
+
+            gp.repaint();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleSetupCard(String card) {
+        try {
+            //see which card and then select it in the special player indexes for the setup state
+            int cardVal = Integer.parseInt(card);
+            //if it's a hand card
+            if (cardVal > -1 && cardVal < 3) {
+                me.setHandSetupSelect(cardVal);
+                gp.repaint();
+                //if it's a top card
+            } else if (cardVal > 2 && cardVal < 6) {
+                me.setTopSetupSelect(cardVal - 3);
+                gp.repaint();
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleSetupAction(String action) {
+        switch(action) {
+            case "SWAP":
+                game.getPlayer(playerNumber).setupSwap();
+                gp.repaint();
+                break;
+            case "READY":
+                game.getPlayer(playerNumber).setReady(true);
+                if (game.allReady()) {
+                    for (int i = 0; i < Main.gp.length; ++i) {
+                        GamePanel gp = Main.gp[i];
+                        gp.setInspection(-1);
+                        gp.repaint();
+                    }
+                }
+                else gp.repaint();
+                break;
+        }
+    }
+
+    private void handleGameCard(String card) {
+        try {
+            int cardVal = Integer.parseInt(card);
+            game.getPlayer(playerNumber).select(cardVal);
+            gp.repaint();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleGameAction(String action) {
@@ -158,25 +249,5 @@ public class Controller {
         }
         for (GamePanel gamePanel : Main.gp)
             gamePanel.repaint();
-    }
-
-    private void handleSetupAction(String action) {
-        switch(action) {
-            case "SWAP":
-                game.getPlayer(playerNumber).setupSwap();
-                gp.repaint();
-                break;
-            case "READY":
-                game.getPlayer(playerNumber).setReady(true);
-                if (game.allReady()) {
-                    for (int i = 0; i < Main.gp.length; ++i) {
-                        GamePanel gp = Main.gp[i];
-                        gp.setInspection(-1);
-                        gp.repaint();
-                    }
-                }
-                else gp.repaint();
-                break;
-        }
     }
 }
