@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -135,7 +136,7 @@ class GamePanel extends JPanel {
         });
     }
 
-    private class ChatPanel extends JPanel {
+    public class ChatPanel extends JPanel {
         public ChatPanel() {
             //#server TODO: once done with a chat panel or a console or whatever, see if read user input "\n" spawns a new line
         }
@@ -177,7 +178,12 @@ class GamePanel extends JPanel {
 
         public void println(String text) {
             eventLog.append(text + "\n");
+        }
+
+        public void setCaretAtEnd() {
             eventLog.setCaretPosition(eventLog.getDocument().getLength());
+            //#server TODO: maintain the caret at last line, or switch it so that new input comes at the beginning.
+            // i'd prefer the former
         }
 
         @Override
@@ -226,6 +232,7 @@ class GamePanel extends JPanel {
         eventLogPanel.setVisible(true);
         chatPanel.setBounds(sideRect(SIDE.CHAT));
         eventLogPanel.setBounds(sideRect(SIDE.EVENT));
+        eventLogPanel.setCaretAtEnd();
     }
 
     public void printEvent(String text) {
@@ -794,6 +801,7 @@ class GamePanel extends JPanel {
             if (bounding.contains(me.getPoint()))
                 codes.add(bounds2String.get(bounds));
         }
+        Collections.sort(codes);
         controller[playerNumber].handleCodes(codes);
         controller[playerNumber].println(playerNumber + ": " + codes);
     }

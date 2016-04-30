@@ -95,31 +95,25 @@ public class Controller {
             }
         }
 
-        //#server TODO: reorganize case matching below
-
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
+            if (!action.equals("none"))
+                sendEvent("setupAction " + action);
 
-            //if there's an action
-            if (!action.equals("none")) {
-                handleSetupAction(action);
-            }
+            if(!card.equals("none"))
+                sendEvent("setupCard " + action);
 
-            //if the player clicks on a card
-            if(!card.equals("none")) {
-                handleSetupCard(card);
-            }
-        //if we're actually playing the game
         } else if (game.getState() == STATE.PLAYING) {
             if (!action.equals("none"))
-                handleGameAction(action);
+                sendEvent("gameAction " + action);
 
             else if (!box.equals("none")) {
                 if (card.equals("none"))
                     handleInspectionCode(box);
-                if ( box.equals(playerNumber + "") && !card.equals("none")) {
-                    handleGameCard(card);
-                }
+
+                else if ( box.equals(playerNumber + ""))
+                    sendEvent("gameCard " + card);
+
             }
         }
 
