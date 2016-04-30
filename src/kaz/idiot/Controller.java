@@ -58,6 +58,8 @@ public class Controller {
         //parse output into list of codes
         Pattern pattern = Pattern.compile("(?<playerNumber>\\d+): \\[(?<codes>.*)\\]");
         Matcher matcher = pattern.matcher(println);
+
+        // this doesn't use playerNumber because it's deprecated. it was supposed to be useful for servers.
         int playerNumber;
         String codeList= null;
         if (matcher.matches()) {
@@ -123,7 +125,7 @@ public class Controller {
         // 3. filter down to either a view action that doesn't require server echo, because it doesn't affect game state,
         //      or a [setup|game][card|action]
 
-        //#1 is easier, and probably looks better. might be slower. let's see...
+        //#1 is easier, and probably looks better. might be slower.
         //#3 is what i'm going to try to implement
     }
 
