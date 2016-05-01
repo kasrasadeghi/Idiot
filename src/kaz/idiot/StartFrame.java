@@ -31,17 +31,18 @@ public class StartFrame extends JFrame{
         setContentPane(rootPanel);
         rootPanel.setBackground(bg);
 
-        //#server TODO: add the "start" subtitle
-        connectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                String name = nameField.getText();
-                Main.address = ipField.getText();
-                Main.port = Integer.parseInt(portField.getText());
+        connectButton.addActionListener(ae -> {
+            String address = ipField.getText();
+            String port = portField.getText();
+            String name = nameField.getText();
 
-                //START GAME WITH NAME
-//                Main.hostServer(name);
-            }
+            if (hostingCheckBox.isSelected())
+                name = "host";
+            else name = "client";
+
+            if (hostingCheckBox.isSelected())
+                Main.setupServer(port, name);
+            else Main.setupClient(address, port, name);
         });
 
         pack();
@@ -50,7 +51,6 @@ public class StartFrame extends JFrame{
 
     private void createUIComponents() {
         titlePanel = new JPanel() {
-
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -60,7 +60,7 @@ public class StartFrame extends JFrame{
                     Image image = ImageIO.read(file);
                     g.drawImage(image, 0, 0, null);
                 } catch(IOException e) {
-                    System.err.println("Missing card images.");
+                    System.err.println("Missing title image.");
                     e.printStackTrace();
                 }
             }

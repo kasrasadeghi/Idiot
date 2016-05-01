@@ -34,7 +34,7 @@ public class Controller {
     }
 
     public void println(String text) {
-        //this has to send the text to the server, and then the server has to echo it to everyone.
+        //this has to sendToClient the text to the server, and then the server has to echo it to everyone.
         //then it has to make it into a List<String> of codes, so the handleCodes method can parse through it.
 
         //sending to server
@@ -53,7 +53,7 @@ public class Controller {
         // code for INTER-CONTROLLER UPDATES CHOICE #1
         //well actually this bit of code is actually useless, because we want to see if the mouseClicks are useful
         // before they are sent over.
-        //so first we need to run them through the case matcher, then send a message like 0: gameAction PLAY
+        //so first we need to run them through the case matcher, then sendToClient a message like 0: gameAction PLAY
         // or something. That way we can use regex's and have them actually be decent.
         //parse output into list of codes
         Pattern pattern = Pattern.compile("(?<playerNumber>\\d+): \\[(?<codes>.*)\\]");
@@ -121,7 +121,7 @@ public class Controller {
 
         //#server TODO: two options for handling inter-controller updates.
         // 1. handle each motion(selecting cards, drawing) or
-        // 2. handle each turn(find out what actually changed and then send an update pkg)
+        // 2. handle each turn(find out what actually changed and then sendToClient an update pkg)
         // 3. filter down to either a view action that doesn't require server echo, because it doesn't affect game state,
         //      or a [setup|game][card|action]
 
