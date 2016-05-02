@@ -393,6 +393,9 @@ class GamePanel extends JPanel {
     }
 
     private void paintGameButtons(Graphics g) {
+        //only paint if it's your turn!
+        if (game.getCurrentPlayerNumber() != playerNumber)
+            return;
         Color front = Color.BLACK;
         Color back = bg;
         int tlx = (int) ((SIDE.BOTTOM.tlx + SIDE.BOTTOM.dx)*getWidth());

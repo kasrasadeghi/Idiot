@@ -29,6 +29,8 @@ public class Main {
     public static boolean accepting = true;
     public static long seed = 8912;
     public static int playerNumber = -1;
+    public static Thread serverSocketListenerThread;
+    public static boolean canAddPlayers = false;
 
     public static void main(String[] args) {
         clientPrinters = new ArrayList<>();
@@ -46,7 +48,7 @@ public class Main {
             ServerSocket serverSocket = new ServerSocket(Integer.parseInt(port));
             chatFrame.println("Hosting on " + port);
 
-            new Thread(() -> {
+            serverSocketListenerThread = new Thread(() -> {
                 while (accepting) {
                     Socket toClient = null;
                     try {
@@ -65,11 +67,7 @@ public class Main {
                             clientPrinter.println(clientName);
                             clientNames.add(clientName);
                             chatFrame.println(clientName + " has connected!");
-
-                            //TODO: you can only start adding people once the lobby is closed,
-                            // because everyone might not get the full playerList
                         }
-                        //TODO: figure out why people are getting shown the wrong frames.
 
                         new Thread(() -> {
                             while(clientReader.hasNextLine()) {
@@ -82,7 +80,9 @@ public class Main {
                         }).start();
                     } catch (IOException e) { e.printStackTrace(); }
                 }
-            }).start();
+            });
+
+            serverSocketListenerThread.start();
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -117,13 +117,16 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //TODO: AI
+        //TODO: sort hand button
     }
 
     public static void lockServer() {
         accepting = false;
+        canAddPlayers = true;
         chatFrame.enableStartButton();
         chatFrame.disableLockButton();
+        serverSocketListenerThread = null;
     }
 
     public static void sendToClients(String name, String text) {
@@ -139,22 +142,24 @@ public class Main {
         String name = inputSplit[0];
         if (inputSplit[1].startsWith("/")) {
             chatFrame.println(input); //TODO: temporary
-            //#server TODO: check that the player sending a command is in devMode
             //#server TODO: maybe only send some commands to people that submit them. like help.
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
-                case "num":
-                    chatFrame.println(playerNumber + "");
+                case "all":
+                    chatFrame.println("Adding " + "devmode" + " to the game.");
+                    chatFrame.addPlayerName("devmode");
+                    chatFrame.println("Adding " + "devmode'" + " to the game.");
+                    chatFrame.addPlayerName("devmode'");
+                    break;
+                case "currentPlayer":
+                    chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
                 case "repaint":
                     gp.repaint();
                     break;
-                //TODO: fix the need to repaint
                 case "event":
                     assert game != null;
-                    controller.handleEvent(cmd[1] + " " + cmd[2] + " " + cmd[3]);
-                    //TODO: change handleEvent so that it takes two args,
-                    // 1. the event, 2. the eventArg
+                    controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
                     chatFrame.println("Adding " + cmd[1] + " to the game.");

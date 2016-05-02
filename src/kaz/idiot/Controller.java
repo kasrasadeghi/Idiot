@@ -91,22 +91,21 @@ public class Controller {
         Main.chatFrame.send("/event " + playerNumber + " " + ev);
     }
 
-    public void handleEvent(String ev) {
-        String[] event = ev.split(" ");
+    public void handleEvent(String numString, String ev, String arg) {
         try {
-            int num = Integer.parseInt(event[0]);
-            switch (event[1]) {
+            int num = Integer.parseInt(numString);
+            switch (ev) {
                 case "setupCard":
-                    handleSetupCard(num, event[2]);
+                    handleSetupCard(num, arg);
                     break;
                 case "setupAction":
-                    handleSetupAction(num, event[2]);
+                    handleSetupAction(num, arg);
                     break;
                 case "gameCard":
-                    handleGameCard(num, event[2]);
+                    handleGameCard(num, arg);
                     break;
                 case "gameAction":
-                    handleGameAction(num, event[2]);
+                    handleGameAction(num, arg);
                     break;
             }
         } catch (NumberFormatException e) {
@@ -179,15 +178,16 @@ public class Controller {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+
+        //TODO: implement willful pickup
     }
 
     private void handleGameAction(int num, String action) {
-        if (!isItYourTurn) return;
         Player me = game.getPlayer(num);
         if (!game.checkRoundOver())
             switch (action) {
                 case "PLAY":
-                    game.play();
+                    game.play(num);
                     break;
                 case "PICKUP":
                     game.pickUp();
@@ -212,6 +212,7 @@ public class Controller {
                 Main.activeFrame = StartFrame.instance();
                 break;
         }
-        Main.chatFrame.send("/repaint");
+        //TODO: see if this fixes the repaint nonsense?
+        Main.gp.repaint();
     }
 }

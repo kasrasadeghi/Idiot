@@ -147,12 +147,6 @@ public class Game {
 //        Main.activeFrame.setVisible(false);
 //        Main.activeFrame = Main.frames[currentPlayerNumber];
 //        Main.activeFrame.setVisible(true);
-        //#devmode TODO: make a dev mode kinda thing that's separate from this nonsense.
-        //be able to discard cards.
-        //be able to chose current player.
-        //be able to get a chosen card.
-        //be able to set a player's state.
-        //endregion temp change
 
         if (getCurrentPlayer().getState() == STATE.SPECTATING) {
             setCurrentPlayerToNext();
@@ -254,18 +248,18 @@ public class Game {
         return false;
     }
 
-    public void play() {
+    public void play(int num) {
         // when setting the next turn we have to compute whether or not someone can play.
         // check that the cards that are being played are the same card rank
         // check that the card rank that is being played is viable with the underlying condition
-        Player current = players.get(currentPlayerNumber);
+        Player current = players.get(num);
         //if the player doesn't have currently selected cards
-        if (current.getSelected().isEmpty())
+        if (current.getSelected().isEmpty()) {
+            Main.gp.printEvent("You haven't selected any cards.");
             return;
+        }
         //if the current player's selected cards aren't a valid move then return
         if (!checkCurrentPlay()) {
-            //sendToClients message to console. "illegal move"
-            //#server TODO: make this work with servers and shit
             Main.gp.printEvent("Illegal Move");
             return;
         }

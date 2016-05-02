@@ -70,7 +70,9 @@ public class ChatFrame extends JFrame {
     }
 
     public void addPlayerName(String name) {
-        playerNameList.addElement(name);
+        if (Main.canAddPlayers)
+            playerNameList.addElement(name);
+        else println("Lock the server before adding players.");
     }
 
     public void removePlayerName(String name) {

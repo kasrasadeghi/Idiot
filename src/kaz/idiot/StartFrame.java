@@ -38,9 +38,6 @@ public class StartFrame extends JFrame{
             String port = portField.getText();
             String name = nameField.getText();
 
-            //#server TODO: make it so that if the name is devmode it changes your name to Kasra and gives you admin priveleges.
-            // if your name is Kasra it renames you to Usurper
-
             if (hostingCheckBox.isSelected())
                 Main.setupServer(port, name);
             else Main.setupClient(address, port, name);
