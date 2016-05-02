@@ -6,33 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Idiot_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cards.png" afterPath="$PROJECT_DIR$/src/kaz/idiot/resources/cards.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/left.png" afterPath="$PROJECT_DIR$/src/kaz/idiot/resources/left.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/right.png" afterPath="$PROJECT_DIR$/src/kaz/idiot/resources/right.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/title.png" afterPath="$PROJECT_DIR$/src/kaz/idiot/resources/title.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/CARD.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$Bounds.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" />
+    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="the chat command update:">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Idiot.iml" afterPath="$PROJECT_DIR$/Idiot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/CARD.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form" afterPath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Main.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
     </list>
@@ -58,25 +35,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="997">
+              <caret line="135" column="42" selection-start-line="135" selection-start-column="42" selection-end-line="135" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
+      <file leaf-file-name="ChatFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5409">
-              <caret line="712" column="0" selection-start-line="712" selection-start-column="0" selection-end-line="712" selection-end-column="0" />
+            <state relative-caret-position="630">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
-                <element signature="class#Bounds#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#Bounds#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#Bounds#1;class#Bounds#0;class#GamePanel#0" expanded="false" />
+                <element signature="e#1913#1914#0" expanded="true" />
+                <element signature="e#1960#1961#0" expanded="true" />
+                <element signature="e#2009#2010#0" expanded="true" />
+                <element signature="e#2059#2060#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,13 +101,13 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
         <option value="/RegExp Fragment (Controller.java:1593).regexp" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form" />
       </list>
     </option>
   </component>
@@ -372,7 +350,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE" value="left" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
     <property name="SearchEverywhereHistoryKey" value="setCaret&#9;PSI&#9;JAVA://kaz.idiot.GamePanel.EventLogPanel#setCaretAtEnd&#10;paintClick&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintClickableButton&#10;play&#9;PSI&#9;JAVA://kaz.idiot.Game#play&#10;setcurr&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;paintmidd&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintmiddle&#9;null&#9;null&#10;paintins&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintInspection&#10;inspection&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintMiddleInspection&#10;paintdeck&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintDeck&#10;paintcard&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintCard&#10;INSP_GAME&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#INSP_GAME&#10;paintplayer&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintPlayer&#10;bottohan&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrentplayerton&#9;null&#9;null&#10;setcu&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayer&#10;bottohand&#9;PSI&#9;JAVA://kaz.idiot.Player#botToHand&#10;setcurrent&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;botohand&#9;null&#9;null&#10;setcurrentpla&#9;PSI&#9;JAVA://kaz.idiot.Game#setCurrentPlayerToNext&#10;Bounds&#9;PSI&#9;JAVA://kaz.idiot.GamePanel.Bounds&#10;pickup&#9;PSI&#9;JAVA://kaz.idiot.Game#pickUp&#10;paintfie&#9;PSI&#9;JAVA://kaz.idiot.GamePanel#paintField&#10;game&#9;FILE&#9;file://C:/Users/kasra/Documents/GitHub/IDEA/Idiot/src/kaz/idiot/Game.java&#10;burn&#9;PSI&#9;JAVA://com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer&#10;controller&#9;PSI&#9;JAVA://kaz.idiot.Controller" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="363" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="318" />
     <property name="last.edited.regexp" value="0: [action READY]" />
   </component>
   <component name="RecentsManager">
@@ -933,7 +911,7 @@
       <workItem from="1461866318229" duration="8519000" />
       <workItem from="1461959903446" duration="1523000" />
       <workItem from="1461984623228" duration="43442000" />
-      <workItem from="1462141460539" duration="2956000" />
+      <workItem from="1462141460539" duration="18700000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -1131,11 +1109,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462084062062</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added chat lobby (major update):&#10; - changed from using new File() to ClassLoader so it works with .jar files&#10; - made multiple clients with a List of clientPrinters&#10; - started work on player List for initializing a game">
+      <created>1462151658408</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1462151658408</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305088000" />
+    <option name="totallyTimeSpent" value="320832000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1148,7 +1133,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1157,13 +1142,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983378" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2913386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23185265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29035753" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23185265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17963752" sideWeight="0.49535194" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17963752" sideWeight="0.49535194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18418202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17803837" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1176,7 +1162,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18418202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1191,7 +1176,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="0.5" />
     <MESSAGE value="introduced play button" />
     <MESSAGE value="added netbeans support" />
     <MESSAGE value="fixed inspection" />
@@ -1216,7 +1200,8 @@
     <MESSAGE value="used sendEvent in controller" />
     <MESSAGE value="comment changes" />
     <MESSAGE value="added chat lobby (major update)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added chat lobby (major update)" />
+    <MESSAGE value="added chat lobby (major update):&#10; - changed from using new File() to ClassLoader so it works with .jar files&#10; - made multiple clients with a List of clientPrinters&#10; - started work on player List for initializing a game" />
+    <option name="LAST_COMMIT_MESSAGE" value="added chat lobby (major update):&#10; - changed from using new File() to ClassLoader so it works with .jar files&#10; - made multiple clients with a List of clientPrinters&#10; - started work on player List for initializing a game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1465,16 +1450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/io/PrintWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1522,17 +1497,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1462096404495" expanded="true" signature="4104:4150" placeholder="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
@@ -1546,25 +1510,12 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/net/URLClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="380" column="0" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
@@ -1575,31 +1526,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5409">
-          <caret line="712" column="0" selection-start-line="712" selection-start-column="0" selection-end-line="712" selection-end-column="0" />
+        <state relative-caret-position="190">
+          <caret line="354" column="22" selection-start-line="354" selection-start-column="22" selection-end-line="354" selection-end-column="22" />
           <folding>
             <element signature="class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="method#Bounds#0;class#Bounds#0;class#GamePanel#0" expanded="false" />
             <element signature="method#Bounds#1;class#Bounds#0;class#GamePanel#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="137" column="40" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5379#5380#0" expanded="true" />
+            <element signature="e#5410#5411#0" expanded="true" />
+            <marker date="1462096404495" expanded="true" signature="4104:4150" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="e#1913#1914#0" expanded="true" />
+            <element signature="e#1960#1961#0" expanded="true" />
+            <element signature="e#2009#2010#0" expanded="true" />
+            <element signature="e#2059#2060#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="997">
+          <caret line="135" column="42" selection-start-line="135" selection-start-column="42" selection-end-line="135" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>

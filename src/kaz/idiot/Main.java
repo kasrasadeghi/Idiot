@@ -54,9 +54,11 @@ public class Main {
                         Scanner clientReader = new Scanner(toClient.getInputStream());
                         new Thread(() -> {
                             while(clientReader.hasNextLine()) {
-                                String clientMessage = clientReader.nextLine();
-                                String[] split = clientMessage.split("> ");
-                                sendToClients(split[0], split[1]);
+                                String input = clientReader.nextLine();
+                                String[] splits = input.split("> ");
+                                sendToClients(splits[0], splits[1]);
+                                //echo the client input to all other clients.
+                                handleInput(input);
                             }
                         }).start();
                     } catch (IOException e) { e.printStackTrace(); }
@@ -77,9 +79,14 @@ public class Main {
             Scanner serverReader = new Scanner(toServer.getInputStream());
             serverPrinter = new PrintWriter(toServer.getOutputStream(), true);
 
+            if (serverReader.hasNextLine()) {
+                //handles handshake
+                chatFrame.println(serverReader.nextLine());
+            }
             new Thread(() -> {
                 while(serverReader.hasNextLine())
-                    chatFrame.println(serverReader.nextLine());
+                    handleInput(serverReader.nextLine());
+//                    chatFrame.println(serverReader.nextLine());
             }).start();
 
         } catch (IOException e) {
@@ -88,16 +95,75 @@ public class Main {
 
     }
 
+    public static void lockServer() {
+        accepting = false;
+    }
+
     public static void sendToClients(String name, String text) {
         clientPrinters.forEach(printer -> printer.println(name + "> " + text));
-        chatFrame.println(name + "> " + text);
     }
 
     public static void sendToServer(String name, String text) {
         serverPrinter.println(name + "> " + text);
     }
 
+    public static void handleInput(String input) {
+        String[] inputSplit = input.split("> ");
+        String name = inputSplit[0];
+        if (inputSplit[1].startsWith("/")) {
+            //#server TODO: check that the player sending a command is in devmode
+            //#server TODO: maybe only send some commands to people that submit them. like help.
+            String[] cmd = inputSplit[1].substring(1).split(" ");
+            switch (cmd[0]) {
+                case "event":
+                    break;
+                case "add":
+                    chatFrame.println("Adding " + cmd[1] + " to the game.");
+                    chatFrame.addPlayerName(cmd[1]);
+                    break;
+                case "remove":
+                    chatFrame.println("Removing " + cmd[1] + " from the game.");
+                    chatFrame.removePlayerName(cmd[1]);
+                    break;
+                case "lock":
+                    chatFrame.println("Lobby Locked.");
+                    lockServer();
+                    break;
+                case "start":
+                    break;
+                case "help":
+                    String help;
+                    if (cmd.length == 1) {
+                        help = "  Commands: \n" +
+                                "- add\n" +
+                                "- event\n" +
+                                "- help\n" +
+                                "- lock\n" +
+                                "- remove\n" +
+                                "- start";
+                    } else {
+                        switch (cmd[1]) {
+                            case "add":
+                                break;
+                            case "event":
+                                break;
+                            case "lock":
+                                break;
+                            case "remove":
+                                break;
+                            case "start":
+                                break;
+                        }
+                    }
+                    break;
+            }
+        } else {
+            chatFrame.println(input);
+        }
+    }
+
     public static void init() {
+        //#server TODO: make randomness count on a seed. like mineCraft!
         game = new Game(playerCount);
         controller = new Controller[playerCount];
         gp = new GamePanel[playerCount];

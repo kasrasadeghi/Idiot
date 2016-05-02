@@ -58,7 +58,7 @@ public class StartFrame extends JFrame{
                     Image image = ImageIO.read(this.getClass().getClassLoader().getResource("title.png"));
                     g.drawImage(image, 0, 0, null);
                 } catch(IOException e) {
-                    System.err.println("Missing title image.");
+                    System.err.println("Missing title.png");
                     e.printStackTrace();
                 }
             }
