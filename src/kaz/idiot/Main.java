@@ -1,11 +1,14 @@
 package kaz.idiot;
 
 import javax.swing.*;
-import java.awt.*;
+
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -18,48 +21,55 @@ public class Main {
     public static final int CARD_Y = 123;
     public static final int playerCount = 2;
 
-    public static String address;
-    public static int port;
-    public static ServerSocket serverSocket;
-    public static Socket socket;
-    public static PrintWriter clientPrinter;
+    public static List<PrintWriter> clientPrinters;
     public static PrintWriter serverPrinter;
-    public static Scanner keyboard = new Scanner(System.in);
+    public static ChatFrame chatFrame;
+    public static boolean accepting = true;
 
     public static void main(String[] args) {
+        clientPrinters = new ArrayList<>();
         SwingUtilities.invokeLater(() -> activeFrame = StartFrame.instance());
     }
 
     public static void setupServer(String port, String name) {
-        System.out.println("I'm the Server");
+//        System.out.println("I'm the Server");
 
         activeFrame.setVisible(false);
-        ChatFrame chatFrame = new ChatFrame(name +" - Host", true);
+        chatFrame = new ChatFrame(name, true);
 
         try {
             ServerSocket serverSocket = new ServerSocket(Integer.parseInt(port));
-            Socket toClient = serverSocket.accept();
-
             chatFrame.println("Hosting on " + port);
-            clientPrinter = new PrintWriter(toClient.getOutputStream(), true);
-            Scanner clientReader = new Scanner(toClient.getInputStream());
-            clientPrinter.println("Contact from server");
 
             new Thread(() -> {
-                while(clientReader.hasNextLine())
-                    chatFrame.println(clientReader.nextLine());
-            }).start();
+                while (accepting) {
+                    Socket toClient = null;
+                    try {
+                        toClient = serverSocket.accept();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                        PrintWriter clientPrinter = new PrintWriter(toClient.getOutputStream(), true);
+                        clientPrinters.add(clientPrinter);
+                        clientPrinter.println("Connected!");
+
+                        Scanner clientReader = new Scanner(toClient.getInputStream());
+                        new Thread(() -> {
+                            while(clientReader.hasNextLine()) {
+                                String clientMessage = clientReader.nextLine();
+                                String[] split = clientMessage.split("> ");
+                                sendToClients(split[0], split[1]);
+                            }
+                        }).start();
+                    } catch (IOException e) { e.printStackTrace(); }
+                }
+            }).start();
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     public static void setupClient(String address, String port, String name) {
-        System.out.println("I'm the Client");
+//        System.out.println("I'm the Client");
 
         activeFrame.setVisible(false);
-        ChatFrame chatFrame = new ChatFrame(name, false);
+        chatFrame = new ChatFrame(name, false);
 
         try {
             chatFrame.println("Connecting to " + address + ":" + port);
@@ -78,12 +88,13 @@ public class Main {
 
     }
 
-    public static void sendToClient(String text) {
-        clientPrinter.println(text);
+    public static void sendToClients(String name, String text) {
+        clientPrinters.forEach(printer -> printer.println(name + "> " + text));
+        chatFrame.println(name + "> " + text);
     }
 
-    public static void sendToServer(String text) {
-        serverPrinter.println(text);
+    public static void sendToServer(String name, String text) {
+        serverPrinter.println(name + "> " + text);
     }
 
     public static void init() {

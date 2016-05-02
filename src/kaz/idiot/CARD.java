@@ -77,7 +77,8 @@ public enum CARD{
 
     CARD(int tlx, int tly, int w, int h) {
         try {
-            image = ImageIO.read(new File("cards.png")).getSubimage(tlx, tly, w, h);
+            ClassLoader cl = this.getClass().getClassLoader();
+            image = ImageIO.read(cl.getResource("cards.png")).getSubimage(tlx, tly, w, h);
         } catch(IOException e) {
             e.printStackTrace();
         }

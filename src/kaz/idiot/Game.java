@@ -262,7 +262,7 @@ public class Game {
             return;
         //if the current player's selected cards aren't a valid move then return
         if (!checkCurrentPlay()) {
-            //sendToClient message to console. "illegal move"
+            //sendToClients message to console. "illegal move"
             //#server TODO: make this work with servers and shit
             Main.gp[currentPlayerNumber].printEvent("Illegal Move");
             return;

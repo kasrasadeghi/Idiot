@@ -40,6 +40,9 @@ class GamePanel extends JPanel {
     private ChatPanel chatPanel;
     private EventLogPanel eventLogPanel;
 
+    private static Image left;
+    private static Image right;
+
 
     //<editor-fold desc="----Bounds----">
 
@@ -115,6 +118,14 @@ class GamePanel extends JPanel {
         this.playerNumber = pn;
         this.startWidth = w;
         this.startHeight = h;
+
+        ClassLoader cl = this.getClass().getClassLoader();
+        try {
+            left = ImageIO.read(cl.getResource("left.png"));
+            right = ImageIO.read(cl.getResource("right.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         setMinimumSize(new Dimension(startWidth, startHeight));
 
@@ -696,14 +707,8 @@ class GamePanel extends JPanel {
      * @param g
      */
     private void paintRotation(Graphics g) {
-        try {
-            File file = new File((game.isRotatingRight())? "right.png" : "left.png");
-            Image image = ImageIO.read(file);
-            g.drawImage(image, getWidth()/2 - 50, getHeight()/2 -50, null);
-        } catch(IOException e) {
-            System.err.println("Missing card images.");
-            e.printStackTrace();
-        }
+        Image image = (game.isRotatingRight())? right : left;
+        g.drawImage(image, getWidth()/2 - 50, getHeight()/2 -50, null);
     }
 
     /**

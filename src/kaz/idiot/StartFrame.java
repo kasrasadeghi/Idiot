@@ -36,9 +36,8 @@ public class StartFrame extends JFrame{
             String port = portField.getText();
             String name = nameField.getText();
 
-            if (hostingCheckBox.isSelected())
-                name = "host";
-            else name = "client";
+            //#server TODO: make it so that if the name is devmode it changes your name to Kasra and gives you admin priveleges.
+            // if your name is Kasra it renames you to Usurper
 
             if (hostingCheckBox.isSelected())
                 Main.setupServer(port, name);
@@ -56,8 +55,7 @@ public class StartFrame extends JFrame{
                 super.paintComponent(g);
                 setBackground(bg);
                 try {
-                    File file = new File("title.png");
-                    Image image = ImageIO.read(file);
+                    Image image = ImageIO.read(this.getClass().getClassLoader().getResource("title.png"));
                     g.drawImage(image, 0, 0, null);
                 } catch(IOException e) {
                     System.err.println("Missing title image.");
