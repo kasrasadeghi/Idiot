@@ -2,6 +2,9 @@ package kaz.idiot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 import java.awt.event.ActionListener;
 
 /**
@@ -12,20 +15,27 @@ public class ChatFrame extends JFrame {
     private JTextArea textArea;
     private JScrollPane scrollPane;
     private JButton sendButton;
-    public JTextField inputField;
+    private JTextField inputField;
     private JList<String> viewedList;
     private DefaultListModel<String> playerNameList;
     private JButton startButton;
     private JButton lockButton;
     private Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 12);
 
+    private boolean isHost;
+    private String clientName;
+
     public ChatFrame(String name, boolean isHost) {
         super("Lobby " + name + ((isHost)?  " - Host": "") );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(chatPanel);
+        this.isHost = isHost;
+        this.clientName = name;
 
         playerNameList = new DefaultListModel<>();
         viewedList.setModel(playerNameList);
+
+        startButton.setEnabled(false);
 
         textArea.setFont(monospacedFont);
         inputField.setFont(monospacedFont);
@@ -35,11 +45,7 @@ public class ChatFrame extends JFrame {
             String text = inputField.getText().trim();
             inputField.setText("");
             if (text.length() > 0) {
-                if (isHost) {
-                    Main.handleInput(name + "> " + text);
-                    Main.sendToClients(name, text);
-                }
-                else Main.sendToServer(name, text);
+                send( text);
             }
             inputField.requestFocusInWindow();
         };
@@ -48,11 +54,11 @@ public class ChatFrame extends JFrame {
         inputField.addActionListener(listener);
 
         startButton.addActionListener(ae -> {
-            //#server TODO: initializing game
+            send("/start");
         });
 
         lockButton.addActionListener(ae -> {
-
+            send("/lock");
         });
 
         pack();
@@ -69,5 +75,38 @@ public class ChatFrame extends JFrame {
 
     public void removePlayerName(String name) {
         playerNameList.removeElement(name);
+    }
+
+    public void enableStartButton() {
+        startButton.setEnabled(true);
+    }
+
+    public void send(String text) {
+        if (isHost) {
+            Main.handleInput(clientName + "> " + text);
+            Main.sendToClients(clientName, text);
+        }
+        else Main.sendToServer(clientName, text);
+    }
+
+    public List<String> getPlayerNames() {
+        List<String> names = new ArrayList<>();
+        Enumeration<String> playerNameEnumeration = playerNameList.elements();
+        while(playerNameEnumeration.hasMoreElements())
+            names.add(playerNameEnumeration.nextElement());
+        return names;
+    }
+
+    public void setClientName(String name) {
+        this.clientName = name;
+        setTitle("Lobby " + name + ((isHost)?  " - Host": "") );
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void disableLockButton() {
+        lockButton.setEnabled(false);
     }
 }

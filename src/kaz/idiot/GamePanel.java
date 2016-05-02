@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -807,8 +806,7 @@ class GamePanel extends JPanel {
                 codes.add(bounds2String.get(bounds));
         }
         Collections.sort(codes);
-        controller[playerNumber].handleCodes(codes);
-        controller[playerNumber].println(playerNumber + ": " + codes);
+        controller.handleCodes(codes);
     }
 
     public void setInspection( int box ) {

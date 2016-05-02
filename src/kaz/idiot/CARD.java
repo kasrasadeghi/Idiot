@@ -85,13 +85,6 @@ public enum CARD{
     }
 
     /**
-     * @return a random card that isn't NULL_CARD;
-     */
-    public static CARD random() {
-        return values()[(int)(Math.random() * values().length - 1)];
-    }
-
-    /**
      * @return a list of a normal deck of playing cards. not shuffled.
      */
     public static List<CARD> fullDeck() {
@@ -140,49 +133,6 @@ public enum CARD{
             case "J": return 11;
             case "Q": return 12;
             case "K": return 13;
-            default: return 0;
-        }
-    }
-
-    public int getPostRank() {
-        switch(getRank()) {
-            case "10": return 73;
-            case "7": return 37;
-            case "2": return 20;
-
-            case "A": return 14;
-            case "K": return 13;
-            case "Q": return 12;
-            case "J": return 11;
-            case "9": return 9;
-            case "8": return 8;
-            case "6": return 6;
-            case "5": return 5;
-            case "4": return 4;
-            case "3": return 3;
-
-
-            default: return 0;
-        }
-    }
-
-    public int getPreRank() {
-        switch(getRank()) {
-            case "10": return 73;
-            case "7": return 37;
-
-            case "A": return 14;
-            case "K": return 13;
-            case "Q": return 12;
-            case "J": return 11;
-            case "9": return 9;
-            case "8": return 8;
-            case "6": return 6;
-            case "5": return 5;
-            case "4": return 4;
-            case "3": return 3;
-            case "2": return -1;
-
             default: return 0;
         }
     }

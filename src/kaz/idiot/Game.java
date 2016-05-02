@@ -17,6 +17,7 @@ public class Game {
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
     private boolean rotatingRight;
+    public Random random;
 
     public void setState(STATE s) {
         state = s;
@@ -27,7 +28,8 @@ public class Game {
     }
 
     //region ---- Game Initialization and Reset ----
-    public Game(ArrayList<String> playerNames){
+    public Game(List<String> playerNames, long seed){
+        random = new Random(seed);
         init(playerNames);
     }
 
@@ -76,10 +78,10 @@ public class Game {
 
         players.forEach(Player::start);
 
-        //#devmode TODO: temp code
-        Main.activeFrame.setVisible(false);
-        Main.activeFrame = Main.frames[currentPlayerNumber];
-        Main.activeFrame.setVisible(true);
+//        //#devmode TODO: temp code
+//        Main.activeFrame.setVisible(false);
+//        Main.activeFrame = Main.frames[currentPlayerNumber];
+//        Main.activeFrame.setVisible(true);
     }
 
     private void initTurnOrder() {
@@ -141,10 +143,10 @@ public class Game {
         Player current = getCurrentPlayer();
         if (current.isEmpty()) current.setState(STATE.SPECTATING);
         //region ----devmode
-        //#devmode TODO: temp change
-        Main.activeFrame.setVisible(false);
-        Main.activeFrame = Main.frames[currentPlayerNumber];
-        Main.activeFrame.setVisible(true);
+//        //#devmode TODO: temp change
+//        Main.activeFrame.setVisible(false);
+//        Main.activeFrame = Main.frames[currentPlayerNumber];
+//        Main.activeFrame.setVisible(true);
         //#devmode TODO: make a dev mode kinda thing that's separate from this nonsense.
         //be able to discard cards.
         //be able to chose current player.
@@ -199,7 +201,7 @@ public class Game {
     }
 
     private CARD drawFromDeck() {
-        return deck.remove((int) (Math.random() * deck.size()));
+        return deck.remove (random.nextInt(deck.size()));
     }
 
     public void reverseTurnOrder() {
@@ -264,7 +266,7 @@ public class Game {
         if (!checkCurrentPlay()) {
             //sendToClients message to console. "illegal move"
             //#server TODO: make this work with servers and shit
-            Main.gp[currentPlayerNumber].printEvent("Illegal Move");
+            Main.gp.printEvent("Illegal Move");
             return;
         }
 

@@ -30,6 +30,8 @@ public class StartFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(rootPanel);
         rootPanel.setBackground(bg);
+        ipField.setText("localhost");
+        portField.setText(Main.seed + "");
 
         connectButton.addActionListener(ae -> {
             String address = ipField.getText();
