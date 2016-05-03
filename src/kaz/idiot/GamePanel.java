@@ -149,6 +149,7 @@ class GamePanel extends JPanel {
     public class ChatPanel extends JPanel {
         public ChatPanel() {
             //#server TODO: once done with a chat panel or a console or whatever, see if read user input "\n" spawns a new line
+            // it doesn't
         }
 
         @Override

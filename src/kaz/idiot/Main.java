@@ -118,6 +118,9 @@ public class Main {
             e.printStackTrace();
         }
         //TODO: AI
+        //1. pick the rightmost playable card
+        //2. pick the best play (gets rid of the most cards with the least value)
+        //3. neural network/deep learning nonsense
         //TODO: sort hand button
     }
 
@@ -157,8 +160,11 @@ public class Main {
                 case "repaint":
                     gp.repaint();
                     break;
+                case "checkWin":
+                    chatFrame.println(game.checkRoundOver() + "");
                 case "event":
                     assert game != null;
+                    chatFrame.println("event handling: " + cmd[1] + ", " + cmd[2] + ", " + cmd[3] + ".");
                     controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
@@ -174,8 +180,11 @@ public class Main {
                     lockServer();
                     break;
                 case "start":
-                    if (!accepting)
-                        init(seed, name);
+                    if (!accepting) {
+                        if (chatFrame.getPlayerNames().size() < 0)
+                            chatFrame.println("Add at least 2 players to the game.");
+                        else init(seed, name);
+                    }
                     break;
                 case "help":
                     String help;
@@ -243,7 +252,9 @@ public class Main {
 
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
+            //TODO: create spectator idiotframes
             this(-1);
+            //TODO: when players are in spectate mode give them spectator idiotFrames
         }
 
         public IdiotFrame(int number) {

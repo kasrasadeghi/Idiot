@@ -32,8 +32,6 @@ public class Controller {
     public void handleCodes(List<String> codes) {
         isItYourTurn = game.getCurrentPlayerNumber() == gp.getPlayerNumber();
 
-        //#server TODO: other controllers have a handle update method to update their separate games.
-
         String box = "none";
         String card = "none";
         String action = "none";
@@ -53,8 +51,6 @@ public class Controller {
                     break;
             }
         }
-
-        //TODO: make sendEvent and handleEvent aware of player numbers.
 
         //if we're still setting up the game
         if (game.getState() == STATE.SETUP && !me.isReady()) {
@@ -77,7 +73,7 @@ public class Controller {
             }
         }
 
-        //#server TODO: two options for handling inter-controllers updates.
+        //two options for handling inter-controllers updates.
         // 1. handle each motion(selecting cards, drawing) or
         // 2. handle each turn(find out what actually changed and then sendToClients an update pkg)
         // 3. filter down to either a view action that doesn't require server echo, because it doesn't affect game state,
@@ -135,7 +131,6 @@ public class Controller {
             Player player = game.getPlayer(num);
             //if it's a hand card
             if (cardVal > -1 && cardVal < 3) {
-                //TODO: this isn't me, this is the player that sent the action.
                 player.setHandSetupSelect(cardVal);
                 gp.repaint();
                 //if it's a top card
@@ -184,6 +179,7 @@ public class Controller {
 
     private void handleGameAction(int num, String action) {
         Player me = game.getPlayer(num);
+        Main.chatFrame.println("The round is over: " + game.checkRoundOver());
         if (!game.checkRoundOver())
             switch (action) {
                 case "PLAY":
@@ -212,7 +208,6 @@ public class Controller {
                 Main.activeFrame = StartFrame.instance();
                 break;
         }
-        //TODO: see if this fixes the repaint nonsense?
         Main.gp.repaint();
     }
 }

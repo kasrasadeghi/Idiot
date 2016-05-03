@@ -136,6 +136,7 @@ public class Game {
     public void setCurrentPlayerToNext() {
         //change the player, then player to play
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
+        //TODO: deselect all of the cards that the current player has selected if he's not going to play anymore
         setPlayerToPlay();
     }
 

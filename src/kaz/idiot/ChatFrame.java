@@ -67,6 +67,7 @@ public class ChatFrame extends JFrame {
 
     public void println(String text) {
         textArea.append(text + "\n");
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
     public void addPlayerName(String name) {
