@@ -142,7 +142,6 @@ public class Game {
 
     public void setPlayerToPlay() {
         Player current = getCurrentPlayer();
-        if (current.isEmpty()) current.setState(STATE.SPECTATING);
         //region ----devmode
 //        //#devmode TODO: temp change
 //        Main.activeFrame.setVisible(false);
@@ -280,6 +279,9 @@ public class Game {
             if (!current.getTop().isEmpty())    //and the top is NOT empty
                 current.topToHand();            //move the top to the hand
         }
+        //set player to spectating if everything is empty.
+        if (current.getHand().isEmpty() && current.getTop().isEmpty() && current.getBot().isEmpty())
+            current.end();
 
         //Field Actions
         boolean again = false;
@@ -440,14 +442,19 @@ public class Game {
         return null;
     }
 
-    public boolean checkRoundOver() {
+    public long getNonSpectatingPlayerCount() {
         //if there is only one player not spectating (one player still playing),
         // then return true
         // only one is less than 2, but maybe two players can win at the same time?
         // that's not really supposed to happen, but this is logically equivalent
         return players.stream()
                 .filter(p -> p.getState() != STATE.SPECTATING)
-                .count() /*== 1*/ < 2;
+                .count();
+        //TODO: check if people are set to spectating
+    }
+
+    public boolean checkRoundOver() {
+        return getNonSpectatingPlayerCount() == 1;
     }
 
     //endregion

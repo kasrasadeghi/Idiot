@@ -301,10 +301,10 @@ class GamePanel extends JPanel {
         if(inspection != -1)
             paintInspection(g);
         if(game.checkRoundOver())
-            paintGameOver(g);
+            paintRoundOver(g);
     }
 
-    private void paintGameOver(Graphics g) {
+    private void paintRoundOver(Graphics g) {
         int w = getWidth();
         int h = getHeight();
         g.setColor(Color.RED);

@@ -161,7 +161,7 @@ public class Main {
                     gp.repaint();
                     break;
                 case "checkWin":
-                    chatFrame.println(game.checkRoundOver() + "");
+                    chatFrame.println(game.getNonSpectatingPlayerCount() + "");
                 case "event":
                     assert game != null;
                     chatFrame.println("event handling: " + cmd[1] + ", " + cmd[2] + ", " + cmd[3] + ".");

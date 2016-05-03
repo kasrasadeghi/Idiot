@@ -175,11 +175,13 @@ public class Controller {
         }
 
         //TODO: implement willful pickup
+        //TODO: implement deckPick plays
+        //TODO: autoselect picked up bottom card
     }
 
     private void handleGameAction(int num, String action) {
         Player me = game.getPlayer(num);
-        Main.chatFrame.println("The round is over: " + game.checkRoundOver());
+        Main.chatFrame.println("Non-spectating player count: " + game.getNonSpectatingPlayerCount());
         if (!game.checkRoundOver())
             switch (action) {
                 case "PLAY":
