@@ -181,7 +181,6 @@ public class Controller {
 
     private void handleGameAction(int num, String action) {
         Player me = game.getPlayer(num);
-        Main.chatFrame.println("Non-spectating player count: " + game.getNonSpectatingPlayerCount());
         if (!game.checkRoundOver())
             switch (action) {
                 case "PLAY":

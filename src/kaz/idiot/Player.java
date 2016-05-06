@@ -89,6 +89,7 @@ public class Player {
 
     public void end() {
         state = STATE.SPECTATING;
+        bot.clear();
     }
 
     public boolean isPlaying() {

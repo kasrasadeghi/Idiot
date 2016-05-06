@@ -1,6 +1,7 @@
 package kaz.idiot;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 import static kaz.idiot.CARD.*;
 /**
@@ -34,6 +35,7 @@ public class Game {
     }
 
     public Game(int count) {
+        random = new Random(Main.seed);
         List<String> names = new ArrayList<>();
         for (int i = 1; i <= count; i++) {
             names.add(String.valueOf(i));
@@ -280,7 +282,7 @@ public class Game {
                 current.topToHand();            //move the top to the hand
         }
         //set player to spectating if everything is empty.
-        if (current.getHand().isEmpty() && current.getTop().isEmpty() && current.getBot().isEmpty())
+        if (current.getHand().isEmpty() && current.getTop().isEmpty() && current.getBot().stream().allMatch( c -> c.name().equals(NULL_CARD.name())))
             current.end();
 
         //Field Actions
@@ -447,8 +449,7 @@ public class Game {
         // then return true
         // only one is less than 2, but maybe two players can win at the same time?
         // that's not really supposed to happen, but this is logically equivalent
-        return players.stream()
-                .filter(p -> p.getState() != STATE.SPECTATING)
+        return players.stream().filter(p -> p.getState() != STATE.SPECTATING)
                 .count();
         //TODO: check if people are set to spectating
     }

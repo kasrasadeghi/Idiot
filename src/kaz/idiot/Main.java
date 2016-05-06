@@ -144,7 +144,6 @@ public class Main {
         String[] inputSplit = input.split("> ");
         String name = inputSplit[0];
         if (inputSplit[1].startsWith("/")) {
-            chatFrame.println(input); //TODO: temporary
             //#server TODO: maybe only send some commands to people that submit them. like help.
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
@@ -158,10 +157,11 @@ public class Main {
                     chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
                 case "repaint":
+                    Main.chatFrame.println("This is a dangerous function to use.");
                     gp.repaint();
                     break;
                 case "checkWin":
-                    chatFrame.println(game.getNonSpectatingPlayerCount() + "");
+                    chatFrame.println(game.checkRoundOver() + "");
                 case "event":
                     assert game != null;
                     chatFrame.println("event handling: " + cmd[1] + ", " + cmd[2] + ", " + cmd[3] + ".");
@@ -215,6 +215,8 @@ public class Main {
                             break;
                     }
                     break;
+                default:
+                    chatFrame.println(input);
             }
         } else {
             chatFrame.println(input);
