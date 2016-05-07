@@ -202,11 +202,13 @@ public class Controller {
         else switch (action) {
             case "HOST_REMATCH":
                 //#server TODO: make it go to the play menu
-                Main.activeFrame = StartFrame.instance();
+                Main.gameFrame.setVisible(false);
+                Main.startFrame.setVisible(true);
                 break;
             case "RETURN_TO_MAIN_MENU":
                 //#server TODO: make it go to the main menu
-                Main.activeFrame = StartFrame.instance();
+                Main.gameFrame.setVisible(false);
+                Main.startFrame.setVisible(true);
                 break;
         }
         Main.gp.repaint();

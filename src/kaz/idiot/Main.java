@@ -20,28 +20,30 @@ public class Main {
     public static Controller controller;
     public static Game game;
     public static JFrame[] frames;
-    public static JFrame activeFrame;
+    public static JFrame gameFrame;
+    //TODO: reduce to one Controller
+    //TODO: reduce to one GamePanel
+    public static StartFrame startFrame;
 
     public static List<PrintWriter> clientPrinters;
     public static List<String> clientNames;
     public static PrintWriter serverPrinter;
     public static ChatFrame chatFrame;
     public static boolean accepting = true;
-    public static long seed = 8912;
+    public static long seed = 8912; //TODO: implement random seed generator
     public static int playerNumber = -1;
     public static Thread serverSocketListenerThread;
     public static boolean canAddPlayers = false;
 
     public static void main(String[] args) {
-        clientPrinters = new ArrayList<>();
-        SwingUtilities.invokeLater(() -> activeFrame = StartFrame.instance());
+        SwingUtilities.invokeLater(() -> startFrame = StartFrame.instance());
     }
 
     public static void setupServer(String port, String name) {
-//        System.out.println("I'm the Server");
 
-        activeFrame.setVisible(false);
+        startFrame.setVisible(false);
         chatFrame = new ChatFrame(name, true);
+        clientPrinters = new ArrayList<>();
         clientNames = new ArrayList<>();
 
         try {
@@ -88,7 +90,7 @@ public class Main {
 
     public static void setupClient(String address, String port, String name) {
 
-        activeFrame.setVisible(false);
+        startFrame.setVisible(false);
         chatFrame = new ChatFrame(name, false);
 
         try {
@@ -148,20 +150,19 @@ public class Main {
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
                 case "all":
-                    chatFrame.println("Adding " + "devmode" + " to the game.");
-                    chatFrame.addPlayerName("devmode");
-                    chatFrame.println("Adding " + "devmode'" + " to the game.");
-                    chatFrame.addPlayerName("devmode'");
-                    break;
+                    if (chatFrame.isHosting() && canAddPlayers) {
+
+                    }
                 case "currentPlayer":
                     chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
-                case "repaint":
+                case "repaint": //TODO: organize cases alphabetically
                     Main.chatFrame.println("This is a dangerous function to use.");
                     gp.repaint();
                     break;
                 case "checkWin":
                     chatFrame.println(game.checkRoundOver() + "");
+                    break;
                 case "event":
                     assert game != null;
                     chatFrame.println("event handling: " + cmd[1] + ", " + cmd[2] + ", " + cmd[3] + ".");
@@ -242,9 +243,9 @@ public class Main {
 
         playerNumber = chatFrame.getPlayerNames().indexOf(chatFrame.getClientName());
         if (playerNumber > -1)
-            activeFrame = frames[playerNumber];
-        else activeFrame = new IdiotFrame();
-        activeFrame.setVisible(true);
+            gameFrame = frames[playerNumber];
+        else gameFrame = new IdiotFrame();
+        gameFrame.setVisible(true);
 
         gp = gps[playerNumber];
         controller = controllers[playerNumber];

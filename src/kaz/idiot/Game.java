@@ -81,9 +81,9 @@ public class Game {
         players.forEach(Player::start);
 
 //        //#devmode TODO: temp code
-//        Main.activeFrame.setVisible(false);
-//        Main.activeFrame = Main.frames[currentPlayerNumber];
-//        Main.activeFrame.setVisible(true);
+//        Main.gameFrame.setVisible(false);
+//        Main.gameFrame = Main.frames[currentPlayerNumber];
+//        Main.gameFrame.setVisible(true);
     }
 
     private void initTurnOrder() {
@@ -146,9 +146,9 @@ public class Game {
         Player current = getCurrentPlayer();
         //region ----devmode
 //        //#devmode TODO: temp change
-//        Main.activeFrame.setVisible(false);
-//        Main.activeFrame = Main.frames[currentPlayerNumber];
-//        Main.activeFrame.setVisible(true);
+//        Main.gameFrame.setVisible(false);
+//        Main.gameFrame = Main.frames[currentPlayerNumber];
+//        Main.gameFrame.setVisible(true);
 
         if (getCurrentPlayer().getState() == STATE.SPECTATING) {
             setCurrentPlayerToNext();
@@ -429,8 +429,7 @@ public class Game {
                         validRanks = new ArrayList<>();
                         Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
                         return validRanks;
-                    }
-                    else {
+                    } else {
                         return getValidRanks(index - 1, false);
                     }
                 case "7":

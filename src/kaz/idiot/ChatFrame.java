@@ -22,14 +22,14 @@ public class ChatFrame extends JFrame {
     private JButton lockButton;
     private Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 12);
 
-    private boolean isHost;
+    private boolean host;
     private String clientName;
 
     public ChatFrame(String name, boolean isHost) {
         super("Lobby " + name + ((isHost)?  " - Host": "") );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(chatPanel);
-        this.isHost = isHost;
+        this.host = isHost;
         this.clientName = name;
 
         playerNameList = new DefaultListModel<>();
@@ -85,7 +85,7 @@ public class ChatFrame extends JFrame {
     }
 
     public void send(String text) {
-        if (isHost) {
+        if (host) {
             Main.handleInput(clientName + "> " + text);
             Main.sendToClients(clientName, text);
         }
@@ -102,7 +102,7 @@ public class ChatFrame extends JFrame {
 
     public void setClientName(String name) {
         this.clientName = name;
-        setTitle("Lobby " + name + ((isHost)?  " - Host": "") );
+        setTitle("Lobby " + name + ((host)?  " - Host": "") );
     }
 
     public String getClientName() {
@@ -111,5 +111,9 @@ public class ChatFrame extends JFrame {
 
     public void disableLockButton() {
         lockButton.setEnabled(false);
+    }
+
+    public boolean isHosting() {
+        return host;
     }
 }

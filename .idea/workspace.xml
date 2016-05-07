@@ -9,14 +9,14 @@
     <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Main.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Player.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
     </list>
     <ignored path="Idiot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,23 +39,16 @@
     <favorites_list name="Idiot" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="158" column="31" selection-start-line="158" selection-start-column="31" selection-end-line="158" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="450" column="81" selection-start-line="450" selection-start-column="81" selection-end-line="450" selection-end-column="81" />
-              <folding />
+            <state relative-caret-position="182">
+              <caret line="158" column="69" selection-start-line="158" selection-start-column="69" selection-end-line="158" selection-end-column="69" />
+              <folding>
+                <element signature="method#init#0;class#Main#0" expanded="false" />
+                <element signature="class#IdiotFrame#0;class#Main#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,11 +96,11 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.form" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
       </list>
     </option>
@@ -125,10 +118,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="2586" />
+    <option name="height" value="1394" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -189,16 +182,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -296,6 +279,16 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
@@ -429,65 +422,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
@@ -674,9 +608,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -785,19 +716,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
@@ -894,6 +812,7 @@
       <workItem from="1462202067431" duration="16909000" />
       <workItem from="1462228008392" duration="11028000" />
       <workItem from="1462312166479" duration="4833000" />
+      <workItem from="1462543587323" duration="3910000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -1123,7 +1042,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353602000" />
+    <option name="totallyTimeSpent" value="357512000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1135,25 +1054,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-13" y="-13" width="2586" height="1394" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983378" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7692308" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25135428" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25109363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="807" y="573" width="602" height="208" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18230277" sideWeight="0.49535194" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18527508" sideWeight="0.49535194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5362947" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17750533" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53543305" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17718446" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17963752" sideWeight="0.5046481" order="2" side_tool="true" content_ui="tabs" />
@@ -1161,9 +1080,9 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1480,20 +1399,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/StartFrame.form">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1509,8 +1420,8 @@
         <state relative-caret-position="298">
           <caret line="3311" column="16" selection-start-line="3311" selection-start-column="16" selection-end-line="3311" selection-end-column="16" />
           <folding>
-            <element signature="e#114530#114531#0" expanded="true" />
-            <element signature="e#114577#114578#0" expanded="true" />
+            <element signature="e#114530#114531#0" expanded="false" />
+            <element signature="e#114577#114578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1519,22 +1430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4675">
-          <caret line="303" column="26" selection-start-line="303" selection-start-column="26" selection-end-line="303" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1563,27 +1458,273 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/CARD.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="182" column="40" selection-start-line="182" selection-start-column="40" selection-end-line="182" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="-2686">
+          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <marker date="1462207459243" expanded="false" signature="27:226" placeholder="..." />
+            <marker date="1462207459243" expanded="true" signature="228:320" placeholder="/**...*/" />
+            <marker date="1462207459243" expanded="true" signature="2933:3184" placeholder="{...}" />
+            <marker date="1462207459243" expanded="true" signature="3190:3272" placeholder="/**...*/" />
+            <marker date="1462207459243" expanded="false" signature="3312:3323" placeholder=" { " />
+            <marker date="1462207459243" expanded="false" signature="3386:3392" placeholder=" }" />
+            <marker date="1462207459243" expanded="false" signature="3436:3447" placeholder=" { " />
+            <marker date="1462207459243" expanded="false" signature="3461:3467" placeholder=" }" />
+            <marker date="1462207459243" expanded="false" signature="3496:3507" placeholder=" { " />
+            <marker date="1462207459243" expanded="false" signature="3520:3526" placeholder=" }" />
+            <marker date="1462207459243" expanded="false" signature="3555:3566" placeholder=" { " />
+            <marker date="1462207459243" expanded="false" signature="3594:3600" placeholder=" }" />
+            <marker date="1462207459243" expanded="true" signature="3632:3853" placeholder="{...}" />
+            <marker date="1462207459243" expanded="false" signature="3882:3893" placeholder=" { " />
+            <marker date="1462207459243" expanded="false" signature="3921:3927" placeholder=" }" />
+            <marker date="1462207459243" expanded="true" signature="3959:4460" placeholder="{...}" />
+            <marker date="1462207459243" expanded="true" signature="4507:4732" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="911">
+          <caret line="303" column="26" selection-start-line="303" selection-start-column="26" selection-end-line="303" selection-end-column="26" />
+          <folding>
+            <marker date="1462305906470" expanded="false" signature="27:370" placeholder="..." />
+            <marker date="1462305906470" expanded="true" signature="373:421" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="false" signature="434:465" placeholder="/Duplicates/" />
+            <marker date="1462305906470" expanded="true" signature="1103:3201" placeholder="----Bounds----" />
+            <marker date="1462305906470" expanded="false" signature="1267:1278" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="1315:1321" placeholder=" }" />
+            <marker date="1462305906470" expanded="false" signature="1374:1385" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="1421:1427" placeholder=" }" />
+            <marker date="1462305906470" expanded="false" signature="1486:1497" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="1536:1542" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="1568:3179" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="1668:1783" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="1857:2020" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="2054:2069" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="2129:2139" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="2199:2600" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="2650:3173" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="3258:4369" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="3976:4361" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="4037:4056" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="4085:4099" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="4413:4791" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="4442:4607" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="4456:4597" placeholder="//..." />
+            <marker date="1462305906470" expanded="true" signature="4677:4785" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="4840:6276" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="4950:5428" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="5469:5684" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="5726:5741" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="5770:5780" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="5818:6057" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="5907:6047" placeholder="//..." />
+            <marker date="1462305906470" expanded="true" signature="6127:6270" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="6282:6397" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="false" signature="6437:6448" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="6494:6500" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="6562:7129" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="7163:7649" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="7690:7701" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="7729:7735" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="7741:25374" placeholder="----Painting methods----" />
+            <marker date="1462305906470" expanded="true" signature="7831:8153" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="8202:8613" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="8619:8975" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="9015:9327" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="9373:10358" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="10364:10448" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="10494:10986" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="11039:11081" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="11132:11168" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="11222:11576" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="11582:11699" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="11751:11949" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="11997:12595" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="12601:13116" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="13234:13696" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="13702:13811" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="13855:14278" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="14322:14386" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="14433:14692" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="14698:14794" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="14841:17443" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="17512:17589" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="17595:17930" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="18013:18103" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="18109:18563" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="18648:23850" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="23856:23944" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="23988:24129" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="24135:24202" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="24243:24591" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="24597:24664" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="24707:24900" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="24906:24966" placeholder="/**...*/" />
+            <marker date="1462305906470" expanded="true" signature="25006:25220" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="25289:25300" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="25345:25351" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="25380:26323" placeholder="----SIDE stuff----" />
+            <marker date="1462305906470" expanded="true" signature="25437:26041" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="25827:25946" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="25974:25989" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="26025:26035" placeholder=" }" />
+            <marker date="1462305906470" expanded="true" signature="26082:26301" placeholder="{...}" />
+            <marker date="1462305906470" expanded="true" signature="26329:27217" placeholder="----Interaction methods----" />
+            <marker date="1462305906470" expanded="true" signature="26430:26964" placeholder="{...}" />
+            <marker date="1462305906470" expanded="false" signature="27006:27017" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="27034:27040" placeholder=" }" />
+            <marker date="1462305906470" expanded="false" signature="27075:27086" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="27117:27123" placeholder=" }" />
+            <marker date="1462305906470" expanded="false" signature="27157:27168" placeholder=" { " />
+            <marker date="1462305906470" expanded="false" signature="27188:27194" placeholder=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="450" column="81" selection-start-line="450" selection-start-column="81" selection-end-line="450" selection-end-column="81" />
-          <folding />
+        <state relative-caret-position="1010">
+          <caret line="431" column="22" selection-start-line="431" selection-start-column="22" selection-end-line="431" selection-end-column="22" />
+          <folding>
+            <marker date="1462546635947" expanded="false" signature="27:104" placeholder="..." />
+            <marker date="1462546635947" expanded="true" signature="105:153" placeholder="/**...*/" />
+            <marker date="1462546635947" expanded="false" signature="559:570" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="580:586" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="615:626" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="639:645" placeholder=" }" />
+            <marker date="1462546635947" expanded="true" signature="651:3049" placeholder="---- Game Initialization and Reset ----" />
+            <marker date="1462546635947" expanded="true" signature="752:821" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="850:1061" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="1111:1323" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="1383:1800" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="1832:2031" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="2058:2348" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="2158:2342" placeholder="//..." />
+            <marker date="1462546635947" expanded="true" signature="2383:3032" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="3055:4980" placeholder="---- Player Handling Methods ----" />
+            <marker date="1462546635947" expanded="false" signature="3132:3143" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3165:3171" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3204:3215" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3237:3243" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3279:3290" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3349:3355" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3390:3401" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3477:3483" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3517:3528" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3591:3597" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3630:3641" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3722:3728" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="3769:3780" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="3807:3813" placeholder=" }" />
+            <marker date="1462546635947" expanded="true" signature="3856:4158" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="4194:4764" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="4249:4456" placeholder="----devmode" />
+            <marker date="1462546635947" expanded="false" signature="4802:4813" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="4853:4859" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="4911:4922" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="4957:4963" placeholder=" }" />
+            <marker date="1462546635947" expanded="true" signature="4986:5315" placeholder="---- Game Interactions ----" />
+            <marker date="1462546635947" expanded="false" signature="5058:5069" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5084:5090" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="5130:5141" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5154:5160" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="5193:5204" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5216:5222" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="5260:5271" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5292:5298" placeholder=" }" />
+            <marker date="1462546635947" expanded="true" signature="5321:15441" placeholder="---- Game Actions ----" />
+            <marker date="1462546635947" expanded="true" signature="5378:5475" placeholder="{...}" />
+            <marker date="1462546635947" expanded="false" signature="5508:5519" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5568:5574" placeholder=" }" />
+            <marker date="1462546635947" expanded="false" signature="5610:5621" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="5652:5658" placeholder=" }" />
+            <marker date="1462546635947" expanded="true" signature="5700:5808" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="5886:6642" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="6668:6749" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="6755:6858" placeholder="/**...*/" />
+            <marker date="1462546635947" expanded="true" signature="6888:7167" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="7082:7097" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="7083:7096" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="7199:9626" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="7209:7464" placeholder="//..." />
+            <marker date="1462546635947" expanded="true" signature="7917:7983" placeholder="//..." />
+            <marker date="1462546635947" expanded="true" signature="8084:8128" placeholder="//..." />
+            <marker date="1462546635947" expanded="true" signature="9666:9795" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="9801:10716" placeholder="/**...*/" />
+            <marker date="1462546635947" expanded="true" signature="10767:11170" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="10777:10889" placeholder="//..." />
+            <marker date="1462546635947" expanded="true" signature="11234:11348" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="11412:14840" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="14888:15328" placeholder="{...}" />
+            <marker date="1462546635947" expanded="true" signature="14898:15164" placeholder="//..." />
+            <marker date="1462546635947" expanded="false" signature="15365:15376" placeholder=" { " />
+            <marker date="1462546635947" expanded="false" signature="15418:15424" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="202" column="32" selection-start-line="202" selection-start-column="32" selection-end-line="202" selection-end-column="32" />
+          <folding>
+            <marker date="1462546635966" expanded="true" signature="44:85" placeholder="/**...*/" />
+            <marker date="1462546635966" expanded="true" signature="253:966" placeholder="//..." />
+            <marker date="1462546635966" expanded="true" signature="1015:1203" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="1253:3149" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="2639:3143" placeholder="//..." />
+            <marker date="1462546635966" expanded="false" signature="3187:3198" placeholder=" { " />
+            <marker date="1462546635966" expanded="false" signature="3255:3261" placeholder=" }" />
+            <marker date="1462546635966" expanded="true" signature="3332:3967" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="4020:4337" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="4394:5052" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="5113:5783" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="5384:5615" placeholder="//..." />
+            <marker date="1462546635966" expanded="true" signature="5839:6204" placeholder="{...}" />
+            <marker date="1462546635966" expanded="true" signature="6076:6198" placeholder="//..." />
+            <marker date="1462546635966" expanded="true" signature="6264:7366" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+          <folding>
+            <marker date="1462548479672" expanded="false" signature="27:179" placeholder="..." />
+            <marker date="1462548479672" expanded="true" signature="181:222" placeholder="/**...*/" />
+            <marker date="1462548479672" expanded="true" signature="770:1851" placeholder="{...}" />
+            <marker date="1462548479672" expanded="true" signature="1890:2006" placeholder="{...}" />
+            <marker date="1462548479672" expanded="true" signature="2051:2199" placeholder="{...}" />
+            <marker date="1462548479672" expanded="false" signature="2246:2257" placeholder=" { " />
+            <marker date="1462548479672" expanded="false" signature="2292:2298" placeholder=" }" />
+            <marker date="1462548479672" expanded="false" signature="2335:2346" placeholder=" { " />
+            <marker date="1462548479672" expanded="false" signature="2375:2381" placeholder=" }" />
+            <marker date="1462548479672" expanded="true" signature="2417:2610" placeholder="{...}" />
+            <marker date="1462548479672" expanded="true" signature="2653:2924" placeholder="{...}" />
+            <marker date="1462548479672" expanded="true" signature="2969:3071" placeholder="{...}" />
+            <marker date="1462548479672" expanded="false" signature="3106:3117" placeholder=" { " />
+            <marker date="1462548479672" expanded="false" signature="3135:3141" placeholder=" }" />
+            <marker date="1462548479672" expanded="false" signature="3178:3189" placeholder=" { " />
+            <marker date="1462548479672" expanded="false" signature="3218:3224" placeholder=" }" />
+            <marker date="1462548479672" expanded="false" signature="3256:3267" placeholder=" { " />
+            <marker date="1462548479672" expanded="false" signature="3279:3285" placeholder=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="158" column="31" selection-start-line="158" selection-start-column="31" selection-end-line="158" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="182">
+          <caret line="158" column="69" selection-start-line="158" selection-start-column="69" selection-end-line="158" selection-end-column="69" />
+          <folding>
+            <element signature="method#init#0;class#Main#0" expanded="false" />
+            <element signature="class#IdiotFrame#0;class#Main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
