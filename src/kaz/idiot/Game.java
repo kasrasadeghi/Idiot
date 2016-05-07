@@ -82,7 +82,7 @@ public class Game {
 
 //        //#devmode TODO: temp code
 //        Main.gameFrame.setVisible(false);
-//        Main.gameFrame = Main.frames[currentPlayerNumber];
+//        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
     }
 
@@ -147,7 +147,7 @@ public class Game {
         //region ----devmode
 //        //#devmode TODO: temp change
 //        Main.gameFrame.setVisible(false);
-//        Main.gameFrame = Main.frames[currentPlayerNumber];
+//        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
 
         if (getCurrentPlayer().getState() == STATE.SPECTATING) {

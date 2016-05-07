@@ -20,10 +20,10 @@ public class Main {
     public static Controller[] controllers;
     public static Controller controller;
     public static Game game;
-    public static JFrame[] frames;
+    public static JFrame[] gameFrames;
     public static JFrame gameFrame;
-    //TODO: reduce to one Controller
     //TODO: reduce to one GamePanel
+    //TODO: reduce to one Controller
     public static StartFrame startFrame;
 
     public static List<PrintWriter> clientPrinters;
@@ -31,7 +31,7 @@ public class Main {
     public static PrintWriter serverPrinter;
     public static ChatFrame chatFrame;
     public static boolean accepting = true;
-    public static long seed = 8912; //TODO: implement random seed generator
+    public static long seed = 8912;
     public static int playerNumber = -1;
     public static Thread serverSocketListenerThread;
     public static boolean canAddPlayers = false;
@@ -152,6 +152,8 @@ public class Main {
             //#server TODO: maybe only send some commands to people that submit them. like help.
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
+                //TODO: make more commands silence-able
+                //TODO: maybe make commands printable "-p"
                 case "all":
                     if (canAddPlayers) {
                         chatFrame.println("Adding all players to the game.");
@@ -163,8 +165,6 @@ public class Main {
                             sendToClients(name, "/add-s " + clientName);
                             handleInput(name + "> " + "/add-s " + clientName);
                         }
-                        //TODO : fix with silent /add or actually find the issue
-                        //JList not updating or something
                     }
                     //TODO: make order randomizer for game start. maybe use seed?
                     break;
@@ -199,7 +199,7 @@ public class Main {
                     controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
-                    chatFrame.println("Adding " + cmd[1] + " to the game.");//TODO: do try-catch for cases that use the command.
+                    chatFrame.println("Adding " + cmd[1] + " to the game.");//TODO: do try-catch for cases that use cmd to output "see help".
                 case "add-s":
                     chatFrame.addPlayerName(cmd[1]);
                     break;
@@ -219,7 +219,7 @@ public class Main {
                     }
                     break;
                 case "help":
-                    String help;
+                    String help = "";
                     if (cmd.length == 1) {
                         //#server TODO: ready up system, lockButton.setText("Ready");
                         //TODO: finish help command
@@ -232,7 +232,7 @@ public class Main {
                                 "- lock\n" +
                                 "- remove\n" +
                                 "- start";
-                        chatFrame.println(help);
+
                     } else switch (cmd[1]) {
                         case "add":
                             break;
@@ -246,7 +246,17 @@ public class Main {
                             break;
                         case "start":
                             break;
+                        default:
+                            help = "  Commands: \n" +
+                                    "- add\n" +
+                                    "- event\n" +
+                                    "- genRandom\n" +
+                                    "- help\n" +
+                                    "- lock\n" +
+                                    "- remove\n" +
+                                    "- start";
                     }
+                    chatFrame.println(help);
                     break;
                 default:
                     chatFrame.println(input);
@@ -265,17 +275,17 @@ public class Main {
         game = new Game(playerNames, seed);
         controllers = new Controller[playerCount];
         gps = new GamePanel[playerCount];
-        frames = new JFrame[playerCount]; //temporary.
+        gameFrames = new JFrame[playerCount]; //temporary.
         //in the final version of the game, delete the JFrame array and make it present only the controlling player's JFrame.
         //also need to only have one GamePanel and one Controller, so they can interface with the network and the Game.
 
         for (int i = 0; i < playerCount; ++i) {
-            frames[i] = new IdiotFrame(i);
+            gameFrames[i] = new IdiotFrame(i);
         }
 
         playerNumber = chatFrame.getPlayerNames().indexOf(chatFrame.getClientName());
         if (playerNumber > -1)
-            gameFrame = frames[playerNumber];
+            gameFrame = gameFrames[playerNumber];
         else gameFrame = new IdiotFrame();
         gameFrame.setVisible(true);
 
@@ -287,7 +297,7 @@ public class Main {
 
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
-            //TODO: create spectator idiotframes
+            //TODO: create spectator idiotFrames
             this(-1);
             //TODO: when players are in spectate mode give them spectator idiotFrames
         }
