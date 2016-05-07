@@ -17,7 +17,7 @@ import java.util.List;
  *      1.0 - copied CARD from idiot, added comments, and took out functions specific to Idiot.
  *      2.0 - updated constructor to be independent of the idiot game and implemented drawCard
  */
-public enum playingCard {
+public enum PlayingCard {
     SPADE_A(0, 3),
     SPADE_2(1, 3),
     SPADE_3(2, 3),
@@ -81,7 +81,7 @@ public enum playingCard {
     public static final int CARD_X = 79;
     public static final int CARD_Y = 123;
 
-    playingCard(int tlx, int tly) {
+    PlayingCard(int tlx, int tly) {
         try {
             image = ImageIO.read(new File("cards.png")).getSubimage(tlx * CARD_X, tly * CARD_Y, CARD_X, CARD_Y);
         } catch(IOException e) {
@@ -92,14 +92,14 @@ public enum playingCard {
     /**
      * @return a random card that isn't NULL_CARD;
      */
-    public static playingCard random() {
+    public static PlayingCard random() {
         return values()[(int)(Math.random() * values().length - 1)];
     }
 
     /**
      * @return a list of a normal deck of playing cards. not shuffled.
      */
-    public static List<playingCard> fullDeck() {
+    public static List<PlayingCard> fullDeck() {
         return Arrays.asList(values()).subList(0, values().length - 1);
     }
 

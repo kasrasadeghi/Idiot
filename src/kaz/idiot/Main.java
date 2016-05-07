@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -83,7 +84,7 @@ public class Main {
                     } catch (IOException e) { e.printStackTrace(); }
                 }
             });
-
+            //TODO: handle closing the game.
             serverSocketListenerThread.start();
         } catch (IOException e) { e.printStackTrace(); }
     }
@@ -106,6 +107,8 @@ public class Main {
 
             //sends name
             serverPrinter.println(name);
+            //TODO: make thread that checks if clients are still even there. something to do with .open()?
+            //TODO: learn more about sockets
 
             //checks for name confirmation and changes name if need be
             if (serverReader.hasNextLine())
@@ -150,13 +153,40 @@ public class Main {
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
                 case "all":
-                    if (chatFrame.isHosting() && canAddPlayers) {
-
+                    if (canAddPlayers) {
+                        chatFrame.println("Adding all players to the game.");
                     }
+                    if (chatFrame.isHosting() && canAddPlayers) {
+                        sendToClients(name, "/add-s " + chatFrame.getClientName());
+                        handleInput(name + "> " + "/add-s " + chatFrame.getClientName());
+                        for (String clientName : clientNames) {
+                            sendToClients(name, "/add-s " + clientName);
+                            handleInput(name + "> " + "/add-s " + clientName);
+                        }
+                        //TODO : fix with silent /add or actually find the issue
+                        //JList not updating or something
+                    }
+                    //TODO: make order randomizer for game start. maybe use seed?
+                    break;
+                case "seed":
+                    //TODO: generate seed;
+                    chatFrame.println("Generating new seed.");
+                    try {
+                        seed = new Random(Long.valueOf(cmd[1])).nextLong();
+                    } catch (NumberFormatException e) {
+                        chatFrame.println("See /help seed for information on how to use this command.");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        seed = new Random(seed).nextLong();
+                    }
+                    break;
+                case "printSeed":
+                    chatFrame.println(seed + "");
+                    break;
                 case "currentPlayer":
+                    assert game != null;
                     chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
-                case "repaint": //TODO: organize cases alphabetically
+                case "repaint": //TODO: organize command cases alphabetically
                     Main.chatFrame.println("This is a dangerous function to use.");
                     gp.repaint();
                     break;
@@ -169,7 +199,8 @@ public class Main {
                     controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
-                    chatFrame.println("Adding " + cmd[1] + " to the game.");
+                    chatFrame.println("Adding " + cmd[1] + " to the game.");//TODO: do try-catch for cases that use the command.
+                case "add-s":
                     chatFrame.addPlayerName(cmd[1]);
                     break;
                 case "remove":
@@ -177,7 +208,7 @@ public class Main {
                     chatFrame.removePlayerName(cmd[1]);
                     break;
                 case "lock":
-                    chatFrame.println("Lobby Locked.");
+                    chatFrame.println("Lobby locked.");
                     lockServer();
                     break;
                 case "start":
@@ -191,6 +222,7 @@ public class Main {
                     String help;
                     if (cmd.length == 1) {
                         //#server TODO: ready up system, lockButton.setText("Ready");
+                        //TODO: finish help command
                         // does completely different thing if you aren't the host.
                         help = "  Commands: \n" +
                                 "- add\n" +
