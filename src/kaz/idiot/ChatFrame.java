@@ -20,6 +20,7 @@ public class ChatFrame extends JFrame {
     private DefaultListModel<String> playerNameList;
     private JButton startButton;
     private JButton lockButton;
+    private JButton allButton;
     private Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 12);
 
     private boolean host;
@@ -61,6 +62,11 @@ public class ChatFrame extends JFrame {
 
         lockButton.addActionListener(ae -> {
             send("/lock");
+            send("/seed-s " + System.nanoTime());
+        });
+
+        allButton.addActionListener(ae -> {
+            send("/all");
         });
 
         pack();

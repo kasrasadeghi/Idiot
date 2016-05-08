@@ -80,8 +80,8 @@ public class Game {
         state = STATE.PLAYING;
 
         players.forEach(Player::start);
-        //TODO: don't let players see other players cards.
-//        //#server TODO: code may be used for spectator.
+        //#easy #after TODO: don't let players see other players cards.
+        //#after TODO: code may be used for spectator.
 //        Main.gameFrame.setVisible(false);
 //        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
@@ -135,15 +135,16 @@ public class Game {
 
     private void setCurrentPlayerToNext() {
         //change the player, then player to play
+        for (Player.HandCARD hc : getCurrentPlayer().getHand())
+            hc.selected = false;
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
-        //TODO: deselect all of the cards that the current player has selected if he's not going to play anymore
         setPlayerToPlay();
     }
 
     private void setPlayerToPlay() {
         Player current = getCurrentPlayer();
         //region ----devmode
-//        //#devmode TODO: temp change
+        //#after TODO: temp change
 //        Main.gameFrame.setVisible(false);
 //        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
@@ -447,7 +448,6 @@ public class Game {
         // that's not really supposed to happen, but this is logically equivalent
         return players.stream().filter(p -> p.getState() != STATE.SPECTATING)
                 .count();
-        //TODO: check if people are set to spectating
     }
 
     public boolean checkRoundOver() {

@@ -195,7 +195,7 @@ class GamePanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            //#server TODO: work on graphics for the event log
+            //#after TODO: work on graphics for the event log
             paintInspection(g);
         }
     }
@@ -338,27 +338,11 @@ class GamePanel extends JPanel {
             case INSP_MIDDLE:
                 paintMiddleInspection(g);
                 break;
-            case INSP_CHAT:
-                paintChatInspection(g);
-                break;
-            case INSP_EVENT:
-                paintEventInspection(g);
-                break;
             default:
                 paintPlayerInspection(g);
                 break;
         }
     }
-
-
-    private void paintEventInspection(Graphics g) {
-        //#devmode 1 TODO: console
-    }
-
-    private void paintChatInspection(Graphics g) {
-        //#server TODO: chat
-    }
-
 
     private void paintMiddleInspection(Graphics g) {
         g.setColor(overGrey);

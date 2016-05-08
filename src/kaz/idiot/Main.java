@@ -80,7 +80,7 @@ public class Main {
                 }
             });
             serverSocketListenerThread.start();
-            //TODO: handle closing the game.
+            //#new TODO: handle closing the game.
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -102,8 +102,7 @@ public class Main {
 
             //sends name
             serverPrinter.println(name);
-            //TODO: make thread that checks if clients are still even there. something to do with .open()?
-            //TODO: learn more about sockets
+            //#new TODO: make thread that checks if clients are still even there. something to do with .open()?
 
             //checks for name confirmation and changes name if need be
             if (serverReader.hasNextLine())
@@ -117,11 +116,11 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //TODO: AI
+        //#long TODO: AI
         //1. pick the rightmost playable card
         //2. pick the best play (gets rid of the most cards with the least value)
         //3. neural network/deep learning nonsense
-        //TODO: sort hand button
+        //#moderate TODO: sort hand button
     }
 
     public static void lockServer() {
@@ -144,11 +143,11 @@ public class Main {
         String[] inputSplit = input.split("> ");
         String name = inputSplit[0];
         if (inputSplit[1].startsWith("/")) {
-            //#server TODO: maybe only send some commands to people that submit them. like help.
+            //#easy TODO: maybe only send some commands to people that submit them. like help.
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
-                //TODO: make more commands silence-able
-                //TODO: maybe make commands printable "-p"
+                //#easy TODO: make more commands silence-able
+                //#easy TODO: maybe make commands printable "-p"
                 case "all":
                     if (chatFrame.isHosting() && canAddPlayers) {
                         sendToClients(name, "/add-s " + chatFrame.getClientName());
@@ -161,12 +160,14 @@ public class Main {
                     if (canAddPlayers) {
                         chatFrame.println("Adding all players to the game.");
                     }
-                    //TODO: make order randomizer for game start. maybe use seed?
+                    //#easy TODO: make order randomizer for game start. maybe use seed?
                     break;
                 case "listPlayers":
                     for (String playerName : chatFrame.getPlayerNames())
                         chatFrame.println(playerName);
                     break;
+                case "seed":
+                    chatFrame.println("Generating new seed.");
                 case "seed-s":
                     try {
                         seed = new Random(Long.valueOf(cmd[1])).nextLong();
@@ -175,9 +176,6 @@ public class Main {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         seed = new Random(seed).nextLong();
                     }
-                case "seed":
-                    //TODO: generate seed;
-                    chatFrame.println("Generating new seed.");
                     break;
                 case "printSeed":
                     chatFrame.println(seed + "");
@@ -187,7 +185,7 @@ public class Main {
                     chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
                 case "repaint":
-                    //TODO: organize command cases alphabetically
+                    //#long TODO: organize command cases alphabetically
                     Main.chatFrame.println("Use of the repaint function is not advised.");
                     gp.repaint();
                     break;
@@ -201,7 +199,7 @@ public class Main {
                     break;
                 case "add":
                     chatFrame.println("Adding " + cmd[1] + " to the game.");
-                    //TODO: do try-catch for cases that use cmd to output "see help".
+                    //#long TODO: do try-catch for cases that use cmd to output "see help".
                 case "add-s":
                     chatFrame.addPlayerName(cmd[1]);
                     break;
@@ -216,7 +214,6 @@ public class Main {
                 case "lock":
                     chatFrame.println("Lobby locked.");
                     lockServer();
-//                    handleInput(name + "> " + "/all"); //TODO add all players at beginning
                     break;
                 case "start":
                     if (!accepting) {
@@ -230,7 +227,7 @@ public class Main {
                         String help = "";
                         if (cmd.length == 1) {
                             //#server TODO: ready up system, lockButton.setText("Ready");
-                            //TODO: finish help command
+                            //#long TODO: finish help command
                             // does completely different thing if you aren't the host.
                             help = "  Commands: \n" +
                                     "- add\n" +
@@ -246,8 +243,6 @@ public class Main {
                                 break;
                             case "event":
                                 help += "Don't call this unless you know what you're doing.\n";
-                                break;
-                            case "genRandom":
                                 break;
                             case "lock":
                                 break;
@@ -315,7 +310,7 @@ public class Main {
             setLayout(new BorderLayout());
 
             initGamePanel(0);
-            //TODO: finish spectator mode.
+            //#hard TODO: finish spectator mode.
             // maybe have thread update current player?
             pack();
             setResizable(true);

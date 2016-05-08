@@ -174,8 +174,8 @@ public class Controller {
             e.printStackTrace();
         }
 
-        //TODO: implement deckPick plays
-        //TODO: autoSelect picked up bottom card
+        //#hard TODO: implement deckPick plays
+        //#easy TODO: autoSelect picked up bottom card
     }
 
     private void handleGameAction(int num, String action) {
@@ -200,12 +200,12 @@ public class Controller {
             }
         else switch (action) {
             case "HOST_REMATCH":
-                //#server TODO: make it go to the play menu
+                //#long TODO: make it go to the play menu
                 Main.gameFrame.setVisible(false);
                 Main.startFrame.setVisible(true);
                 break;
             case "RETURN_TO_MAIN_MENU":
-                //#server TODO: make it go to the main menu
+                //#long TODO: make it go to the main menu
                 Main.gameFrame.setVisible(false);
                 Main.startFrame.setVisible(true);
                 break;
