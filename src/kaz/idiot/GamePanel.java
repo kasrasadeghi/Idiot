@@ -192,12 +192,6 @@ class GamePanel extends JPanel {
             eventLog.setText(text + "\n" + eventLog.getText());
         }
 
-        public void setCaretAtEnd() {
-            eventLog.setCaretPosition(eventLog.getDocument().getLength());
-            //#server TODO: maintain the caret at last line, or switch it so that new input comes at the beginning.
-            // i'd prefer the former
-        }
-
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -244,7 +238,6 @@ class GamePanel extends JPanel {
         eventLogPanel.setVisible(true);
         chatPanel.setBounds(sideRect(SIDE.CHAT));
         eventLogPanel.setBounds(sideRect(SIDE.EVENT));
-        eventLogPanel.setCaretAtEnd();
     }
 
     public void printEvent(String text) {
