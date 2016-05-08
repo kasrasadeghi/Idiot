@@ -6,18 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment="">
+    <list default="true" id="f3461a94-d015-4d46-87fd-bdc856656be4" name="Default" comment=" - fixed caret positioning">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel$SIDE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/GamePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main$IdiotFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" afterPath="$PROJECT_DIR$/out/production/Idiot/kaz/idiot/StartFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Game.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kaz/idiot/Main.java" afterPath="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
     </list>
     <ignored path="Idiot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,23 +43,20 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="196" column="22" selection-start-line="196" selection-start-column="22" selection-end-line="196" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="397" column="28" selection-start-line="397" selection-start-column="28" selection-end-line="397" selection-end-column="28" />
               <folding>
-                <element signature="e#1103#1140#0" expanded="false" />
-                <element signature="e#25341#25382#0" expanded="false" />
-                <element signature="e#26290#26341#0" expanded="false" />
-                <marker date="1462675966729" expanded="true" signature="3348:3380" placeholder="..." />
+                <marker date="1462677830052" expanded="true" signature="3348:3380" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="430" column="21" selection-start-line="430" selection-start-column="21" selection-end-line="430" selection-end-column="21" />
+            <state relative-caret-position="221">
+              <caret line="176" column="31" selection-start-line="176" selection-start-column="31" selection-end-line="176" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -109,15 +104,15 @@
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.form" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/CARD.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Player.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/playingCard.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/PlayingCard.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/StartFrame.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Main.java" />
-        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/ChatFrame.java" />
         <option value="$PROJECT_DIR$/src/kaz/idiot/Game.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/kaz/idiot/Controller.java" />
       </list>
     </option>
   </component>
@@ -942,7 +937,7 @@
       <workItem from="1462543587323" duration="3910000" />
       <workItem from="1462610730314" duration="822000" />
       <workItem from="1462616723973" duration="4456000" />
-      <workItem from="1462637449777" duration="19045000" />
+      <workItem from="1462637449777" duration="20261000" />
     </task>
     <task id="LOCAL-00001" summary="0.5">
       <created>1455953606652</created>
@@ -1189,11 +1184,25 @@
       <option name="project" value="LOCAL" />
       <updated>1462672062137</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="the invokeLater update: &#10; - made validRanks a HashSet&#10; - made the eventLog prepend text&#10; - added seed-s&#10; - added remove argument mismatch catcher&#10; - TODO: /all &amp; /seed after /lock&#10; - TODO: ready system&#10; &#10;">
+      <created>1462677412485</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1462677412485</updated>
+    </task>
+    <task id="LOCAL-00037" summary=" - fixed caret positioning">
+      <created>1462677469614</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1462677469614</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381835000" />
+    <option name="totallyTimeSpent" value="383051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1209,7 +1218,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29904053" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29904053" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1224,7 +1233,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18496802" sideWeight="0.49535194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53521127" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17697228" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17697228" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17963752" sideWeight="0.5046481" order="2" side_tool="true" content_ui="tabs" />
@@ -1251,8 +1260,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added four card burns&#10;started on dev version to bugtest" />
-    <MESSAGE value="implemented one window at a time dev mode. uses array of JFrames" />
     <MESSAGE value="compile" />
     <MESSAGE value="implemented black 2s.&#10;changed the reverseTurnOrder function's name.&#10;implemented pickup.&#10;implemented 4cardburns (untested).&#10;added a player.getselected function.&#10;fixed removeToHand().&#10;renamed PASS to PICKUP.&#10;started the EPICMODE state." />
     <MESSAGE value="fixed clicking on a box but no card." />
@@ -1276,7 +1283,9 @@
     <MESSAGE value=" - fixed /all&#10; - added /seed (long)&#10; - added /printSeed" />
     <MESSAGE value="a bunch of small stuff update:&#10; - changed frames[] to gameFrames[]&#10;" />
     <MESSAGE value="the invokeLater update: &#10; - put adding players into the event dispatch thread with SwingUtilities.invokeLater.&#10; - - seemed to fix JLists not reflecting the current state of playerNames.&#10; - fixed it so that normal players only have one IdiotFrame and one GamePanel and Controller and everything. Seems to be working fine.&#10; - TODO: spectator mode.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="the invokeLater update: &#10; - put adding players into the event dispatch thread with SwingUtilities.invokeLater.&#10; - - seemed to fix JLists not reflecting the current state of playerNames.&#10; - fixed it so that normal players only have one IdiotFrame and one GamePanel and Controller and everything. Seems to be working fine.&#10; - TODO: spectator mode.&#10;" />
+    <MESSAGE value="the invokeLater update: &#10; - made validRanks a HashSet&#10; - made the eventLog prepend text&#10; - added seed-s&#10; - added remove argument mismatch catcher&#10; - TODO: /all &amp; /seed after /lock&#10; - TODO: ready system&#10; &#10;" />
+    <MESSAGE value=" - fixed caret positioning" />
+    <option name="LAST_COMMIT_MESSAGE" value=" - fixed caret positioning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1545,14 +1554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -1651,23 +1652,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1906">
+          <caret line="449" column="10" selection-start-line="449" selection-start-column="10" selection-end-line="449" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/kaz/idiot/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="196" column="22" selection-start-line="196" selection-start-column="22" selection-end-line="196" selection-end-column="22" />
+        <state relative-caret-position="357">
+          <caret line="397" column="28" selection-start-line="397" selection-start-column="28" selection-end-line="397" selection-end-column="28" />
           <folding>
-            <element signature="e#1103#1140#0" expanded="false" />
-            <element signature="e#25341#25382#0" expanded="false" />
-            <element signature="e#26290#26341#0" expanded="false" />
-            <marker date="1462675966729" expanded="true" signature="3348:3380" placeholder="..." />
+            <marker date="1462677830052" expanded="true" signature="3348:3380" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/kaz/idiot/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="430" column="21" selection-start-line="430" selection-start-column="21" selection-end-line="430" selection-end-column="21" />
+        <state relative-caret-position="221">
+          <caret line="176" column="31" selection-start-line="176" selection-start-column="31" selection-end-line="176" selection-end-column="31" />
           <folding />
         </state>
       </provider>

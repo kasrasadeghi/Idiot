@@ -174,9 +174,8 @@ public class Controller {
             e.printStackTrace();
         }
 
-        //TODO: implement willful pickup
         //TODO: implement deckPick plays
-        //TODO: autoselect picked up bottom card
+        //TODO: autoSelect picked up bottom card
     }
 
     private void handleGameAction(int num, String action) {
