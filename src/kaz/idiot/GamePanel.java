@@ -115,8 +115,8 @@ class GamePanel extends JPanel {
     public GamePanel (Game game, int pn, int w, int h) {
         this.game = game;
         this.playerNumber = pn;
-        this.startWidth = w;
-        this.startHeight = h;
+//        this.startWidth = w;
+//        this.startHeight = h;
 
         ClassLoader cl = this.getClass().getClassLoader();
         try {
@@ -125,8 +125,10 @@ class GamePanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
-        setMinimumSize(new Dimension(startWidth, startHeight));
+        setMinimumSize(dim);
+        setPreferredSize(dim);
 
         chatPanel = new ChatPanel();
         eventLogPanel = new EventLogPanel();
@@ -148,8 +150,7 @@ class GamePanel extends JPanel {
 
     public class ChatPanel extends JPanel {
         public ChatPanel() {
-            //#server TODO: once done with a chat panel or a console or whatever, see if read user input "\n" spawns a new line
-            // it doesn't
+
         }
 
         @Override
@@ -205,13 +206,13 @@ class GamePanel extends JPanel {
         }
     }
 
-    /**
-     * Sets the preferred size for the window to the dimensions it was constructed with.
-     * @return
-     */
-    public Dimension getPreferredSize() {
-        return new Dimension(startWidth, startHeight);
-    }
+//    /**
+//     * Sets the preferred size for the window to the dimensions it was constructed with.
+//     * @return
+//     */
+//    public Dimension getPreferredSize() {
+//        return new Dimension(startWidth, startHeight);
+//    }
 
     @Override
     protected void paintComponent(Graphics g) {

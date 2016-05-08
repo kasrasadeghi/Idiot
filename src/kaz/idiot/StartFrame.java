@@ -24,7 +24,7 @@ public class StartFrame extends JFrame{
     private final Color bg = Color.WHITE;
     private static StartFrame instance = new StartFrame();
 
-    public static StartFrame instance() { return instance;}
+    public static StartFrame instance() { return instance; }
     private StartFrame() {
         super("Start");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,8 +39,8 @@ public class StartFrame extends JFrame{
             String name = nameField.getText();
 
             if (hostingCheckBox.isSelected())
-                Main.setupServer(port, name);
-            else Main.setupClient(address, port, name);
+                SwingUtilities.invokeLater(() -> Main.setupServer(port, name));
+            else SwingUtilities.invokeLater(() -> Main.setupClient(address, port, name));
         });
 
         pack();

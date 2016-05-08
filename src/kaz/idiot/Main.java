@@ -15,15 +15,10 @@ import java.util.Scanner;
 public class Main {
     public static final int CARD_X = 79;
     public static final int CARD_Y = 123;
-    public static GamePanel[] gps;
     public static GamePanel gp;
-    public static Controller[] controllers;
     public static Controller controller;
     public static Game game;
-    public static JFrame[] gameFrames;
     public static JFrame gameFrame;
-    //TODO: reduce to one GamePanel
-    //TODO: reduce to one Controller
     public static StartFrame startFrame;
 
     public static List<PrintWriter> clientPrinters;
@@ -84,8 +79,8 @@ public class Main {
                     } catch (IOException e) { e.printStackTrace(); }
                 }
             });
-            //TODO: handle closing the game.
             serverSocketListenerThread.start();
+            //TODO: handle closing the game.
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -155,9 +150,6 @@ public class Main {
                 //TODO: make more commands silence-able
                 //TODO: maybe make commands printable "-p"
                 case "all":
-                    if (canAddPlayers) {
-                        chatFrame.println("Adding all players to the game.");
-                    }
                     if (chatFrame.isHosting() && canAddPlayers) {
                         sendToClients(name, "/add-s " + chatFrame.getClientName());
                         handleInput(name + "> " + "/add-s " + chatFrame.getClientName());
@@ -166,7 +158,14 @@ public class Main {
                             handleInput(name + "> " + "/add-s " + clientName);
                         }
                     }
+                    if (canAddPlayers) {
+                        chatFrame.println("Adding all players to the game.");
+                    }
                     //TODO: make order randomizer for game start. maybe use seed?
+                    break;
+                case "listPlayers":
+                    for (String playerName : chatFrame.getPlayerNames())
+                        chatFrame.println(playerName);
                     break;
                 case "seed":
                     //TODO: generate seed;
@@ -186,8 +185,9 @@ public class Main {
                     assert game != null;
                     chatFrame.println(game.getCurrentPlayerNumber() + "");
                     break;
-                case "repaint": //TODO: organize command cases alphabetically
-                    Main.chatFrame.println("This is a dangerous function to use.");
+                case "repaint":
+                    //TODO: organize command cases alphabetically
+                    Main.chatFrame.println("Use of the repaint function is not advised.");
                     gp.repaint();
                     break;
                 case "checkWin":
@@ -199,7 +199,8 @@ public class Main {
                     controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
-                    chatFrame.println("Adding " + cmd[1] + " to the game.");//TODO: do try-catch for cases that use cmd to output "see help".
+                    chatFrame.println("Adding " + cmd[1] + " to the game.");
+                    //TODO: do try-catch for cases that use cmd to output "see help".
                 case "add-s":
                     chatFrame.addPlayerName(cmd[1]);
                     break;
@@ -270,27 +271,29 @@ public class Main {
 
         List<String> playerNames = chatFrame.getPlayerNames();
 
-        int playerCount = playerNames.size();
 
         game = new Game(playerNames, seed);
+        playerNumber = playerNames.indexOf(chatFrame.getClientName());
+        //may be useful for spectators
+
+        /*
+        int playerCount = playerNames.size();
         controllers = new Controller[playerCount];
         gps = new GamePanel[playerCount];
-        gameFrames = new JFrame[playerCount]; //temporary.
-        //in the final version of the game, delete the JFrame array and make it present only the controlling player's JFrame.
-        //also need to only have one GamePanel and one Controller, so they can interface with the network and the Game.
-
+        gameFrames = new JFrame[playerCount];
         for (int i = 0; i < playerCount; ++i) {
             gameFrames[i] = new IdiotFrame(i);
         }
+        gp = gps[playerNumber];
+        controller = controllers[playerNumber];
+        */
 
-        playerNumber = chatFrame.getPlayerNames().indexOf(chatFrame.getClientName());
         if (playerNumber > -1)
-            gameFrame = gameFrames[playerNumber];
+            gameFrame = new IdiotFrame(playerNumber);
         else gameFrame = new IdiotFrame();
         gameFrame.setVisible(true);
 
-        gp = gps[playerNumber];
-        controller = controllers[playerNumber];
+
 
         //#after TODO: make the rubik's square game.
     }
@@ -298,26 +301,38 @@ public class Main {
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
             //TODO: create spectator idiotFrames
-            this(-1);
-            //TODO: when players are in spectate mode give them spectator idiotFrames
+            super("Idiot - " + chatFrame.getClientName() + " - Spectator");
+            setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLayout(new BorderLayout());
+
+            initGamePanel(0);
+            //TODO: finish spectator mode.
+            // maybe have thread update current player?
+            pack();
+            setResizable(true);
         }
 
         public IdiotFrame(int number) {
-            super("Idiot: " + chatFrame.getClientName());
+            super("Idiot - " + chatFrame.getClientName());
 
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(new BorderLayout());
 
-            //each IdiotFrame has its own Controller and GamePanel
-            //constructs GamePanels irrespective of playerNumber, adding them to a game.
-            //game should prompt to see if everyone has connected, and then the first player initializes the game and sends it to everyone else
+            initGamePanel(number);
+//            gps[number] = new GamePanel(game, number, 1920, 1080);
+//            controllers[number] = new Controller(game, gps[number]);
+//            add(gps[number], BorderLayout.CENTER);
 
-            gps[number] = new GamePanel(game, number, 1920, 1080);
-            controllers[number] = new Controller(game, gps[number]);
-            add(gps[number], BorderLayout.CENTER);
             pack();
             setResizable(true);
+        }
+
+        private void initGamePanel(int number) {
+            gp = new GamePanel(game, number, 100, 100);
+            controller = new Controller(game, gp);
+            add(gp, BorderLayout.CENTER);
         }
     }
 }

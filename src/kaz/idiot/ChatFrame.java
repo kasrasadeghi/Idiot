@@ -34,6 +34,8 @@ public class ChatFrame extends JFrame {
 
         playerNameList = new DefaultListModel<>();
         viewedList.setModel(playerNameList);
+        viewedList.setEnabled(false);
+        viewedList.setForeground(Color.BLACK);
 
         startButton.setEnabled(false);
 
@@ -72,7 +74,7 @@ public class ChatFrame extends JFrame {
 
     public void addPlayerName(String name) {
         if (Main.canAddPlayers)
-            playerNameList.addElement(name);
+            SwingUtilities.invokeLater(() -> playerNameList.addElement(name));
         else println("Lock the server before adding players.");
     }
 

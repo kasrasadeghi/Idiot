@@ -1,6 +1,7 @@
 package kaz.idiot;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static kaz.idiot.CARD.*;
@@ -18,7 +19,7 @@ public class Game {
     private List<CARD> deck = new LinkedList<>();
     private List<CARD> discard = new ArrayList<>();
     private boolean rotatingRight;
-    public Random random;
+    private Random random;
 
     public void setState(STATE s) {
         state = s;
@@ -79,18 +80,15 @@ public class Game {
         state = STATE.PLAYING;
 
         players.forEach(Player::start);
-
-//        //#devmode TODO: temp code
+        //TODO: don't let players see other players cards.
+//        //#server TODO: code may be used for spectator.
 //        Main.gameFrame.setVisible(false);
 //        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
     }
 
     private void initTurnOrder() {
-        List<CARD> leastCards = new ArrayList<>();
-        for (Player player : players) {
-            leastCards.add(player.getLeastInHand());
-        }
+        List<CARD> leastCards = players.stream().map(Player::getLeastInHand).collect(Collectors.toList());
         CARD cardOfFirst = leastCards.get(0);
         for (int i = 0; i < leastCards.size(); i++) {
             CARD card = leastCards.get(i);
@@ -135,14 +133,14 @@ public class Game {
         return currentPlayerNumber;
     }
 
-    public void setCurrentPlayerToNext() {
+    private void setCurrentPlayerToNext() {
         //change the player, then player to play
         currentPlayerNumber = (currentPlayerNumber + (rotatingRight? 1:players.size()-1))%players.size();
         //TODO: deselect all of the cards that the current player has selected if he's not going to play anymore
         setPlayerToPlay();
     }
 
-    public void setPlayerToPlay() {
+    private void setPlayerToPlay() {
         Player current = getCurrentPlayer();
         //region ----devmode
 //        //#devmode TODO: temp change
