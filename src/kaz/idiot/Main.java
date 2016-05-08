@@ -167,9 +167,7 @@ public class Main {
                     for (String playerName : chatFrame.getPlayerNames())
                         chatFrame.println(playerName);
                     break;
-                case "seed":
-                    //TODO: generate seed;
-                    chatFrame.println("Generating new seed.");
+                case "seed-s":
                     try {
                         seed = new Random(Long.valueOf(cmd[1])).nextLong();
                     } catch (NumberFormatException e) {
@@ -177,6 +175,9 @@ public class Main {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         seed = new Random(seed).nextLong();
                     }
+                case "seed":
+                    //TODO: generate seed;
+                    chatFrame.println("Generating new seed.");
                     break;
                 case "printSeed":
                     chatFrame.println(seed + "");
@@ -205,12 +206,17 @@ public class Main {
                     chatFrame.addPlayerName(cmd[1]);
                     break;
                 case "remove":
-                    chatFrame.println("Removing " + cmd[1] + " from the game.");
-                    chatFrame.removePlayerName(cmd[1]);
+                    try {
+                        chatFrame.println("Removing " + cmd[1] + " from the game.");
+                        chatFrame.removePlayerName(cmd[1]);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        chatFrame.println("See /help remove for how to use the remove command.");
+                    }
                     break;
                 case "lock":
                     chatFrame.println("Lobby locked.");
                     lockServer();
+//                    handleInput(name + "> " + "/all"); //TODO add all players at beginning
                     break;
                 case "start":
                     if (!accepting) {
@@ -220,34 +226,12 @@ public class Main {
                     }
                     break;
                 case "help":
-                    String help = "";
-                    if (cmd.length == 1) {
-                        //#server TODO: ready up system, lockButton.setText("Ready");
-                        //TODO: finish help command
-                        // does completely different thing if you aren't the host.
-                        help = "  Commands: \n" +
-                                "- add\n" +
-                                "- event\n" +
-                                "- genRandom\n" +
-                                "- help\n" +
-                                "- lock\n" +
-                                "- remove\n" +
-                                "- start";
-
-                    } else switch (cmd[1]) {
-                        case "add":
-                            break;
-                        case "event":
-                            break;
-                        case "genRandom":
-                            break;
-                        case "lock":
-                            break;
-                        case "remove":
-                            break;
-                        case "start":
-                            break;
-                        default:
+                    if (chatFrame.getClientName().equals(name)) {
+                        String help = "";
+                        if (cmd.length == 1) {
+                            //#server TODO: ready up system, lockButton.setText("Ready");
+                            //TODO: finish help command
+                            // does completely different thing if you aren't the host.
                             help = "  Commands: \n" +
                                     "- add\n" +
                                     "- event\n" +
@@ -256,9 +240,34 @@ public class Main {
                                     "- lock\n" +
                                     "- remove\n" +
                                     "- start";
+
+                        } else switch (cmd[1]) {
+                            case "add":
+                                break;
+                            case "event":
+                                help += "Don't call this unless you know what you're doing.\n";
+                                break;
+                            case "genRandom":
+                                break;
+                            case "lock":
+                                break;
+                            case "remove":
+                                break;
+                            case "start":
+                                break;
+                            default:
+                                help = "  Commands: \n" +
+                                        "- add\n" +
+                                        "- event\n" +
+                                        "- genRandom\n" +
+                                        "- help\n" +
+                                        "- lock\n" +
+                                        "- remove\n" +
+                                        "- start";
+                        }
+                        chatFrame.println(help);
+                        break;
                     }
-                    chatFrame.println(help);
-                    break;
                 default:
                     chatFrame.println(input);
             }
@@ -300,7 +309,6 @@ public class Main {
 
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
-            //TODO: create spectator idiotFrames
             super("Idiot - " + chatFrame.getClientName() + " - Spectator");
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -346,8 +346,8 @@ public class Game {
         return getValidRanks(index, true).contains(rank);
     }
 
-    public List<String> getValidRanks(int index, boolean red) {
-        List<String> validRanks = new ArrayList<>();
+    public Set<String> getValidRanks(int index, boolean red) {
+        Set<String> validRanks = new HashSet<>();
         if (index < 0) {
             Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
             return validRanks;
@@ -424,7 +424,6 @@ public class Game {
 
                 case "2":
                     if (conditional == CARD.HEART_2 || conditional == CARD.DIAMOND_2){
-                        validRanks = new ArrayList<>();
                         Collections.addAll(validRanks, "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
                         return validRanks;
                     } else {

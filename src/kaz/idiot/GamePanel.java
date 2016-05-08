@@ -189,7 +189,7 @@ class GamePanel extends JPanel {
         }
 
         public void println(String text) {
-            eventLog.append(text + "\n");
+            eventLog.setText(text + "\n" + eventLog.getText());
         }
 
         public void setCaretAtEnd() {
