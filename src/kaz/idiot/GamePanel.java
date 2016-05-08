@@ -195,7 +195,6 @@ class GamePanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            //#after TODO: work on graphics for the event log
             paintInspection(g);
         }
     }

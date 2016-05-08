@@ -175,7 +175,6 @@ public class Controller {
         }
 
         //#hard TODO: implement deckPick plays
-        //#easy TODO: autoSelect picked up bottom card
     }
 
     private void handleGameAction(int num, String action) {

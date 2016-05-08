@@ -238,6 +238,8 @@ public class Game {
     }
 
     /**
+     * A method for figuring out whether or not the current player can play. To be used with the AI.
+     *
      * @return true when current player has a card in hand that can be played to the field.
      */
     public boolean canPlay() {
