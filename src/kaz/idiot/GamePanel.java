@@ -24,7 +24,6 @@ import static kaz.idiot.Main.*;
 class GamePanel extends JPanel {
     private Game game;
     private int playerNumber;
-    private int startWidth, startHeight;
     private int inspection = INSP_GAME;
 
     public static final int INSP_GAME = -1;
@@ -112,11 +111,9 @@ class GamePanel extends JPanel {
 
     //</editor-fold>
 
-    public GamePanel (Game game, int pn, int w, int h) {
+    public GamePanel(int pn, Game game) {
         this.game = game;
         this.playerNumber = pn;
-//        this.startWidth = w;
-//        this.startHeight = h;
 
         ClassLoader cl = this.getClass().getClassLoader();
         try {
@@ -124,8 +121,34 @@ class GamePanel extends JPanel {
             right = ImageIO.read(cl.getResource("right.png"));
         } catch (IOException e) {
             e.printStackTrace();
+            //#long TODO: remove printStackTrace's
         }
-        Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        setMinimumSize(dim);
+        setPreferredSize(dim);
+
+        chatPanel = new ChatPanel();
+        eventLogPanel = new EventLogPanel();
+        chatPanel.setVisible(false);
+        eventLogPanel.setVisible(false);
+        add(chatPanel);
+        add(eventLogPanel);
+    }
+
+    public GamePanel(Game game, int pn) {
+        this.game = game;
+        this.playerNumber = pn;
+
+        ClassLoader cl = this.getClass().getClassLoader();
+        try {
+            left = ImageIO.read(cl.getResource("left.png"));
+            right = ImageIO.read(cl.getResource("right.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            //#long TODO: remove printStackTrace's
+        }
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
         setMinimumSize(dim);
         setPreferredSize(dim);
@@ -199,18 +222,11 @@ class GamePanel extends JPanel {
         }
     }
 
-//    /**
-//     * Sets the preferred size for the window to the dimensions it was constructed with.
-//     * @return
-//     */
-//    public Dimension getPreferredSize() {
-//        return new Dimension(startWidth, startHeight);
-//    }
-
-    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //TODO: make lowres mode
 
+        //Necessary in order to update Fonts with screen resize
         mainNameFont = new Font("SansSerif", Font.PLAIN, getHeight()/36); // 1440/48 = 30, and 30 is the default size.
         nameFont = new Font("SansSerif", Font.BOLD, getHeight()/60); // 1440/60 = 24, and 24 is the default size.
 
@@ -316,6 +332,7 @@ class GamePanel extends JPanel {
         int btly = h/4 + h/3 - buttonHeight/2;
         int rtlx = w/2 + margin/2;
         g.setFont(oldFont);
+        //#short TODO: rename these to something that makes more sense. there is only one kind of menu, remake endgame button clicking?
         paintClickableButton(g, "HOST_REMATCH",
                 ltlx, btly, buttonWidth, buttonHeight,
                 bg, Color.BLACK);
@@ -774,10 +791,10 @@ class GamePanel extends JPanel {
 
     // <editor-fold desc="----Interaction methods----">
 
-    public void handleMouseEvent(MouseEvent me) {
+    private void handleMouseEvent(MouseEvent me) {
 
         List<String> codes = new ArrayList<>();
-        for(Bounds bounds : bounds2String.keySet()) {
+        for (Bounds bounds : bounds2String.keySet()) {
             Rectangle bounding = new Rectangle((int) (bounds.tlx * getWidth()),
                     (int) (bounds.tly * getHeight()),
                     (int) (bounds.w * getWidth()),
@@ -786,7 +803,8 @@ class GamePanel extends JPanel {
                 codes.add(bounds2String.get(bounds));
         }
         Collections.sort(codes);
-        controller.handleCodes(codes);
+        if (sp != null && sp.isDevMode()) sp.handleCodes(codes, playerNumber);
+        else controller.handleCodes(codes);
     }
 
     public void setInspection( int box ) {

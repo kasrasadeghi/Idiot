@@ -11,6 +11,7 @@ import static kaz.idiot.CARD.*;
 
 // THE MODEL
 public class Game {
+    //#hardaf TODO: support dynamic addition and removal of players
     private int currentPlayerNumber;
 
     private STATE state;
@@ -80,8 +81,8 @@ public class Game {
         state = STATE.PLAYING;
 
         players.forEach(Player::start);
-        //#easy #after TODO: don't let players see other players cards.
-        //#after TODO: code may be used for spectator.
+        //#easy #after TODO: don't let players see other players cards
+        //#after TODO: code may be used for spectator
 //        Main.gameFrame.setVisible(false);
 //        Main.gameFrame = Main.gameFrames[currentPlayerNumber];
 //        Main.gameFrame.setVisible(true);
@@ -258,12 +259,14 @@ public class Game {
         Player current = players.get(num);
         //if the player doesn't have currently selected cards
         if (current.getSelected().isEmpty()) {
-            Main.gp.printEvent("You haven't selected any cards.");
+            if (Main.sp == null) Main.gp.printEvent("You haven't selected any cards.");
+            else Main.sp.printEvent("You haven't selected any cards.");
             return;
         }
         //if the current player's selected cards aren't a valid move then return
         if (!checkCurrentPlay()) {
-            Main.gp.printEvent("Illegal Move");
+            if (Main.sp == null) Main.gp.printEvent("Illegal Move");
+            else Main.sp.printEvent("Illegal Move");
             return;
         }
 
@@ -275,36 +278,37 @@ public class Game {
         //post-move logic.
 
         //Player Actions
-        if (!deck.isEmpty())    //if the current player has less than 3 cards and the deck isn't empty
+        //if the current player has less than 3 cards and the deck isn't empty
+        if (!deck.isEmpty())
             while (current.getHand().size() < 3 )
-                current.draw(drawFromDeck());           //drawFromDeck until they maintain 3
-        else if (current.getHand().isEmpty()) { //if the hand is empty
-            if (!current.getTop().isEmpty())    //and the top is NOT empty
-                current.topToHand();            //move the top to the hand
+                current.draw(drawFromDeck());       //  drawFromDeck until they maintain 3
+        else if (current.getHand().isEmpty()) {     //  if the hand is empty
+            if (!current.getTop().isEmpty())        //    and the top is NOT empty
+                current.topToHand();                //move the top to the hand
         }
         //set player to spectating if everything is empty.
         if (current.getHand().isEmpty() && current.getTop().isEmpty() && current.getBot().stream().allMatch( c -> c.name().equals(NULL_CARD.name())))
             current.end();
 
         //Field Actions
-        boolean again = false;
+        boolean playAgain = false;
         //if a black two has been played, reverse turn order.
         if (lastPlay.stream().anyMatch( c -> c == CARD.CLUB_2 || c == CARD.SPADE_2)) {
             //if there are only two people playing, then current player goes again.
-            again = true;
+            playAgain = true;
             reverseTurnOrder();
         }
         //if the top card is a ten, burn all the cards.
         if (field.getLast().getRank().equals("10")) {
             burn();
-            again = true;
+            playAgain = true;
         }
         //last four cards are the same rank = burn, even with magic cards.
         if (fourCardBurnCheck()) {
             burn();
-            again = true;
+            playAgain = true;
         }
-        if (!again)
+        if (!playAgain)
             setCurrentPlayerToNext();
         else setPlayerToPlay();
     }

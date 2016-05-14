@@ -16,6 +16,7 @@ public class Main {
     public static final int CARD_X = 79;
     public static final int CARD_Y = 123;
     public static GamePanel gp;
+    public static SpectatorPanel sp;
     public static Controller controller;
     public static Game game;
     public static JFrame gameFrame;
@@ -32,10 +33,19 @@ public class Main {
     public static boolean canAddPlayers = false;
 
     public static void main(String[] args) {
+        //#easy TODO: check to see if i've randomized turn order
+        //#moderate TODO: currently to enter devmode you have to have a name that starts with "\"
+//        testSpectator();
         SwingUtilities.invokeLater(() -> startFrame = StartFrame.instance());
     }
 
+    public static void testSpectator() {
+        game = new Game(12);
+        SwingUtilities.invokeLater(() -> new IdiotFrame(false));
+    }
+
     public static void setupServer(String port, String name) {
+        //#farAfter TODO: maybe make updater?
 
         startFrame.setVisible(false);
         chatFrame = new ChatFrame(name, true);
@@ -80,7 +90,7 @@ public class Main {
                 }
             });
             serverSocketListenerThread.start();
-            //#new TODO: handle closing the game.
+            //#new TODO: handle closing the game
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -143,9 +153,10 @@ public class Main {
         String[] inputSplit = input.split("> ");
         String name = inputSplit[0];
         if (inputSplit[1].startsWith("/")) {
-            //#easy TODO: maybe only send some commands to people that submit them. like help.
+            //#easy TODO: maybe only send some commands to people that submit them. like help
             String[] cmd = inputSplit[1].substring(1).split(" ");
             switch (cmd[0]) {
+                //#moderate TODO: ping command
                 //#easy TODO: make more commands silence-able
                 //#easy TODO: maybe make commands printable "-p"
                 case "all":
@@ -195,16 +206,20 @@ public class Main {
                 case "event":
                     assert game != null;
                     chatFrame.println("event handling: " + cmd[1] + ", " + cmd[2] + ", " + cmd[3] + ".");
-                    controller.handleEvent(cmd[1], cmd[2], cmd[3]);
+                    if (sp != null) {
+                        chatFrame.println("handling spectator event");
+                        sp.handleEvent(cmd[1], cmd[2], cmd[3]);
+                    }
+                    else controller.handleEvent(cmd[1], cmd[2], cmd[3]);
                     break;
                 case "add":
                     chatFrame.println("Adding " + cmd[1] + " to the game.");
-                    //#long TODO: do try-catch for cases that use cmd to output "see help".
+                    //#long TODO: do try-catch for cases that use cmd to output "see help"
                 case "add-s":
                     chatFrame.addPlayerName(cmd[1]);
                     break;
                 case "remove":
-                    try {
+                    try {//#moderate TODO: have rename command.
                         chatFrame.println("Removing " + cmd[1] + " from the game.");
                         chatFrame.removePlayerName(cmd[1]);
                     } catch (ArrayIndexOutOfBoundsException e) {
@@ -219,7 +234,7 @@ public class Main {
                     if (!accepting) {
                         if (chatFrame.getPlayerNames().size() < 0)
                             chatFrame.println("Add at least 2 players to the game.");
-                        else init(seed, name);
+                        else init(seed);
                     }
                     break;
                 case "help":
@@ -271,71 +286,60 @@ public class Main {
         }
     }
 
-    public static void init(long seed, String name) {
+    public static void init(long seed) {
 
         List<String> playerNames = chatFrame.getPlayerNames();
 
 
         game = new Game(playerNames, seed);
         playerNumber = playerNames.indexOf(chatFrame.getClientName());
-        //may be useful for spectators
+        //#moderate TODO: warn adder when adding a devmode person to the game
 
-        /*
-        int playerCount = playerNames.size();
-        controllers = new Controller[playerCount];
-        gps = new GamePanel[playerCount];
-        gameFrames = new JFrame[playerCount];
-        for (int i = 0; i < playerCount; ++i) {
-            gameFrames[i] = new IdiotFrame(i);
-        }
-        gp = gps[playerNumber];
-        controller = controllers[playerNumber];
-        */
 
         if (playerNumber > -1)
             gameFrame = new IdiotFrame(playerNumber);
-        else gameFrame = new IdiotFrame();
+        else if (chatFrame.getClientName().startsWith("\\")) gameFrame = new IdiotFrame(true);
+        else gameFrame = new IdiotFrame(false);
         gameFrame.setVisible(true);
 
-
-
-        //#after TODO: make the rubik's square game.
+        //#after TODO: make projectLine total calculator
+        //#after TODO: make projectLine total calculator in C++
+        //#after TODO: make the rubik's square game in C++
     }
 
     static class IdiotFrame extends JFrame {
-        public IdiotFrame() {
-            super("Idiot - " + chatFrame.getClientName() + " - Spectator");
+        public IdiotFrame(boolean devmode) {
+            super("Idiot - " + chatFrame.getClientName()/*"Kasra"*/ + " - Spectator");
+            //Spectating IdiotFrame.
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(new BorderLayout());
 
-            initGamePanel(0);
-            //#hard TODO: finish spectator mode.
-            // maybe have thread update current player?
+            //#easy TODO: organize TODOs
+            //#hard TODO: finish spectator mode
+            sp = new SpectatorPanel(game, devmode);
+
+            add(sp);
+
             pack();
             setResizable(true);
+            setVisible(true);
         }
 
         public IdiotFrame(int number) {
+            //Player IdiotFrame.
             super("Idiot - " + chatFrame.getClientName());
 
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(new BorderLayout());
 
-            initGamePanel(number);
-//            gps[number] = new GamePanel(game, number, 1920, 1080);
-//            controllers[number] = new Controller(game, gps[number]);
-//            add(gps[number], BorderLayout.CENTER);
+            gp = new GamePanel(game, number);
+            controller = new Controller(game, gp);
+            add(gp, BorderLayout.CENTER);
 
             pack();
             setResizable(true);
-        }
-
-        private void initGamePanel(int number) {
-            gp = new GamePanel(game, number, 100, 100);
-            controller = new Controller(game, gp);
-            add(gp, BorderLayout.CENTER);
         }
     }
 }

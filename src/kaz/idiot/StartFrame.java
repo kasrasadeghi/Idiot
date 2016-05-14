@@ -38,7 +38,7 @@ public class StartFrame extends JFrame{
             String port = portField.getText();
             String name = nameField.getText();
 
-            if (hostingCheckBox.isSelected())
+            if (hostingCheckBox.isSelected()) //#moderate TODO: maybe have devmode checkbox?
                 SwingUtilities.invokeLater(() -> Main.setupServer(port, name));
             else SwingUtilities.invokeLater(() -> Main.setupClient(address, port, name));
         });
