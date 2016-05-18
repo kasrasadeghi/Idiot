@@ -675,7 +675,9 @@ class GamePanel extends JPanel {
         List<HandCARD> hand = p.getHand();
         for (int i = 0; i < hand.size(); ++i) {
             HandCARD hc = hand.get(i);
-            paintCard(og, hc.card, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
+            if (isPlayerMain)
+                paintCard(og, hc.card, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
+            else paintCard(og, CARD.NULL_CARD, tlx + cardXOffset * i, tly + (hc.selected? selectedYOffset : 0));
             Bounds bounds = new Bounds(
                     (double)(tlx + cardXOffset * i)/getWidth(),
                     (double)(tly + (hc.selected? selectedYOffset : 0))/getHeight(),
