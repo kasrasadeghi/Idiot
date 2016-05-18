@@ -147,13 +147,13 @@ public class Controller {
         switch(action) {
             case "SWAP":
                 game.getPlayer(num).setupSwap();
-                gp.repaint(); //#SEVERE TODO: fix SWAP and PLAY. for some reason highlighting cards works, but swapping them doesn't.
-                //#SEVERE TODO: also can't select cards or play them. also doesn't initialize to the correct player
+                gp.repaint();
+                //#easy TODO: why does every player other than player->number == 0 start with self-inspection?
                 break;
             case "READY":
                 game.getPlayer(num).setReady(true);
                 if (game.allReady()) {
-                    gp.setInspection(-1);
+                    gp.setInspection(GamePanel.INSP_GAME);
                     gp.repaint();
                 }
                 else gp.repaint();

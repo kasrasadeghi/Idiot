@@ -112,6 +112,7 @@ class GamePanel extends JPanel {
     //</editor-fold>
 
     public GamePanel(int pn, Game game) {
+        //#easy TODO: cleanup GamePanel constructor
         this.game = game;
         this.playerNumber = pn;
 
@@ -173,7 +174,7 @@ class GamePanel extends JPanel {
 
     public class ChatPanel extends JPanel {
         public ChatPanel() {
-
+            //#hard TODO: chatPanel integration into the game
         }
 
         @Override
@@ -224,7 +225,7 @@ class GamePanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //TODO: make lowres mode
+        //#new TODO: make lowres mode
 
         //Necessary in order to update Fonts with screen resize
         mainNameFont = new Font("SansSerif", Font.PLAIN, getHeight()/36); // 1440/48 = 30, and 30 is the default size.

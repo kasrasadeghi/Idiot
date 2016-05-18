@@ -22,14 +22,14 @@ public class Main {
     public static JFrame gameFrame;
     public static StartFrame startFrame;
 
-    public static List<PrintWriter> clientPrinters;
-    public static List<String> clientNames;
-    public static PrintWriter serverPrinter;
+    private static List<PrintWriter> clientPrinters;
+    private static List<String> clientNames;
+    private static PrintWriter serverPrinter;
     public static ChatFrame chatFrame;
-    public static boolean accepting = true;
+    private static boolean accepting = true;
     public static long seed = 8912;
-    public static int playerNumber = -1;
-    public static Thread serverSocketListenerThread;
+    private static int playerNumber = -1;
+    private static Thread serverSocketListenerThread;
     public static boolean canAddPlayers = false;
 
     public static void main(String[] args) {
@@ -160,6 +160,7 @@ public class Main {
                 //#easy TODO: make more commands silence-able
                 //#easy TODO: maybe make commands printable "-p"
                 case "all":
+                    //TODO: don't add devmodes \- to the game with all
                     if (chatFrame.isHosting() && canAddPlayers) {
                         sendToClients(name, "/add-s " + chatFrame.getClientName());
                         handleInput(name + "> " + "/add-s " + chatFrame.getClientName());
@@ -219,7 +220,8 @@ public class Main {
                     chatFrame.addPlayerName(cmd[1]);
                     break;
                 case "remove":
-                    try {//#moderate TODO: have rename command.
+                    try {
+                        //#moderate TODO: have rename command.
                         chatFrame.println("Removing " + cmd[1] + " from the game.");
                         chatFrame.removePlayerName(cmd[1]);
                     } catch (ArrayIndexOutOfBoundsException e) {
@@ -241,7 +243,7 @@ public class Main {
                     if (chatFrame.getClientName().equals(name)) {
                         String help = "";
                         if (cmd.length == 1) {
-                            //#server TODO: ready up system, lockButton.setText("Ready");
+                            //#hard TODO: ready up system, lockButton.setText("Ready");
                             //#long TODO: finish help command
                             // does completely different thing if you aren't the host.
                             help = "  Commands: \n" +
@@ -300,6 +302,7 @@ public class Main {
             gameFrame = new IdiotFrame(playerNumber);
         else if (chatFrame.getClientName().startsWith("\\")) gameFrame = new IdiotFrame(true);
         else gameFrame = new IdiotFrame(false);
+//        else gameFrame = new IdiotFrame();
         gameFrame.setVisible(true);
 
         //#after TODO: make projectLine total calculator
@@ -308,6 +311,26 @@ public class Main {
     }
 
     static class IdiotFrame extends JFrame {
+        public IdiotFrame() {
+            //the dummy frame for testing
+            super("Idiot - " + chatFrame.getClientName()/*"Kasra"*/ + " - Spectator");
+            //Spectating IdiotFrame.
+            setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLayout(new BorderLayout());
+
+            gp = new GamePanel(0, game);
+            controller = new Controller(game, gp);
+            add(gp, BorderLayout.CENTER);
+
+            add(sp);
+
+            pack();
+            setResizable(true);
+            setVisible(true);
+        }
+
+
         public IdiotFrame(boolean devmode) {
             super("Idiot - " + chatFrame.getClientName()/*"Kasra"*/ + " - Spectator");
             //Spectating IdiotFrame.

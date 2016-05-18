@@ -1,7 +1,6 @@
 package kaz.idiot;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.MouseEvent;
@@ -31,7 +30,7 @@ public class SpectatorPanel extends JPanel {
 
         //Create GamePanels
         for (int i = 0; i < game.getPlayerCount(); ++i) {
-            GamePanel gp = new GamePanel(i, game);
+            GamePanel gp = devmode? new GamePanel(game, i) : new GamePanel(i, game);
             gps.add(gp);
             controllers.add(new Controller(game, gp));
         }
@@ -45,14 +44,12 @@ public class SpectatorPanel extends JPanel {
     }
 
     public void handleCodes(List<String> codes, int playerNumber) {
-//        controllers.get(playerNumber).handleCodes(codes);
-        for (Controller c : controllers)
-            c.handleCodes(codes);
+        controllers.get(playerNumber).handleCodes(codes);
     }
 
     public void handleEvent(String numString, String ev, String arg) {
-        for (Controller controller : controllers)
-            controller.handleEvent(numString, ev, arg);
+        int num = Integer.parseInt(numString);
+        controllers.get(num).handleEvent(numString, ev, arg);
         gps.forEach(GamePanel::repaint);
     }
 
@@ -68,7 +65,7 @@ public class SpectatorPanel extends JPanel {
     private class ClickPanel extends JPanel {
         private int playerCount;
         private int rows, cols;
-        private HashMap<GamePanel.Bounds, Integer> bounds2Integer = new HashMap<>();
+        private HashMap<GamePanel.Bounds, Integer> bounds2PlayerNumber = new HashMap<>();
         private int playerNumber;
 
         public ClickPanel(SpectatorPanel sp) {
@@ -82,13 +79,13 @@ public class SpectatorPanel extends JPanel {
             addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    for (GamePanel.Bounds bounds : bounds2Integer.keySet()) {
+                    for (GamePanel.Bounds bounds : bounds2PlayerNumber.keySet()) {
                         Rectangle bounding = new Rectangle((int) (bounds.tlx * getWidth()),
                                 (int) (bounds.tly * getHeight()),
                                 (int) (bounds.w * getWidth()),
                                 (int) (bounds.h * getHeight()));
                         if (bounding.contains(e.getPoint()))
-                            setViewing(sp, bounds2Integer.get(bounds));
+                            setViewing(sp, bounds2PlayerNumber.get(bounds));
                     }
                 }
                 @Override
@@ -104,23 +101,19 @@ public class SpectatorPanel extends JPanel {
 
         public void setViewing(SpectatorPanel sp, int number) {
             gps.get(playerNumber).repaint();
-            sp.remove(gps.get(playerNumber));//TODO CHECK
             playerNumber = number;
             sp.add(gps.get(playerNumber), BorderLayout.CENTER);
-
+            //#easy TODO: maybe not so many revalidates and repaints? might fix \devmode
             revalidate();
             repaint();
             gps.get(playerNumber).revalidate();
             gps.get(playerNumber).repaint();
             sp.revalidate();
             sp.repaint();
-            //TODO check if the game itself is actually doing the thing with a chatFrame.println
-            //TODO try repainting everything...
-            //TODO try revalidate()ing everything
         }
 
         private void addActionToBounds(GamePanel.Bounds bounds, int playerNumber) {
-            bounds2Integer.put(bounds, playerNumber);
+            bounds2PlayerNumber.put(bounds, playerNumber);
         }
 
         @SuppressWarnings("Duplicates")
@@ -159,6 +152,7 @@ public class SpectatorPanel extends JPanel {
 
                     int buttonWidth = width / cols;
                     int buttonHeight = height / rows;
+
                     rowIncRatio = (double) buttonHeight / buttonWidth;
                     --rows;
                 }
@@ -191,9 +185,15 @@ public class SpectatorPanel extends JPanel {
             if (playerNumber != -1) {
                 GamePanel.Bounds bounds = new GamePanel.Bounds(tlx, tly, w, h, getWidth(), getHeight());
                 addActionToBounds(bounds, playerNumber);
-                tlx = tlx + w / 2 - SwingUtilities.computeStringWidth(g.getFontMetrics(), playerNumber + "") / 2;
+                tlx = tlx + w / 2
+                        - SwingUtilities.computeStringWidth
+                        (
+                            g.getFontMetrics(),
+                            game.getPlayer(playerNumber).getName()
+                        ) / 2;
                 tly = tly + h / 2 + g.getFontMetrics().getHeight() * 2 / 7;
-                g.drawString(playerNumber + "", tlx, tly);
+                //#moderate TODO: make name fit into box. might also be able to fix button names not being in boxes.
+                g.drawString(game.getPlayer(playerNumber).getName(), tlx, tly);
             }
         }
     }
