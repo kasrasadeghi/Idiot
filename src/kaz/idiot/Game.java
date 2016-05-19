@@ -22,10 +22,6 @@ public class Game {
     private boolean rotatingRight;
     private Random random;
 
-    public void setState(STATE s) {
-        state = s;
-    }
-
     public STATE getState() {
         return state;
     }
