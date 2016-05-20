@@ -128,6 +128,7 @@ public class Player {
     public void setupSwap() {
         int h = handSetupSelect;
         int t = topSetupSelect;
+        if (h == -1 || t == -1) return;
         CARD handSwap = hand.get(h).card;
         CARD topSwap = top.get(t);
         hand.set(h, new HandCARD(topSwap));
