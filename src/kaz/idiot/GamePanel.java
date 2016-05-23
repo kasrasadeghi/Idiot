@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import static kaz.idiot.CARD.CARD_X;
+import static kaz.idiot.CARD.CARD_Y;
 import static kaz.idiot.Player.HandCARD;
 import static kaz.idiot.Main.*;
 
@@ -607,7 +609,7 @@ class GamePanel extends JPanel {
 
         //paint bot cards
         tly = otly + oh - CARD_Y - cardYOffset/2;
-        tlx = otlx + ow - 2*CARD_X;
+        tlx = otlx + ow - 2* CARD_X;
         if (game.getState() == STATE.SETUP) {
             tlx -= 2 * CARD_X + cardYOffset/4;
         }
@@ -659,8 +661,8 @@ class GamePanel extends JPanel {
                 Bounds bounds = new Bounds(
                         (double)(tlx + cardXOffset * i)/getWidth(),
                         (double)(tly)/getHeight(),
-                        (i == top.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
-                        (double)CARD_Y/getHeight()
+                        (i == top.size() - 1)? (double) CARD_X/getWidth() : (double)cardXOffset/getWidth(),
+                        (double) CARD_Y/getHeight()
                 );
                 addCardToBounds(bounds, i + 3);
             }
@@ -681,8 +683,8 @@ class GamePanel extends JPanel {
             Bounds bounds = new Bounds(
                     (double)(tlx + cardXOffset * i)/getWidth(),
                     (double)(tly + (hc.selected? selectedYOffset : 0))/getHeight(),
-                    (i == hand.size() - 1)? (double)CARD_X/getWidth() : (double)cardXOffset/getWidth(),
-                    (double)CARD_Y/getHeight()
+                    (i == hand.size() - 1)? (double) CARD_X/getWidth() : (double)cardXOffset/getWidth(),
+                    (double) CARD_Y/getHeight()
             );
             if (game.getState() == STATE.SETUP) {
                 Player me = game.getPlayer(playerNumber);
@@ -715,7 +717,7 @@ class GamePanel extends JPanel {
      * @param g
      */
     private void paintField(Graphics g) {
-        int tlx = getWidth()/2 - 2*CARD_X;
+        int tlx = getWidth()/2 - 2* CARD_X;
         int tly = getHeight()/2 - CARD_Y/2 - 10;
 
         int delta = 20;

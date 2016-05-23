@@ -13,8 +13,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static final int CARD_X = 79;
-    public static final int CARD_Y = 123;
     public static GamePanel gp;
     public static SpectatorPanel sp;
     public static Controller controller;

@@ -2,12 +2,10 @@ package kaz.idiot;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import static kaz.idiot.Main.*;
 
 /**
  * Created by kasra on 2/6/2016.
@@ -15,72 +13,76 @@ import static kaz.idiot.Main.*;
  * This is the proprietary card class for Idiot.
  */
 public enum CARD{
-    SPADE_A(       0, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_2(  CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_3(2*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_4(3*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_5(4*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_6(5*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_7(6*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_8(7*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_9(8*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_10(9*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_J(10*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_Q(11*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
-    SPADE_K(12*CARD_X, 3*CARD_Y, CARD_X, CARD_Y),
+    SPADE_A(0, 3),
+    SPADE_2(1, 3),
+    SPADE_3(2, 3),
+    SPADE_4(3, 3),
+    SPADE_5(4, 3),
+    SPADE_6(5, 3),
+    SPADE_7(6, 3),
+    SPADE_8(7, 3),
+    SPADE_9(8, 3),
+    SPADE_10(9, 3),
+    SPADE_J(10, 3),
+    SPADE_Q(11, 3),
+    SPADE_K(12, 3),
 
-    CLUB_A(       0, 0, CARD_X, CARD_Y),
-    CLUB_2(  CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_3(2*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_4(3*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_5(4*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_6(5*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_7(6*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_8(7*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_9(8*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_10(9*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_J(10*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_Q(11*CARD_X, 0, CARD_X, CARD_Y),
-    CLUB_K(12*CARD_X, 0, CARD_X, CARD_Y),
+    CLUB_A(0, 0),
+    CLUB_2(1, 0),
+    CLUB_3(2, 0),
+    CLUB_4(3, 0),
+    CLUB_5(4, 0),
+    CLUB_6(5, 0),
+    CLUB_7(6, 0),
+    CLUB_8(7, 0),
+    CLUB_9(8, 0),
+    CLUB_10(9, 0),
+    CLUB_J(10, 0),
+    CLUB_Q(11, 0),
+    CLUB_K(12, 0),
 
-    DIAMOND_A(       0, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_2(  CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_3(2*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_4(3*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_5(4*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_6(5*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_7(6*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_8(7*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_9(8*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_10(9*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_J(10*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_Q(11*CARD_X, CARD_Y, CARD_X, CARD_Y),
-    DIAMOND_K(12*CARD_X, CARD_Y, CARD_X, CARD_Y),
+    DIAMOND_A(0,1),
+    DIAMOND_2(1,1),
+    DIAMOND_3(2,1),
+    DIAMOND_4(3,1),
+    DIAMOND_5(4,1),
+    DIAMOND_6(5,1),
+    DIAMOND_7(6,1),
+    DIAMOND_8(7,1),
+    DIAMOND_9(8,1),
+    DIAMOND_10(9,1),
+    DIAMOND_J(10,1),
+    DIAMOND_Q(11,1),
+    DIAMOND_K(12,1 ),
 
-    HEART_A(       0, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_2(  CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_3(2*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_4(3*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_5(4*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_6(5*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_7(6*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_8(7*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_9(8*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_10(9*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_J(10*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_Q(11*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
-    HEART_K(12*CARD_X, 2*CARD_Y, CARD_X, CARD_Y),
+    HEART_A(0, 2),
+    HEART_2(1, 2),
+    HEART_3(2, 2),
+    HEART_4(3, 2),
+    HEART_5(4, 2),
+    HEART_6(5, 2),
+    HEART_7(6, 2),
+    HEART_8(7, 2),
+    HEART_9(8, 2),
+    HEART_10(9, 2),
+    HEART_J(10, 2),
+    HEART_Q(11, 2),
+    HEART_K(12, 2),
 
-    NULL_CARD(2 * CARD_X, 4 * CARD_Y, CARD_X, CARD_Y);
+    NULL_CARD(2, 4 );
+
+    public static final int CARD_Y = 123;
+    public static final int CARD_X = 79;
 
     private Image image = null;
 
-    CARD(int tlx, int tly, int w, int h) {
+    CARD(int tlx, int tly) {
         try {
+            //#new TODO: Read image from disk once, then make subImages. Maybe look into cached images?
             ClassLoader cl = this.getClass().getClassLoader();
-            image = ImageIO.read(cl.getResource("cards.png")).getSubimage(tlx, tly, w, h);
+            image = ImageIO.read(cl.getResource("cards.png")).getSubimage(tlx*CARD_X, tly*CARD_Y, CARD_X, CARD_Y);
         } catch(IOException e) {
-            e.printStackTrace();
+            System.err.println("Could not find the cards.png. Check the working directory of the jar file.");
         }
     }
 
