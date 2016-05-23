@@ -35,12 +35,14 @@ public class Main {
     public static void main(String[] args) {
         //#easy TODO: check to see if i've randomized turn order
         //#moderate TODO: currently to enter devmode you have to have a name that starts with "\"
+        //#long TODO: add keyboard shortcuts
 //        testSpectator();
         SwingUtilities.invokeLater(() -> startFrame = StartFrame.instance());
     }
 
     public static void testSpectator() {
         game = new Game(12);
+        chatFrame = new ChatFrame("TestSpectatorName", false);
         SwingUtilities.invokeLater(() -> new IdiotFrame(false));
     }
 
@@ -313,7 +315,7 @@ public class Main {
     static class IdiotFrame extends JFrame {
         public IdiotFrame() {
             //the dummy frame for testing
-            super("Idiot - " + chatFrame.getClientName()/*"Kasra"*/ + " - Spectator");
+            super("Idiot - " + chatFrame.getClientName() + " - Spectator");
             //Spectating IdiotFrame.
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -332,7 +334,7 @@ public class Main {
 
 
         public IdiotFrame(boolean devmode) {
-            super("Idiot - " + chatFrame.getClientName()/*"Kasra"*/ + " - Spectator");
+            super("Idiot - " + chatFrame.getClientName() + " - Spectator");
             //Spectating IdiotFrame.
             setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
